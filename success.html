@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nachricht gesendet – AL 3D Print</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            background: #000;
+            color: #fff;
+            font-family: 'Exo 2', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* Floating Back Button */
+        .back-btn {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #111;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.6rem;
+            color: white;
+            text-decoration: none;
+            z-index: 999;
+            box-shadow: 0 0 12px rgba(255,255,255,0.1);
+            transition: 0.25s ease;
+        }
+
+        .back-btn:hover {
+            background: #222;
+            box-shadow: 0 0 18px rgba(255,255,255,0.3);
+            transform: scale(1.08);
+        }
+
+        .box {
+            background: #111;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 0 25px rgba(255,255,255,0.08);
+            max-width: 600px;
+            animation: fadeIn 1.2s ease-out forwards;
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        a.main-btn {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.8rem 1.6rem;
+            background: #222;
+            border-radius: 10px;
+            color: #fff;
+            font-family: 'Orbitron', sans-serif;
+            text-decoration: none;
+            letter-spacing: 1px;
+            transition: 0.25s ease;
+            box-shadow: 0 0 12px rgba(255,255,255,0.08);
+        }
+
+        a.main-btn:hover {
+            background: #333;
+            box-shadow: 0 0 18px rgba(255,255,255,0.2);
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Floating Back Button -->
+<a href="kontakt.html" class="back-btn">←</a>
+
+<div class="box">
+    <h1>Vielen Dank!</h1>
+    <p>Deine Nachricht wurde erfolgreich übermittelt.<br>
+       Ich melde mich so schnell wie möglich bei dir.</p>
+
+    <a href="index.html" class="main-btn">Zur Startseite</a>
+</div>
+
+</body>
+</html>
