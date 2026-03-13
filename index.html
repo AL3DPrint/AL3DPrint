@@ -141,3 +141,124 @@
         .hero-image {
             max-height: 60vh;
             width: auto;
+            object-fit: contain;
+            z-index: 2;
+            filter: drop-shadow(0 0 20px rgba(0,0,0,0.8));
+            opacity: 0;
+            animation: fadeInImage 1.6s ease-out forwards;
+            animation-delay: 0.4s;
+        }
+
+        @keyframes fadeInImage {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Slogan */
+        .hero-content {
+            position: absolute;
+            top: 8%;
+            width: 100%;
+            text-align: center;
+            color: white;
+            z-index: 3;
+        }
+
+        .hero-content h1 {
+            font-family: var(--font-hero);
+            font-size: 2.2rem;
+            margin: 0;
+            padding: 0 1rem;
+            text-shadow: 0 0 15px rgba(0,0,0,0.8);
+            font-weight: 600;
+            letter-spacing: 1px;
+            opacity: 0;
+            animation: fadeUp 1.2s ease-out forwards;
+        }
+
+        /* Slogan Animation */
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 1.6rem;
+                padding: 0 0.5rem;
+                line-height: 1.3;
+            }
+
+            .hero-image {
+                max-height: 45vh;
+            }
+        }
+
+        /* Laufband */
+        .ticker {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #111;
+            color: #fff;
+            padding: 0.4rem 0;
+            font-size: 0.9rem;
+            font-weight: bold;
+            overflow: hidden;
+            white-space: nowrap;
+            z-index: 9999;
+        }
+
+        .ticker span {
+            display: inline-block;
+            padding-left: 100%;
+            animation: ticker 12s linear infinite;
+        }
+
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<header>
+    <img src="logo.png" alt="AL 3D Print Logo">
+</header>
+
+<label for="menu-toggle" class="hamburger">☰ Menü</label>
+<input type="checkbox" id="menu-toggle">
+
+<nav>
+    <a href="index.html">Startseite</a>
+    <a href="galerie.html">Galerie</a>
+    <a href="ueber-al3dprint.html">Über AL 3D Print</a>
+    <a href="kontakt.html">Kontakt</a>
+    <a href="impressum-datenschutz.html">Impressum & Datenschutz</a>
+</nav>
+
+<div class="hero">
+    <div class="hero-content">
+        <h1>From Sketch to Solid: Your Idea in 3D</h1>
+    </div>
+
+    <img src="bilder/mannmitwolf.jpg" alt="Mann mit Wolf" class="hero-image">
+</div>
+
+<div class="ticker">
+    <span>🚧 Diese Website befindet sich aktuell im Aufbau – Inhalte werden laufend ergänzt 🚧</span>
+</div>
+
+</body>
+</html>
