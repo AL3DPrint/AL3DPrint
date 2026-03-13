@@ -21,7 +21,7 @@
         }
 
         header img {
-            max-width: 160px;
+            max-width: 150px;
             height: auto;
         }
 
@@ -46,14 +46,19 @@
 
         /* Hauptbereich */
         main {
-            padding: 2rem;
+            padding: 1.5rem;
             text-align: center;
         }
 
-        main img {
-            max-width: 90%;
+        /* Das Bild perfekt responsiv */
+        .startbild {
+            max-width: 650px;     /* perfekte Desktop-Größe */
+            width: 90%;           /* passt sich Mobilgeräten an */
+            height: auto;
             border-radius: 10px;
             border: 2px solid #ccc;
+            margin: 1.5rem auto;
+            display: block;
         }
 
         /* Footer */
@@ -112,8 +117,8 @@
     <h1>Willkommen bei AL 3D Print</h1>
     <p>Professionelle 3D‑Drucklösungen aus Bayern – präzise, zuverlässig und individuell.</p>
 
-    <!-- EINZIGES BILD -->
-    <img src="bilder/mannmitwolf.jpg" alt="Mann mit Wolf">
+    <!-- Perfekt skaliertes Bild -->
+    <img src="bilder/mannmitwolf.jpg" alt="Mann mit Wolf" class="startbild">
 </main>
 
 <footer>
