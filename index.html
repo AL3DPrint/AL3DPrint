@@ -5,10 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AL 3D Print – Startseite</title>
 
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
+
+        :root {
+            --font-main: 'Exo 2', sans-serif;
+            --font-hero: 'Orbitron', sans-serif;
+            --color-light: #ffffff;
+            --color-mid: #cccccc;
+            --color-dark: #111111;
+        }
+
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: var(--font-main);
             background: #000;
             color: #fff;
             height: 100vh;
@@ -28,6 +40,7 @@
         header img {
             max-width: 120px;
             height: auto;
+            filter: drop-shadow(0 0 6px rgba(255,255,255,0.2));
         }
 
         /* Hamburger Menü */
@@ -53,11 +66,19 @@
         }
 
         nav a {
-            color: white;
-            margin: 0 1rem;
+            font-family: var(--font-main);
+            color: #ddd;
+            margin: 0 1.2rem;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 600;
             font-size: 1rem;
+            letter-spacing: 0.5px;
+            transition: 0.25s ease;
+        }
+
+        nav a:hover {
+            color: white;
+            text-shadow: 0 0 8px rgba(255,255,255,0.6);
         }
 
         @media (max-width: 768px) {
@@ -120,112 +141,3 @@
         .hero-image {
             max-height: 60vh;
             width: auto;
-            object-fit: contain;
-            z-index: 2;
-            filter: drop-shadow(0 0 20px rgba(0,0,0,0.8));
-        }
-
-        /* Text + Button */
-        .hero-content {
-            position: absolute;
-            top: 10%;
-            text-align: center;
-            color: white;
-            z-index: 3;
-        }
-
-        .hero-content h1 {
-            font-size: 2.4rem;
-            margin-bottom: 1rem;
-            text-shadow: 0 0 15px rgba(0,0,0,0.8);
-        }
-
-        .hero-content button {
-            padding: 0.7rem 1.4rem;
-            font-size: 1.1rem;
-            border: none;
-            border-radius: 6px;
-            background: #ffffffcc;
-            color: #111;
-            cursor: pointer;
-            font-weight: bold;
-            transition: 0.2s;
-        }
-
-        .hero-content button:hover {
-            background: white;
-            transform: scale(1.05);
-        }
-
-        /* Mobile Anpassungen */
-        @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 1.8rem;
-            }
-
-            .hero-image {
-                max-height: 45vh;
-            }
-        }
-
-        /* Laufband */
-        .ticker {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: #111;
-            color: #fff;
-            padding: 0.4rem 0;
-            font-size: 0.9rem;
-            font-weight: bold;
-            overflow: hidden;
-            white-space: nowrap;
-            z-index: 9999;
-        }
-
-        .ticker span {
-            display: inline-block;
-            padding-left: 100%;
-            animation: ticker 12s linear infinite;
-        }
-
-        @keyframes ticker {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); }
-        }
-    </style>
-</head>
-
-<body>
-
-<header>
-    <img src="logo.png" alt="AL 3D Print Logo">
-</header>
-
-<label for="menu-toggle" class="hamburger">☰ Menü</label>
-<input type="checkbox" id="menu-toggle">
-
-<nav>
-    <a href="index.html">Startseite</a>
-    <a href="galerie.html">Galerie</a>
-    <a href="ueber-al3dprint.html">Über AL 3D Print</a>
-    <a href="kontakt.html">Kontakt</a>
-    <a href="impressum-datenschutz.html">Impressum & Datenschutz</a>
-</nav>
-
-<div class="hero">
-    <div class="hero-content">
-        <h1>Kunst, die Charakter hat.</h1>
-        <button onclick="location.href='galerie.html'">Galerie entdecken</button>
-    </div>
-
-    <img src="bilder/mannmitwolf.jpg" alt="Mann mit Wolf" class="hero-image">
-</div>
-
-<div class="ticker">
-    <span>🚧 Diese Website befindet sich aktuell im Aufbau – Inhalte werden laufend ergänzt 🚧</span>
-</div>
-
-</body>
-</html>
