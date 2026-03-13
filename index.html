@@ -45,24 +45,19 @@
             text-align: center;
         }
 
-        /* --- Zentraler Bild-Slider --- */
-        .start-slider {
+        /* --- Zentraler Slideshow-Bereich --- */
+        .slideshow {
             display: flex;
             justify-content: center;
             margin-top: 2rem;
         }
 
-        .start-slider img {
+        .slideshow img {
             width: 60%;
             max-width: 400px;
             border-radius: 10px;
             border: 2px solid #ccc;
             transition: 0.3s;
-        }
-
-        .start-slider img:hover {
-            transform: scale(1.03);
-            border-color: #333;
         }
 
         footer {
@@ -120,11 +115,9 @@
     <h1>Willkommen bei AL 3D Print</h1>
     <p>Professionelle 3D‑Drucklösungen aus Bayern – präzise, zuverlässig und individuell.</p>
 
-    <!-- Zentraler Bild-Slider -->
-    <div class="start-slider">
-        <a href="galerie.html">
-            <img id="sliderImage" src="bilder/ganesha.jpg" alt="3D Druck Beispiel">
-        </a>
+    <!-- Slideshow -->
+    <div class="slideshow">
+        <img id="slideshowImage" src="bilder/ganesha.jpg" alt="3D Druck Beispiel">
     </div>
 </main>
 
@@ -137,20 +130,19 @@
     <span>🚧 Diese Website befindet sich aktuell im Aufbau – Inhalte werden laufend ergänzt 🚧</span>
 </div>
 
-<!-- Slider Script -->
+<!-- Zufällige Slideshow -->
 <script>
-const sliderImages = [
+const slideshowImages = [
     "bilder/ganesha.jpg",
     "bilder/elephant.jpg",
     "bilder/GaneshaLightbox.jpg"
 ];
 
-let index = 0;
-const img = document.getElementById("sliderImage");
+const img = document.getElementById("slideshowImage");
 
 setInterval(() => {
-    index = (index + 1) % sliderImages.length;
-    img.src = sliderImages[index];
+    const randomIndex = Math.floor(Math.random() * slideshowImages.length);
+    img.src = slideshowImages[randomIndex];
 }, 1000);
 </script>
 
