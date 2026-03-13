@@ -50,20 +50,38 @@
             text-align: center;
         }
 
-        .whatsapp-box {
+        .info-box {
+            background: #fff3cd;
+            border: 1px solid #ffeeba;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            color: #856404;
+            font-weight: bold;
+        }
+
+        .info-box a {
+            color: #856404;
+            text-decoration: underline;
+        }
+
+        .whatsapp-button {
+            display: block;
             background: #25D366;
             color: white;
             padding: 1rem;
-            border-radius: 8px;
             text-align: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border-radius: 10px;
+            text-decoration: none;
             margin-bottom: 2rem;
-            font-size: 1.2rem;
+            transition: 0.2s;
         }
 
-        .whatsapp-box a {
-            color: white;
-            font-weight: bold;
-            text-decoration: none;
+        .whatsapp-button:hover {
+            background: #1ebe5d;
+            transform: scale(1.03);
         }
 
         form {
@@ -100,16 +118,6 @@
             background: #555;
         }
 
-        .info-box {
-            background: #fff3cd;
-            border: 1px solid #ffeeba;
-            padding: 1rem;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-            color: #856404;
-            font-weight: bold;
-        }
-
         .success {
             background: #d4edda;
             color: #155724;
@@ -117,6 +125,8 @@
             border-radius: 8px;
             margin-bottom: 1rem;
             display: none;
+            opacity: 0;
+            animation: fadeIn 0.8s forwards;
         }
 
         .error {
@@ -126,6 +136,11 @@
             border-radius: 8px;
             margin-bottom: 1rem;
             display: none;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         footer {
@@ -155,24 +170,18 @@
 <main>
     <h1>Kontakt</h1>
 
-    <!-- Hinweis zu Datei-Uploads -->
     <div class="info-box">
         📎 <strong>Hinweis:</strong>  
-        Datei‑Uploads (Fotos, Skizzen, STL, 3MF …) sind aktuell nur per E‑Mail möglich.  
-        Bitte senden Sie diese direkt an:  
-        <strong>info@al3dprint.de</strong>
+        Datei‑Uploads (Fotos, Skizzen, STL, 3MF …) sind aktuell nur per E‑Mail möglich:  
+        <a href="mailto:info@al3dprint.de">info@al3dprint.de</a>
     </div>
 
-    <!-- WhatsApp Kontakt -->
-    <div class="whatsapp-box">
-        📱 <strong>Schnellkontakt per WhatsApp</strong><br><br>
-        <a href="https://wa.me/4915123456789?text=Hallo%20AL%203D%20Print,%20ich%20habe%20eine%20Frage%20zu%20einem%203D-Druckauftrag."
-           target="_blank">
-            👉 WhatsApp öffnen
-        </a>
-    </div>
+    <a class="whatsapp-button" 
+       href="https://wa.me/4915123456789?text=Hallo%20AL%203D%20Print,%20ich%20habe%20eine%20Frage%20zu%20einem%203D-Druckauftrag."
+       target="_blank">
+        💬 WhatsApp Nachricht senden
+    </a>
 
-    <!-- Erfolg / Fehler Meldungen -->
     <div class="success" id="successMessage">
         ✔ Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet.
     </div>
@@ -181,7 +190,6 @@
         ❌ Leider gab es ein Problem beim Senden. Bitte versuchen Sie es erneut.
     </div>
 
-    <!-- Kontaktformular -->
     <form id="contactForm" action="https://formspree.io/f/mdawdory" method="POST">
         <label>Vorname</label>
         <input type="text" name="vorname" required>
