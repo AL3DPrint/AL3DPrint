@@ -86,10 +86,6 @@
             border: 1px solid #aaa;
         }
 
-        input[type="file"] {
-            padding: 0.3rem;
-        }
-
         button {
             background: #333;
             color: white;
@@ -102,6 +98,34 @@
 
         button:hover {
             background: #555;
+        }
+
+        .info-box {
+            background: #fff3cd;
+            border: 1px solid #ffeeba;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            color: #856404;
+            font-weight: bold;
+        }
+
+        .success {
+            background: #d4edda;
+            color: #155724;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: none;
         }
 
         footer {
@@ -131,6 +155,14 @@
 <main>
     <h1>Kontakt</h1>
 
+    <!-- Hinweis zu Datei-Uploads -->
+    <div class="info-box">
+        📎 <strong>Hinweis:</strong>  
+        Datei‑Uploads (Fotos, Skizzen, STL, 3MF …) sind aktuell nur per E‑Mail möglich.  
+        Bitte senden Sie diese direkt an:  
+        <strong>info@al3dprint.de</strong>
+    </div>
+
     <!-- WhatsApp Kontakt -->
     <div class="whatsapp-box">
         📱 <strong>Schnellkontakt per WhatsApp</strong><br><br>
@@ -140,8 +172,17 @@
         </a>
     </div>
 
+    <!-- Erfolg / Fehler Meldungen -->
+    <div class="success" id="successMessage">
+        ✔ Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet.
+    </div>
+
+    <div class="error" id="errorMessage">
+        ❌ Leider gab es ein Problem beim Senden. Bitte versuchen Sie es erneut.
+    </div>
+
     <!-- Kontaktformular -->
-    <form action="https://formspree.io/f/mdawdory" method="POST" enctype="multipart/form-data">
+    <form id="contactForm" action="https://formspree.io/f/mdawdory" method="POST">
         <label>Vorname</label>
         <input type="text" name="vorname" required>
 
@@ -157,9 +198,6 @@
         <label>Ihre Nachricht</label>
         <textarea name="nachricht" rows="5" required></textarea>
 
-        <label>Dateien anhängen (Fotos, Skizzen, STL, 3MF …)</label>
-        <input type="file" name="dateien" multiple>
-
         <button type="submit">Nachricht senden</button>
     </form>
 </main>
@@ -167,6 +205,34 @@
 <footer>
     © 2026 AL 3D Print – Alle Rechte vorbehalten
 </footer>
+
+<script>
+document.getElementById("contactForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const form = e.target;
+    const data = new FormData(form);
+
+    const success = document.getElementById("successMessage");
+    const error = document.getElementById("errorMessage");
+
+    success.style.display = "none";
+    error.style.display = "none";
+
+    const response = await fetch(form.action, {
+        method: "POST",
+        body: data,
+        headers: { "Accept": "application/json" }
+    });
+
+    if (response.ok) {
+        success.style.display = "block";
+        form.reset();
+    } else {
+        error.style.display = "block";
+    }
+});
+</script>
 
 </body>
 </html>
