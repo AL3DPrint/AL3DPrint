@@ -45,7 +45,7 @@
             text-align: center;
         }
 
-        /* --- Zentraler Slideshow-Bereich --- */
+        /* --- Slideshow --- */
         .slideshow {
             display: flex;
             justify-content: center;
@@ -68,7 +68,7 @@
             margin-top: 2rem;
         }
 
-        /* --- Laufschrift unten --- */
+        /* --- Laufschrift --- */
         .ticker {
             position: fixed;
             bottom: 0;
@@ -117,7 +117,7 @@
 
     <!-- Slideshow -->
     <div class="slideshow">
-        <img id="slideshowImage" src="bilder/ganesha.jpg" alt="3D Druck Beispiel">
+        <img id="slideshowImage" src="bilder/ganesha.jpg" alt="">
     </div>
 </main>
 
@@ -137,6 +137,9 @@ const slideshowImages = [
     "bilder/elephant.jpg",
     "bilder/GaneshaLightbox.jpg"
 ];
+
+// später einfach erweitern:
+// slideshowImages.push("bilder/neuesbild.jpg");
 
 const img = document.getElementById("slideshowImage");
 
