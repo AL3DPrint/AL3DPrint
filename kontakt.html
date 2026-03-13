@@ -5,242 +5,201 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kontakt – AL 3D Print</title>
 
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
+
+        :root {
+            --font-main: 'Exo 2', sans-serif;
+            --font-hero: 'Orbitron', sans-serif;
+
+            --color-bg: #000;
+            --color-panel: #111;
+            --color-panel-hover: #1a1a1a;
+            --color-text: #fff;
+            --color-accent: #4da6ff;
+        }
+
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f5f5f5;
-            color: #333;
+            background: var(--color-bg);
+            color: var(--color-text);
+            font-family: var(--font-main);
+            overflow-x: hidden;
         }
 
-        header {
+        /* Floating Back Button */
+        .back-btn {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #111;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.6rem;
+            color: white;
+            text-decoration: none;
+            z-index: 999;
+            box-shadow: 0 0 12px rgba(255,255,255,0.1);
+            transition: 0.25s ease;
+        }
+
+        .back-btn:hover {
             background: #222;
-            padding: 1rem;
-            text-align: center;
+            box-shadow: 0 0 18px rgba(255,255,255,0.3);
+            transform: scale(1.08);
         }
 
-        header img {
-            max-width: 180px;
+        /* Hero */
+        .hero {
+            position: relative;
+            height: 28vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle at center, rgba(255,255,255,0.05), rgba(0,0,0,0.95)),
+                        linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,1));
+            overflow: hidden;
         }
 
-        nav {
-            background: #333;
-            padding: 0.5rem;
-            text-align: center;
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: -20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120%;
+            height: 120%;
+            background: radial-gradient(circle, rgba(255,255,255,0.18) 0%, rgba(0,0,0,0) 70%);
+            pointer-events: none;
         }
 
-        nav a {
-            color: white;
-            margin: 0 1rem;
-            text-decoration: none;
-            font-weight: bold;
+        .hero h1 {
+            font-family: var(--font-hero);
+            font-size: 2.6rem;
+            text-shadow: 0 0 18px rgba(0,0,0,0.9);
+            opacity: 0;
+            animation: fadeUp 1.2s ease-out forwards;
         }
 
-        nav a:hover {
-            text-decoration: underline;
+        @keyframes fadeUp {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
 
-        main {
-            padding: 2rem;
+        /* Kontaktformular */
+        .contact-container {
             max-width: 700px;
-            margin: auto;
+            margin: 2rem auto 4rem auto;
+            background: #111;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 0 18px rgba(255,255,255,0.08);
         }
 
-        h1 {
+        .contact-container h2 {
+            font-family: var(--font-hero);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
             text-align: center;
-        }
-
-        .info-box {
-            background: #fff3cd;
-            border: 1px solid #ffeeba;
-            padding: 1rem;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-            color: #856404;
-            font-weight: bold;
-        }
-
-        .info-box a {
-            color: #856404;
-            text-decoration: underline;
-        }
-
-        .whatsapp-button {
-            display: block;
-            background: #25D366;
-            color: white;
-            padding: 1rem;
-            text-align: center;
-            font-size: 1.3rem;
-            font-weight: bold;
-            border-radius: 10px;
-            text-decoration: none;
-            margin-bottom: 2rem;
-            transition: 0.2s;
-        }
-
-        .whatsapp-button:hover {
-            background: #1ebe5d;
-            transform: scale(1.03);
-        }
-
-        form {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            border: 1px solid #ccc;
         }
 
         label {
-            font-weight: bold;
+            display: block;
+            margin-top: 1rem;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
         }
 
         input, textarea {
             width: 100%;
-            padding: 0.7rem;
-            margin-top: 0.3rem;
-            margin-bottom: 1rem;
-            border-radius: 6px;
-            border: 1px solid #aaa;
+            padding: 0.8rem;
+            margin-top: 0.4rem;
+            border: none;
+            border-radius: 8px;
+            background: #1a1a1a;
+            color: white;
+            font-family: var(--font-main);
+            font-size: 1rem;
+            box-shadow: inset 0 0 8px rgba(255,255,255,0.05);
+            transition: 0.25s ease;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            background: #222;
+            box-shadow: 0 0 12px rgba(255,255,255,0.15);
+        }
+
+        textarea {
+            height: 150px;
+            resize: none;
         }
 
         button {
-            background: #333;
-            color: white;
-            padding: 0.8rem 1.5rem;
+            margin-top: 1.5rem;
+            width: 100%;
+            padding: 1rem;
+            background: #222;
             border: none;
-            border-radius: 6px;
-            font-size: 1rem;
+            border-radius: 10px;
+            color: white;
+            font-family: var(--font-hero);
+            font-size: 1.2rem;
+            letter-spacing: 1px;
             cursor: pointer;
+            transition: 0.25s ease;
+            box-shadow: 0 0 12px rgba(255,255,255,0.08);
         }
 
         button:hover {
-            background: #555;
+            background: #333;
+            box-shadow: 0 0 18px rgba(255,255,255,0.2);
+            transform: scale(1.03);
         }
 
-        .success {
-            background: #d4edda;
-            color: #155724;
-            padding: 1rem;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            display: none;
-            opacity: 0;
-            animation: fadeIn 0.8s forwards;
+        /* Mobile */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
         }
 
-        .error {
-            background: #f8d7da;
-            color: #721c24;
-            padding: 1rem;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            display: none;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        footer {
-            background: #222;
-            color: white;
-            text-align: center;
-            padding: 1rem;
-            margin-top: 2rem;
-        }
     </style>
 </head>
 
 <body>
 
-<header>
-    <img src="logo.png" alt="AL 3D Print Logo">
-</header>
+<!-- Back Button -->
+<a href="index.html" class="back-btn">←</a>
 
-<nav>
-    <a href="index.html">Startseite</a>
-    <a href="galerie.html">Galerie</a>
-    <a href="ueber-al3dprint.html">Über AL 3D Print</a>
-    <a href="kontakt.html">Kontakt</a>
-    <a href="impressum-datenschutz.html">Impressum & Datenschutz</a>
-</nav>
-
-<main>
+<!-- Hero -->
+<div class="hero">
     <h1>Kontakt</h1>
+</div>
 
-    <div class="info-box">
-        📎 <strong>Hinweis:</strong>  
-        Datei‑Uploads (Fotos, Skizzen, STL, 3MF …) sind aktuell nur per E‑Mail möglich:  
-        <a href="mailto:info@al3dprint.de">info@al3dprint.de</a>
-    </div>
+<!-- Kontaktformular -->
+<div class="contact-container">
+    <h2>Schreib mir deine Anfrage</h2>
 
-    <a class="whatsapp-button" 
-       href="https://wa.me/4915123456789?text=Hallo%20AL%203D%20Print,%20ich%20habe%20eine%20Frage%20zu%20einem%203D-Druckauftrag."
-       target="_blank">
-        💬 WhatsApp Nachricht senden
-    </a>
+    <form action="#" method="post">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Dein Name">
 
-    <div class="success" id="successMessage">
-        ✔ Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet.
-    </div>
+        <label for="email">E-Mail</label>
+        <input type="email" id="email" name="email" placeholder="deine@mail.de">
 
-    <div class="error" id="errorMessage">
-        ❌ Leider gab es ein Problem beim Senden. Bitte versuchen Sie es erneut.
-    </div>
-
-    <form id="contactForm" action="https://formspree.io/f/mdawdory" method="POST">
-        <label>Vorname</label>
-        <input type="text" name="vorname" required>
-
-        <label>Nachname</label>
-        <input type="text" name="nachname" required>
-
-        <label>E-Mail</label>
-        <input type="email" name="email" required>
-
-        <label>WhatsApp Nummer (optional)</label>
-        <input type="text" name="whatsapp">
-
-        <label>Ihre Nachricht</label>
-        <textarea name="nachricht" rows="5" required></textarea>
+        <label for="message">Nachricht</label>
+        <textarea id="message" name="message" placeholder="Wie kann ich dir helfen?"></textarea>
 
         <button type="submit">Nachricht senden</button>
     </form>
-</main>
-
-<footer>
-    © 2026 AL 3D Print – Alle Rechte vorbehalten
-</footer>
-
-<script>
-document.getElementById("contactForm").addEventListener("submit", async function(e) {
-    e.preventDefault();
-
-    const form = e.target;
-    const data = new FormData(form);
-
-    const success = document.getElementById("successMessage");
-    const error = document.getElementById("errorMessage");
-
-    success.style.display = "none";
-    error.style.display = "none";
-
-    const response = await fetch(form.action, {
-        method: "POST",
-        body: data,
-        headers: { "Accept": "application/json" }
-    });
-
-    if (response.ok) {
-        success.style.display = "block";
-        form.reset();
-    } else {
-        error.style.display = "block";
-    }
-});
-</script>
+</div>
 
 </body>
 </html>
