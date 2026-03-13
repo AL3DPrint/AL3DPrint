@@ -61,19 +61,11 @@
             inset: 0;
             width: 100%;
             opacity: 0;
-            animation: fadeSlide 12s infinite;
+            transition: opacity 0.8s ease-in-out;
         }
 
-        .slideshow img:nth-child(1) { animation-delay: 0s; }
-        .slideshow img:nth-child(2) { animation-delay: 4s; }
-        .slideshow img:nth-child(3) { animation-delay: 8s; }
-
-        @keyframes fadeSlide {
-            0%   { opacity: 0; }
-            10%  { opacity: 1; }
-            30%  { opacity: 1; }
-            40%  { opacity: 0; }
-            100% { opacity: 0; }
+        .slideshow img.active {
+            opacity: 1;
         }
 
         footer {
@@ -132,9 +124,9 @@
     <p>Professionelle 3D‑Drucklösungen aus Bayern – präzise, zuverlässig und individuell.</p>
 
     <div class="slideshow">
-        <img src="bilder/Ganesha.jpg" alt="">
-        <img src="bilder/elephant.jpg" alt="">
-        <img src="bilder/ganeshalightbox.jpg" alt="">
+        <img src="bilder/Ganesha.jpg" class="active" alt="Ganesha">
+        <img src="bilder/elephant.jpg" alt="Elefant">
+        <img src="bilder/ganeshalightbox.jpg" alt="Ganesha Lightbox">
     </div>
 </main>
 
@@ -145,6 +137,17 @@
 <div class="ticker">
     <span>🚧 Diese Website befindet sich aktuell im Aufbau – Inhalte werden laufend ergänzt 🚧</span>
 </div>
+
+<script>
+const images = document.querySelectorAll(".slideshow img");
+let index = 0;
+
+setInterval(() => {
+    images[index].classList.remove("active");
+    index = (index + 1) % images.length;
+    images[index].classList.add("active");
+}, 2000);
+</script>
 
 </body>
 </html>
