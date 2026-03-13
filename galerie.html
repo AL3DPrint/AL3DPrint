@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Galerie – AL 3D Print</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      margin: 0;
+      background: #f9fafb;
+      color: #111;
+      line-height: 1.6;
+    }
+
+    /* --- STICKY HEADER --- */
+    header {
+      background: #1f4b7a;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+
+    nav a:hover {
+      opacity: 0.7;
+    }
+
+    /* --- BURGER MENU --- */
+    .burger {
+      display: none;
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
+    }
+
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      background: #1f4b7a;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .mobile-nav a {
+      color: white;
+      padding: 0.5rem 0;
+      text-decoration: none;
+      font-size: 1.2rem;
+    }
+
+    /* --- PAGE TITLE --- */
+    .title {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 2.2rem;
+      color: #1f4b7a;
+      text-shadow: 0 0 12px rgba(0,150,255,0.4);
+    }
+
+    /* --- GALLERY GRID --- */
+    .gallery {
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 1rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 0.5rem;
+      transition: 0.3s;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+    }
+
+    /* --- BACK BUTTON --- */
+    .back-btn {
+      display: block;
+      width: fit-content;
+      margin: 2rem auto;
+      background: #1f4b7a;
+      color: white;
+      padding: 0.75rem 1.25rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+
+    .back-btn:hover {
+      background: #163a5c;
+    }
+
+    /* --- FOOTER --- */
+    footer {
+      margin-top: 4rem;
+      padding: 2rem 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #e2e8f0;
+      background: #1f4b7a;
+      border-top: 4px solid #163a5c;
+    }
+
+    footer .top-link {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #a8c7e6;
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: 0.2s;
+    }
+
+    footer .top-link:hover {
+      color: white;
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 900px) {
+      .gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 700px) {
+      nav {
+        display: none;
+      }
+
+      .burger {
+        display: block;
+      }
+
+      .gallery {
+        grid-template-columns: repeat(1, 1fr);
+      }
+    }
+  </style>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.querySelector('.mobile-nav');
+      menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+    }
+  </script>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+  <span class="burger" onclick="toggleMenu()">☰</span>
+
+  <nav>
+    <a href="index.html">Startseite</a>
+    <a href="galerie.html">Galerie</a>
+    <a href="ueber-al3dprint.html">Über AL 3D Print</a>
+    <a href="impressum-datenschutz.html">Impressum & Datenschutz</a>
+  </nav>
+
+  <div class="mobile-nav">
+    <a href="index.html">Startseite</a>
+    <a href="galerie.html">Galerie</a>
+    <a href="ueber-al3dprint.html">Über AL 3D Print</a>
+    <a href="impressum-datenschutz.html">Impressum & Datenschutz</a>
+  </div>
+</header>
+
+<!-- TITLE -->
+<h1 class="title">Galerie</h1>
+
+<!-- GALLERY GRID -->
+<div class="gallery">
+  <img src="bilder/bild1.jpg" alt="3D Druck Beispiel 1">
+  <img src="bilder/bild2.jpg" alt="3D Druck Beispiel 2">
+  <img src="bilder/bild3.jpg" alt="3D Druck Beispiel 3">
+  <img src="bilder/bild4.jpg" alt="3D Druck Beispiel 4">
+  <img src="bilder/bild5.jpg" alt="3D Druck Beispiel 5">
+  <img src="bilder/bild6.jpg" alt="3D Druck Beispiel 6">
+  <img src="bilder/bild7.jpg" alt="3D Druck Beispiel 7">
+  <img src="bilder/bild8.jpg" alt="3D Druck Beispiel 8">
+  <img src="bilder/bild9.jpg" alt="3D Druck Beispiel 9">
+</div>
+
+<!-- BACK BUTTON -->
+<a class="back-btn" href="index.html">Zurück zur Startseite</a>
+
+<!-- FOOTER -->
+<footer>
+  <a class="top-link" href="#top">Nach oben</a>
+  © 2026 AL 3D Print – Individuelle 3D‑Drucklösungen.
+</footer>
+
+</body>
+</html>

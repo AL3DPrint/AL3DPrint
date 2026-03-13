@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>AL 3D Print – 3D Druck Service</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      margin: 0;
+      background: #f9fafb;
+      color: #111;
+      line-height: 1.6;
+    }
+
+    /* --- STICKY HEADER --- */
+    header {
+      background: #1f4b7a;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    /* --- DESKTOP NAVIGATION --- */
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+
+    nav a:hover {
+      opacity: 0.7;
+    }
+
+    /* --- BURGER MENU (MOBILE) --- */
+    .burger {
+      display: none;
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
+    }
+
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      background: #1f4b7a;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .mobile-nav a {
+      color: white;
+      padding: 0.5rem 0;
+      text-decoration: none;
+      font-size: 1.2rem;
+    }
+
+    /* --- HERO SECTION --- */
+    .hero {
+      text-align: center;
+      padding: 4rem 1rem 3rem;
+      opacity: 0;
+      animation: fadeIn 1.8s ease forwards;
+      background: radial-gradient(circle at center,
+        rgba(255,255,255,0.15) 0%,
+        rgba(31,75,122,0.25) 40%,
+        rgba(15,30,50,1) 100%
+      );
+      color: white;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-logo {
+      width: 240px;
+      max-width: 80%;
+      height: auto;
+      margin-bottom: 1rem;
+      filter: drop-shadow(0 0 25px rgba(0,150,255,0.4));
+    }
+
+    .hero h1 {
+      font-size: 2.4rem;
+      margin: 0.5rem 0;
+      color: #ffffff;
+    }
+
+    .slogan {
+      font-size: 1.7rem;
+      font-weight: 600;
+      margin-top: 0.5rem;
+      margin-bottom: 2rem;
+      color: #ffffff;
+      letter-spacing: 0.5px;
+      text-shadow:
+        0 0 12px rgba(0,150,255,0.7),
+        0 0 25px rgba(0,150,255,0.4),
+        0 0 40px rgba(0,150,255,0.25);
+    }
+
+    .btn {
+      display: inline-block;
+      background: #1f4b7a;
+      color: white;
+      padding: 0.75rem 1.25rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+
+    .btn:hover {
+      background: #163a5c;
+    }
+
+    /* --- CONTENT --- */
+    .content {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    /* --- FOOTER --- */
+    footer {
+      margin-top: 4rem;
+      padding: 2rem 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #e2e8f0;
+      background: #1f4b7a;
+      border-top: 4px solid #163a5c;
+    }
+
+    footer .top-link {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #a8c7e6;
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: 0.2s;
+    }
+
+    footer .top-link:hover {
+      color: white;
+    }
+
+    /* --- MOBILE OPTIMIZATION --- */
+    @media (max-width: 700px) {
+
+      nav {
+        display: none;
+      }
+
+      .burger {
+        display: block;
+      }
+
+      .hero {
+        padding: 3rem 1rem 2rem;
+      }
+
+      .hero-logo {
+        width: 180px;
+      }
+
+      .hero h1 {
+        font-size: 1.9rem;
+      }
+
+      .slogan {
+        font-size: 1.3rem;
+        margin-bottom: 1.5rem;
+      }
+    }
+  </style>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.querySelector('.mobile-nav');
+      menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+    }
+  </script>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+  <span class="burger" onclick="toggleMenu()">☰</span>
+
+  <nav>
+    <a href="index.html">Startseite</a>
+    <a href="ueber-al3dprint.html">Über AL 3D Print</a>
+    <a href="impressum-datenschutz.html">Impressum & Datenschutz</a>
+  </nav>
+
+  <div class="mobile-nav">
+    <a href="index.html">Startseite</a>
+    <a href="ueber-al3dprint.html">Über AL 3D Print</a>
+    <a href="impressum-datenschutz.html">Impressum & Datenschutz</a>
+  </div>
+</header>
+
+<!-- HERO SECTION -->
+<div class="hero">
+  <img src="logo.png" alt="AL 3D Print Logo" class="hero-logo">
+
+  <h1>AL 3D Print</h1>
+
+  <p class="slogan">
+    From Sketch to Solid – Your Idea in 3D
+  </p>
+
+  <a class="btn" href="https://wa.me/4915123558515">
+    Jetzt per WhatsApp anfragen
+  </a>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+  <h2>Professioneller 3D‑Druckservice aus Mindelstetten</h2>
+  <p>
+    Präzise, zuverlässig und individuell nach deinen Anforderungen.
+  </p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <a class="top-link" href="#top">Nach oben</a>
+  © 2026 AL 3D Print – Individuelle 3D‑Drucklösungen.
+</footer>
+
+</body>
+</html>
