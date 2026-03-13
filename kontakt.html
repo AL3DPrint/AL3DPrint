@@ -26,7 +26,6 @@
             font-family: var(--font-main);
         }
 
-        /* Back Button */
         .back-btn {
             position: fixed;
             top: 1rem;
@@ -51,7 +50,6 @@
             transform: scale(1.08);
         }
 
-        /* Hero */
         .hero {
             height: 28vh;
             display: flex;
@@ -72,7 +70,6 @@
             to   { opacity: 1; transform: translateY(0); }
         }
 
-        /* Info Box */
         .info-box {
             background: #111;
             border-left: 4px solid #4da6ff;
@@ -90,7 +87,6 @@
             text-decoration: none;
         }
 
-        /* Kontaktformular */
         .contact-container {
             max-width: 700px;
             margin: 2rem auto;
@@ -139,7 +135,148 @@
             cursor: pointer;
         }
 
-        /* WhatsApp Box */
         .whatsapp-box {
             max-width: 700px;
-            margin: 0 auto
+            margin: 0 auto 4rem auto;
+            background: #111;
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            box-shadow: 0 0 18px rgba(37,211,102,0.25);
+        }
+
+        /* POPUP */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .popup-box {
+            background: #111;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 0 25px rgba(255,255,255,0.1);
+            max-width: 400px;
+            animation: fadeUp 0.5s ease-out forwards;
+        }
+
+        .popup-box h2 {
+            font-family: var(--font-hero);
+            margin-bottom: 1rem;
+        }
+
+        .popup-check {
+            font-size: 3rem;
+            color: #4da6ff;
+            margin-bottom: 1rem;
+        }
+
+        .popup-btn {
+            margin-top: 1.5rem;
+            padding: 0.8rem 1.6rem;
+            background: #222;
+            border-radius: 10px;
+            color: white;
+            font-family: var(--font-hero);
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+            transition: 0.25s ease;
+        }
+
+        .popup-btn:hover {
+            background: #333;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+
+<a href="index.html" class="back-btn">←</a>
+
+<div class="hero">
+    <h1>Kontakt</h1>
+</div>
+
+<div class="info-box">
+    <strong>Wichtig:</strong> Das Kontaktformular unterstützt keine Datei-Uploads.
+    <br><br>
+    Bitte sende Skizzen, Fotos oder 3D-Dateien direkt an:
+    <br>
+    <a href="mailto:info@al3dprint.de" class="info-mail">info@al3dprint.de</a>
+    <br><br>
+    Alternativ kannst du Dateien auch über WhatsApp senden:
+    <br>
+    <a href="https://wa.me/4915123558515?text=Hallo%20AL%203D%20Print,%20ich%20habe%20eine%20Anfrage."
+       class="info-whatsapp" target="_blank">WhatsApp öffnen</a>
+</div>
+
+<div class="contact-container">
+    <h2>Schreib mir deine Anfrage</h2>
+
+    <form id="contactForm">
+        <label for="name">Name *</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">E-Mail *</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Nachricht *</label>
+        <textarea id="message" name="message" required></textarea>
+
+        <button type="submit">Nachricht senden</button>
+    </form>
+</div>
+
+<div class="whatsapp-box">
+    <div>Direkt über WhatsApp anfragen:</div>
+    <a class="info-whatsapp"
+       href="https://wa.me/4915123558515?text=Hallo%20AL%203D%20Print,%20ich%20habe%20eine%20Anfrage."
+       target="_blank">WhatsApp Chat starten</a>
+</div>
+
+<!-- POPUP -->
+<div class="popup-overlay" id="popup">
+    <div class="popup-box">
+        <div class="popup-check">✔</div>
+        <h2>Danke für Ihre Nachricht!</h2>
+        <p>Ich werde mich so schnell wie möglich bei Ihnen melden.</p>
+        <div class="popup-btn" id="popupClose">OK</div>
+    </div>
+</div>
+
+<script>
+document.getElementById("contactForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const form = e.target;
+    const data = new FormData(form);
+
+    const response = await fetch("https://formspree.io/f/mdawdory", {
+        method: "POST",
+        body: data,
+        headers: { "Accept": "application/json" }
+    });
+
+    if (response.ok) {
+        document.getElementById("popup").style.display = "flex";
+        form.reset();
+    }
+});
+
+document.getElementById("popupClose").addEventListener("click", function() {
+    window.location.href = "index.html";
+});
+</script>
+
+</body>
+</html>
