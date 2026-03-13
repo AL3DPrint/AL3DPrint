@@ -11,37 +11,22 @@
             font-family: Arial, sans-serif;
             background: #f5f5f5;
             color: #333;
+            height: 100vh; /* Gesamte Höhe = Bildschirmhöhe */
+            display: flex;
+            flex-direction: column;
         }
 
         /* Logo */
         header {
             background: #222;
-            padding: 1rem;
+            padding: 0.5rem;
             text-align: center;
+            flex: 0 0 auto;
         }
 
         header img {
-            max-width: 150px;
+            max-width: 120px;
             height: auto;
-        }
-
-        /* Navigation – Desktop */
-        nav {
-            background: #333;
-            padding: 0.7rem;
-            text-align: center;
-        }
-
-        nav a {
-            color: white;
-            margin: 0 1rem;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
-
-        nav a:hover {
-            text-decoration: underline;
         }
 
         /* Hamburger Menü */
@@ -51,30 +36,42 @@
             color: white;
             cursor: pointer;
             padding: 0.5rem;
+            background: #333;
+            text-align: center;
         }
 
         #menu-toggle {
             display: none;
         }
 
-        /* Mobile Navigation */
+        nav {
+            background: #333;
+            padding: 0.5rem;
+            text-align: center;
+            flex: 0 0 auto;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 1rem;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
         @media (max-width: 768px) {
             nav {
                 display: none;
                 flex-direction: column;
-                padding: 1rem;
             }
 
             nav a {
-                display: block;
-                margin: 0.8rem 0;
-                font-size: 1.3rem;
+                margin: 0.7rem 0;
+                font-size: 1.2rem;
             }
 
             .hamburger {
                 display: block;
-                background: #333;
-                text-align: center;
             }
 
             #menu-toggle:checked + nav {
@@ -84,21 +81,35 @@
 
         /* Hauptbereich */
         main {
-            padding: 1.5rem;
+            flex: 1 1 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Inhalt vertikal zentrieren */
+            align-items: center;
+            padding: 0.5rem;
             text-align: center;
+            overflow: hidden; /* verhindert Scrollen */
         }
 
-        /* Perfekt responsives Bild */
+        main h1 {
+            margin: 0.3rem 0;
+            font-size: 1.4rem;
+        }
+
+        main p {
+            margin: 0.3rem 0 1rem 0;
+            font-size: 1rem;
+        }
+
+        /* Bild perfekt responsiv und nie zu groß */
         .startbild {
+            max-height: 45vh; /* Bild nimmt max. 45% der Bildschirmhöhe */
             max-width: 90%;
-            max-height: 70vh;
-            height: auto;
             width: auto;
+            height: auto;
+            object-fit: contain;
             border-radius: 10px;
             border: 2px solid #ccc;
-            object-fit: contain;
-            display: block;
-            margin: 1.5rem auto;
         }
 
         /* Footer */
@@ -106,8 +117,8 @@
             background: #222;
             color: white;
             text-align: center;
-            padding: 1rem;
-            margin-top: 2rem;
+            padding: 0.5rem;
+            flex: 0 0 auto;
         }
 
         /* Laufband */
@@ -118,8 +129,8 @@
             width: 100%;
             background: #222;
             color: #fff;
-            padding: 0.5rem 0;
-            font-size: 1rem;
+            padding: 0.4rem 0;
+            font-size: 0.9rem;
             font-weight: bold;
             overflow: hidden;
             white-space: nowrap;
@@ -145,7 +156,6 @@
     <img src="logo.png" alt="AL 3D Print Logo">
 </header>
 
-<!-- Hamburger Button -->
 <label for="menu-toggle" class="hamburger">☰ Menü</label>
 <input type="checkbox" id="menu-toggle">
 
@@ -159,7 +169,7 @@
 
 <main>
     <h1>Willkommen bei AL 3D Print</h1>
-    <p>Professionelle 3D‑Drucklösungen aus Bayern – präzise, zuverlässig und individuell.</p>
+    <p>Professionelle 3D‑Drucklösungen aus Bayern.</p>
 
     <img src="bilder/mannmitwolf.jpg" alt="Mann mit Wolf" class="startbild">
 </main>
