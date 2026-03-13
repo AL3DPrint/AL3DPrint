@@ -9,7 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
-
         :root {
             --font-main: 'Exo 2', sans-serif;
             --font-hero: 'Orbitron', sans-serif;
@@ -19,6 +18,7 @@
             --color-panel-hover: #1a1a1a;
             --color-text: #fff;
             --color-accent: #4da6ff;
+            --color-whatsapp: #25D366;
         }
 
         body {
@@ -29,7 +29,7 @@
             overflow-x: hidden;
         }
 
-        /* Floating Back Button */
+        /* Back Button */
         .back-btn {
             position: fixed;
             top: 1rem;
@@ -95,7 +95,7 @@
         /* Kontaktformular */
         .contact-container {
             max-width: 700px;
-            margin: 2rem auto 4rem auto;
+            margin: 2rem auto 2rem auto;
             background: #111;
             padding: 2rem;
             border-radius: 12px;
@@ -163,27 +163,71 @@
             transform: scale(1.03);
         }
 
-        /* Mobile */
+        /* WhatsApp Box */
+        .whatsapp-box {
+            max-width: 700px;
+            margin: 0 auto 4rem auto;
+            background: #111;
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            box-shadow: 0 0 18px rgba(37,211,102,0.25);
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .whatsapp-title {
+            font-family: var(--font-hero);
+            font-size: 1.4rem;
+        }
+
+        .whatsapp-text {
+            font-size: 0.95rem;
+            color: #ddd;
+        }
+
+        .whatsapp-btn {
+            margin-top: 0.5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.2rem;
+            border-radius: 999px;
+            background: var(--color-whatsapp);
+            color: #000;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            box-shadow: 0 0 14px rgba(37,211,102,0.6);
+            transition: 0.25s ease;
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(37,211,102,0.9);
+        }
+
+        .whatsapp-icon {
+            font-size: 1.3rem;
+        }
+
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2rem;
             }
         }
-
     </style>
 </head>
 
 <body>
 
-<!-- Back Button -->
 <a href="index.html" class="back-btn">←</a>
 
-<!-- Hero -->
 <div class="hero">
     <h1>Kontakt</h1>
 </div>
 
-<!-- Kontaktformular -->
 <div class="contact-container">
     <h2>Schreib mir deine Anfrage</h2>
 
@@ -199,6 +243,19 @@
 
         <button type="submit">Nachricht senden</button>
     </form>
+</div>
+
+<div class="whatsapp-box">
+    <div class="whatsapp-title">Direkt über WhatsApp anfragen</div>
+    <div class="whatsapp-text">
+        Für schnelle Rückfragen, Ideen oder Bilder – schreib mir direkt über WhatsApp.
+    </div>
+    <a class="whatsapp-btn" 
+       href="https://wa.me/4915123558515?text=Hallo%20AL%203D%20Print,%20ich%20habe%20eine%20Anfrage%20zu%20einem%203D-Druck." 
+       target="_blank" rel="noopener">
+        <span class="whatsapp-icon">💬</span>
+        <span>WhatsApp Chat starten</span>
+    </a>
 </div>
 
 </body>
