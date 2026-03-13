@@ -1,96 +1,219 @@
+/* ============================
+   GLOBAL STYLES
+   ============================ */
+
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f5f5f5;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f5f5f5;
+    color: #222;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+section {
+    padding: 3rem 2rem;
+}
+
+
+
+/* ============================
+   HEADER & NAVIGATION
+   ============================ */
+
+header {
+    background-color: #ffffff;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+header .logo {
+    font-size: 2rem;
+    font-weight: bold;
     color: #333;
 }
 
-header {
-    background: #222;
-    padding: 1rem;
-    text-align: center;
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
 }
 
-header img {
-    max-width: 180px;
-}
-
-nav {
-    background: #333;
-    padding: 0.5rem;
-    text-align: center;
-}
-
-nav a {
-    color: white;
-    margin: 0 1rem;
+nav ul li a {
     text-decoration: none;
-    font-weight: bold;
+    color: #333;
+    font-size: 1.1rem;
+    transition: 0.2s ease;
 }
 
-nav a:hover {
-    text-decoration: underline;
+nav ul li a:hover {
+    color: #0077cc;
 }
 
-main {
-    padding: 2rem;
+
+
+/* ============================
+   HERO SECTION
+   ============================ */
+
+.hero {
     text-align: center;
+    padding: 4rem 2rem;
+    background-color: #ffffff;
 }
 
-/* Slideshow */
-.slideshow {
-    position: relative;
-    width: 60%;
-    max-width: 400px;
-    margin: 2rem auto;
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto 2rem auto;
+}
+
+.hero img {
+    max-width: 50%;
+    margin: 2rem auto 0 auto;
     border-radius: 10px;
-    border: 2px solid #ccc;
-    overflow: hidden;
 }
 
-.slideshow img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    opacity: 0;
-    transition: opacity 0.8s ease-in-out;
-}
 
-.slideshow img.active {
-    opacity: 1;
-}
+
+/* ============================
+   FOOTER
+   ============================ */
 
 footer {
-    background: #222;
-    color: white;
+    background-color: #ffffff;
+    padding: 2rem;
     text-align: center;
-    padding: 1rem;
-    margin-top: 2rem;
-}
-
-/* Laufschrift */
-.ticker {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: #222;
-    color: #fff;
-    padding: 0.5rem 0;
+    border-top: 2px solid #e0e0e0;
     font-size: 1rem;
-    font-weight: bold;
-    overflow: hidden;
-    white-space: nowrap;
-    z-index: 9999;
 }
 
-.ticker span {
-    display: inline-block;
-    padding-left: 100%;
-    animation: ticker 12s linear infinite;
+
+
+/* ============================
+   MOBILE OPTIMIERUNG (bis 768px)
+   ============================ */
+
+@media (max-width: 768px) {
+
+    header {
+        padding: 0.5rem 1rem;
+    }
+
+    header .logo {
+        font-size: 1.2rem;
+    }
+
+    nav ul {
+        gap: 0.8rem;
+    }
+
+    nav ul li a {
+        font-size: 0.9rem;
+        padding: 0.3rem 0.5rem;
+    }
+
+    .hero {
+        padding: 1.5rem 1rem;
+    }
+
+    .hero h1 {
+        font-size: 1.6rem;
+        line-height: 1.3;
+        margin-bottom: 0.8rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+        line-height: 1.5;
+        max-width: 90%;
+        margin: 0 auto 1.2rem auto;
+    }
+
+    .hero img {
+        max-width: 90%;
+        margin: 1rem auto 0 auto;
+        border-radius: 6px;
+    }
+
+    section {
+        padding: 1.5rem 1rem;
+    }
+
+    footer {
+        padding: 1rem;
+        font-size: 0.9rem;
+    }
 }
 
-@keyframes ticker {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-100%); }
+
+
+/* ============================
+   TABLET OPTIMIERUNG (769–1024px)
+   ============================ */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+
+    header {
+        padding: 1rem 2rem;
+    }
+
+    header .logo {
+        font-size: 1.6rem;
+    }
+
+    nav ul {
+        gap: 1.2rem;
+    }
+
+    nav ul li a {
+        font-size: 1.05rem;
+        padding: 0.4rem 0.6rem;
+    }
+
+    .hero {
+        padding: 2.5rem 2rem;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+        margin-bottom: 1rem;
+    }
+
+    .hero p {
+        font-size: 1.15rem;
+        max-width: 80%;
+        margin: 0 auto 1.5rem auto;
+    }
+
+    .hero img {
+        max-width: 70%;
+        margin: 1.5rem auto 0 auto;
+        border-radius: 8px;
+    }
+
+    section {
+        padding: 2rem 2rem;
+    }
+
+    footer {
+        padding: 1.5rem;
+        font-size: 1rem;
+    }
 }
