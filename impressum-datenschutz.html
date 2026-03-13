@@ -1,139 +1,135 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Impressum & Datenschutz – AL 3D Print</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body {
-      font-family: system-ui, sans-serif;
-      margin: 0;
-      background: #f9fafb;
-      color: #111;
-      line-height: 1.6;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impressum & Datenschutz – AL 3D Print</title>
 
-    header {
-      background: #1f4b7a;
-      padding: 1rem;
-      text-align: center;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-    }
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    header a {
-      color: white;
-      text-decoration: none;
-      margin: 0 1rem;
-      font-weight: 500;
-      transition: 0.2s;
-    }
+    <style>
+        :root {
+            --font-main: 'Exo 2', sans-serif;
+            --font-hero: 'Orbitron', sans-serif;
 
-    header a:hover {
-      opacity: 0.7;
-    }
+            --color-bg: #000;
+            --color-panel: #111;
+            --color-text: #fff;
+            --color-accent: #4da6ff;
+        }
 
-    .content {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 1rem;
-    }
+        body {
+            margin: 0;
+            background: var(--color-bg);
+            color: var(--color-text);
+            font-family: var(--font-main);
+        }
 
-    h1, h2 {
-      color: #1f4b7a;
-    }
+        /* Back Button */
+        .back-btn {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #111;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.6rem;
+            color: white;
+            text-decoration: none;
+            z-index: 999;
+            box-shadow: 0 0 12px rgba(255,255,255,0.1);
+            transition: 0.25s ease;
+        }
 
-    .section {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 0.75rem;
-      margin-top: 2rem;
-      border: 1px solid #e5e7eb;
-    }
+        .back-btn:hover {
+            background: #222;
+            transform: scale(1.08);
+        }
 
-    .btn {
-      display: inline-block;
-      background: #1f4b7a;
-      color: white;
-      padding: 0.75rem 1.25rem;
-      border-radius: 0.5rem;
-      text-decoration: none;
-      margin-top: 1.5rem;
-      transition: 0.2s;
-    }
+        /* Hero */
+        .hero {
+            height: 28vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle at center, rgba(255,255,255,0.05), rgba(0,0,0,0.95));
+            text-align: center;
+            padding: 0 1rem;
+        }
 
-    .btn:hover {
-      background: #163a5c;
-    }
+        .hero h1 {
+            font-family: var(--font-hero);
+            font-size: 2.6rem;
+            opacity: 0;
+            animation: fadeUp 1s ease-out forwards;
+        }
 
-    footer {
-      margin-top: 4rem;
-      padding: 2rem 1rem;
-      text-align: center;
-      font-size: 0.9rem;
-      color: #e2e8f0;
-      background: #1f4b7a;
-      border-top: 4px solid #163a5c;
-    }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
 
-    footer .top-link {
-      display: block;
-      margin-bottom: 0.5rem;
-      color: #a8c7e6;
-      text-decoration: none;
-      font-size: 0.85rem;
-      transition: 0.2s;
-    }
+        /* Content Sections */
+        .section {
+            max-width: 900px;
+            margin: 3rem auto;
+            background: #111;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 0 18px rgba(255,255,255,0.08);
+        }
 
-    footer .top-link:hover {
-      color: white;
-    }
-  </style>
+        .section h2 {
+            font-family: var(--font-hero);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--color-accent);
+        }
+
+        .section p {
+            line-height: 1.7;
+            color: #ccc;
+            font-size: 1.1rem;
+            white-space: pre-line;
+        }
+    </style>
 </head>
+
 <body>
 
-<header>
-  <a href="index.html">Startseite</a>
-  <a href="ueber-al3dprint.html">Über AL 3D Print</a>
-  <a href="impressum-datenschutz.html">Impressum & Datenschutz</a>
-</header>
+<a href="index.html" class="back-btn">←</a>
 
-<div class="content">
-  <h1>Impressum & Datenschutz</h1>
-
-  <div class="section">
-    <h2>Impressum</h2>
-    <p>
-      AL 3D Print<br>
-      Andre Lohka<br>
-      Postgasse 6<br>
-      93349 Mindelstetten<br>
-      Deutschland
-    </p>
-
-    <p>
-      E-Mail: info@al3dprint.de<br>
-      Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV: Andre Lohka
-    </p>
-
-    <h2>Datenschutzerklärung</h2>
-    <p>
-      Diese Website verarbeitet keine personenbezogenen Daten außer den technisch notwendigen
-      Server-Logfiles. Es werden keine Cookies gesetzt, keine Tracking‑Tools verwendet und keine
-      Daten an Dritte weitergegeben.
-    </p>
-
-    <p>
-      Bei Kontaktaufnahme über WhatsApp gelten die Datenschutzbestimmungen von WhatsApp/Meta.
-    </p>
-
-    <a class="btn" href="index.html">Zurück zur Startseite</a>
-  </div>
+<div class="hero">
+    <h1>Impressum & Datenschutz</h1>
 </div>
 
-<footer>
-  <a class="top-link" href="#top">Nach oben</a>
-  © 2026 AL 3D Print – Individuelle 3D‑Drucklösungen.
-</footer>
+<div class="section">
+    <h2>Impressum</h2>
+    <p>
+AL 3D Print  
+Andre Lohka  
+Postgasse 6  
+93349 Mindelstetten  
+Deutschland  
+
+E-Mail: info@al3dprint.de  
+Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV: Andre Lohka
+    </p>
+</div>
+
+<div class="section">
+    <h2>Datenschutzerklärung</h2>
+    <p>
+Diese Website verarbeitet keine personenbezogenen Daten außer den technisch notwendigen Server-Logfiles.  
+Es werden keine Cookies gesetzt, keine Tracking-Tools verwendet und keine Daten an Dritte weitergegeben.
+
+Bei Kontaktaufnahme über WhatsApp gelten die Datenschutzbestimmungen von WhatsApp/Meta.
+    </p>
+</div>
 
 </body>
 </html>
