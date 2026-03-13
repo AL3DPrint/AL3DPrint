@@ -9,16 +9,17 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background: #f5f5f5;
-            color: #333;
-            height: 100vh; /* Gesamte Höhe = Bildschirmhöhe */
+            background: #000;
+            color: #fff;
+            height: 100vh;
+            overflow: hidden; /* Kein Scrollen */
             display: flex;
             flex-direction: column;
         }
 
         /* Logo */
         header {
-            background: #222;
+            background: #111;
             padding: 0.5rem;
             text-align: center;
             flex: 0 0 auto;
@@ -36,7 +37,7 @@
             color: white;
             cursor: pointer;
             padding: 0.5rem;
-            background: #333;
+            background: #222;
             text-align: center;
         }
 
@@ -45,7 +46,7 @@
         }
 
         nav {
-            background: #333;
+            background: #222;
             padding: 0.5rem;
             text-align: center;
             flex: 0 0 auto;
@@ -79,46 +80,92 @@
             }
         }
 
-        /* Hauptbereich */
-        main {
-            flex: 1 1 auto;
+        /* HERO-BEREICH */
+        .hero {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            background: radial-gradient(circle at center, rgba(255,255,255,0.05), rgba(0,0,0,0.95)),
+                        linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,1));
             display: flex;
-            flex-direction: column;
-            justify-content: center; /* Inhalt vertikal zentrieren */
+            justify-content: center;
             align-items: center;
-            padding: 0.5rem;
-            text-align: center;
-            overflow: hidden; /* verhindert Scrollen */
+            overflow: hidden;
+            flex: 1 1 auto;
         }
 
-        main h1 {
-            margin: 0.3rem 0;
-            font-size: 1.4rem;
+        /* Spotlight */
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: -20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120%;
+            height: 120%;
+            background: radial-gradient(circle, rgba(255,255,255,0.18) 0%, rgba(0,0,0,0) 70%);
+            pointer-events: none;
         }
 
-        main p {
-            margin: 0.3rem 0 1rem 0;
-            font-size: 1rem;
+        /* Vignette */
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle, rgba(0,0,0,0) 40%, rgba(0,0,0,0.8) 100%);
+            pointer-events: none;
         }
 
-        /* Bild perfekt responsiv und nie zu groß */
-        .startbild {
-            max-height: 45vh; /* Bild nimmt max. 45% der Bildschirmhöhe */
-            max-width: 90%;
+        /* Bild */
+        .hero-image {
+            max-height: 60vh;
             width: auto;
-            height: auto;
             object-fit: contain;
-            border-radius: 10px;
-            border: 2px solid #ccc;
+            z-index: 2;
+            filter: drop-shadow(0 0 20px rgba(0,0,0,0.8));
         }
 
-        /* Footer */
-        footer {
-            background: #222;
-            color: white;
+        /* Text + Button */
+        .hero-content {
+            position: absolute;
+            top: 10%;
             text-align: center;
-            padding: 0.5rem;
-            flex: 0 0 auto;
+            color: white;
+            z-index: 3;
+        }
+
+        .hero-content h1 {
+            font-size: 2.4rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 15px rgba(0,0,0,0.8);
+        }
+
+        .hero-content button {
+            padding: 0.7rem 1.4rem;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 6px;
+            background: #ffffffcc;
+            color: #111;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .hero-content button:hover {
+            background: white;
+            transform: scale(1.05);
+        }
+
+        /* Mobile Anpassungen */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-image {
+                max-height: 45vh;
+            }
         }
 
         /* Laufband */
@@ -127,7 +174,7 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            background: #222;
+            background: #111;
             color: #fff;
             padding: 0.4rem 0;
             font-size: 0.9rem;
@@ -167,16 +214,14 @@
     <a href="impressum-datenschutz.html">Impressum & Datenschutz</a>
 </nav>
 
-<main>
-    <h1>Willkommen bei AL 3D Print</h1>
-    <p>Professionelle 3D‑Drucklösungen aus Bayern.</p>
+<div class="hero">
+    <div class="hero-content">
+        <h1>Kunst, die Charakter hat.</h1>
+        <button onclick="location.href='galerie.html'">Galerie entdecken</button>
+    </div>
 
-    <img src="bilder/mannmitwolf.jpg" alt="Mann mit Wolf" class="startbild">
-</main>
-
-<footer>
-    © 2026 AL 3D Print – Alle Rechte vorbehalten
-</footer>
+    <img src="bilder/mannmitwolf.jpg" alt="Mann mit Wolf" class="hero-image">
+</div>
 
 <div class="ticker">
     <span>🚧 Diese Website befindet sich aktuell im Aufbau – Inhalte werden laufend ergänzt 🚧</span>
