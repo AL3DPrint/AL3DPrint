@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kontakt – AL 3D Print</title>
 
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
@@ -15,7 +14,6 @@
 
             --color-bg: #000;
             --color-panel: #111;
-            --color-panel-hover: #1a1a1a;
             --color-text: #fff;
             --color-accent: #4da6ff;
             --color-whatsapp: #25D366;
@@ -26,7 +24,6 @@
             background: var(--color-bg);
             color: var(--color-text);
             font-family: var(--font-main);
-            overflow-x: hidden;
         }
 
         /* Back Button */
@@ -51,45 +48,28 @@
 
         .back-btn:hover {
             background: #222;
-            box-shadow: 0 0 18px rgba(255,255,255,0.3);
             transform: scale(1.08);
         }
 
         /* Hero */
         .hero {
-            position: relative;
             height: 28vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            background: radial-gradient(circle at center, rgba(255,255,255,0.05), rgba(0,0,0,0.95)),
-                        linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,1));
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: "";
-            position: absolute;
-            top: -20%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120%;
-            height: 120%;
-            background: radial-gradient(circle, rgba(255,255,255,0.18) 0%, rgba(0,0,0,0) 70%);
-            pointer-events: none;
+            background: radial-gradient(circle at center, rgba(255,255,255,0.05), rgba(0,0,0,0.95));
         }
 
         .hero h1 {
             font-family: var(--font-hero);
             font-size: 2.6rem;
-            text-shadow: 0 0 18px rgba(0,0,0,0.9);
             opacity: 0;
-            animation: fadeUp 1.2s ease-out forwards;
+            animation: fadeUp 1s ease-out forwards;
         }
 
         @keyframes fadeUp {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
 
         /* Info Box */
@@ -98,4 +78,26 @@
             border-left: 4px solid #4da6ff;
             padding: 1.2rem 1.5rem;
             margin: 2rem auto;
-            max
+            max-width: 700px;
+            border-radius: 8px;
+            box-shadow: 0 0 12px rgba(255,255,255,0.08);
+        }
+
+        .info-mail,
+        .info-whatsapp {
+            color: #4da6ff;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        /* Kontaktformular */
+        .contact-container {
+            max-width: 700px;
+            margin: 2rem auto;
+            background: #111;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 0 18px rgba(255,255,255,0.08);
+        }
+
+        .contact-container h2 {
