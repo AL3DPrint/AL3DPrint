@@ -1,80 +1,180 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<title>Über AL 3D Print</title>
-<style>
-body { font-family: Arial; background:#f5f5f5; margin:0; }
-header { background:#222; padding:1rem; text-align:center; }
-header img { max-width:180px; }
-nav { background:#333; padding:0.5rem; text-align:center; }
-nav a { color:white; margin:0 1rem; text-decoration:none; font-weight:bold; }
-nav a:hover { text-decoration:underline; }
-main { max-width:800px; margin:auto; padding:2rem; }
-h1, h2 { text-align:center; }
-section { margin-bottom:2rem; }
-footer { background:#222; color:white; text-align:center; padding:1rem; margin-top:2rem; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Über AL 3D Print</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --font-main: 'Exo 2', sans-serif;
+            --font-hero: 'Orbitron', sans-serif;
+
+            --color-bg: #000;
+            --color-panel: #111;
+            --color-text: #fff;
+            --color-accent: #4da6ff;
+        }
+
+        body {
+            margin: 0;
+            background: var(--color-bg);
+            color: var(--color-text);
+            font-family: var(--font-main);
+        }
+
+        /* Back Button */
+        .back-btn {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #111;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.6rem;
+            color: white;
+            text-decoration: none;
+            z-index: 999;
+            box-shadow: 0 0 12px rgba(255,255,255,0.1);
+            transition: 0.25s ease;
+        }
+
+        .back-btn:hover {
+            background: #222;
+            transform: scale(1.08);
+        }
+
+        /* Hero */
+        .hero {
+            height: 28vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle at center, rgba(255,255,255,0.05), rgba(0,0,0,0.95));
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+        .hero h1 {
+            font-family: var(--font-hero);
+            font-size: 2.6rem;
+            opacity: 0;
+            animation: fadeUp 1s ease-out forwards;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Content Sections */
+        .section {
+            max-width: 900px;
+            margin: 3rem auto;
+            background: #111;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 0 18px rgba(255,255,255,0.08);
+        }
+
+        .section h2 {
+            font-family: var(--font-hero);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--color-accent);
+        }
+
+        .section p {
+            line-height: 1.7;
+            color: #ccc;
+            font-size: 1.1rem;
+        }
+
+        /* CTA Buttons */
+        .cta-box {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            margin: 0.5rem;
+            padding: 1rem 2rem;
+            background: #222;
+            border-radius: 10px;
+            color: white;
+            font-family: var(--font-hero);
+            text-decoration: none;
+            transition: 0.25s ease;
+            box-shadow: 0 0 12px rgba(255,255,255,0.08);
+        }
+
+        .cta-btn:hover {
+            background: #333;
+            transform: scale(1.05);
+        }
+    </style>
 </head>
 
 <body>
 
-<header>
-    <img src="logo.png" alt="AL 3D Print Logo">
-</header>
+<a href="index.html" class="back-btn">←</a>
 
-<nav>
-    <a href="index.html">Startseite</a>
-    <a href="galerie.html">Galerie</a>
-    <a href="ueber-al3dprint.html">Über AL 3D Print</a>
-    <a href="kontakt.html">Kontakt</a>
-    <a href="impressum-datenschutz.html">Impressum & Datenschutz</a>
-</nav>
+<div class="hero">
+    <h1>Über AL 3D Print</h1>
+</div>
 
-<main>
-
-<h1>Über AL 3D Print</h1>
-
-<section>
+<div class="section">
     <h2>Wer wir sind</h2>
-    <p>AL 3D Print ist ein junges, engagiertes Unternehmen aus Mindelstetten, spezialisiert auf hochwertige 3D‑Drucklösungen. Wir verbinden Präzision, Kreativität und technische Expertise, um individuelle Projekte für Privatkunden und Unternehmen umzusetzen.</p>
-</section>
+    <p>
+        AL 3D Print ist ein junges, engagiertes Unternehmen aus Mindelstetten,
+        spezialisiert auf hochwertige 3D‑Drucklösungen.  
+        Wir verbinden Präzision, Kreativität und technische Expertise, um individuelle Projekte
+        für Privatkunden und Unternehmen umzusetzen.
+    </p>
+</div>
 
-<section>
+<div class="section">
     <h2>Was wir anbieten</h2>
-    <ul>
-        <li>FDM‑Druck</li>
-        <li>Resin‑Druck</li>
-        <li>Modellbau</li>
-        <li>Prototypen</li>
-        <li>Kleinserien</li>
-        <li>Personalisierte Figuren</li>
-        <li>Lightboxen & Lithophane</li>
-    </ul>
-</section>
+    <p>
+        • FDM‑Druck<br>
+        • Modellbau<br>
+        • Prototypen<br>
+        • Kleinserien<br>
+        • Personalisierte Figuren<br>
+        • Lightboxen & Lithophane
+    </p>
+</div>
 
-<section>
+<div class="section">
     <h2>Warum AL 3D Print?</h2>
-    <ul>
-        <li>Hohe Präzision & Qualität</li>
-        <li>Schnelle Umsetzung</li>
-        <li>Individuelle Beratung</li>
-        <li>Faire Preise</li>
-        <li>Regionale Fertigung in Bayern</li>
-    </ul>
-</section>
+    <p>
+        • Hohe Präzision & Qualität<br>
+        • Schnelle Umsetzung<br>
+        • Individuelle Beratung<br>
+        • Faire Preise<br>
+        • Regionale Fertigung in Bayern
+    </p>
+</div>
 
-<section>
+<div class="section">
     <h2>Kontakt</h2>
-    <p>Sie erreichen uns jederzeit über WhatsApp oder unser Kontaktformular.</p>
-    <p><a href="kontakt.html">➡ Zum Kontaktformular</a></p>
-</section>
+    <p>
+        Sie erreichen uns jederzeit über WhatsApp oder unser Kontaktformular.
+    </p>
 
-</main>
-
-<footer>
-    © 2026 AL 3D Print – Alle Rechte vorbehalten
-</footer>
+    <div class="cta-box">
+        <a href="kontakt.html" class="cta-btn">Zum Kontaktformular</a>
+        <a href="https://wa.me/4915123558515?text=Hallo%20AL%203D%20Print,%20ich%20habe%20eine%20Anfrage."
+           target="_blank" class="cta-btn">WhatsApp schreiben</a>
+    </div>
+</div>
 
 </body>
 </html>
