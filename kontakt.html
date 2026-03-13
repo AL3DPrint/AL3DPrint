@@ -92,6 +92,31 @@
             100% { opacity: 1; transform: translateY(0); }
         }
 
+        /* Info Box */
+        .info-box {
+            background: #111;
+            border-left: 4px solid #4da6ff;
+            padding: 1.2rem 1.5rem;
+            margin: 2rem auto;
+            max-width: 700px;
+            border-radius: 8px;
+            box-shadow: 0 0 12px rgba(255,255,255,0.08);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .info-mail,
+        .info-whatsapp {
+            color: #4da6ff;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .info-mail:hover,
+        .info-whatsapp:hover {
+            text-shadow: 0 0 8px rgba(77,166,255,0.8);
+        }
+
         /* Kontaktformular */
         .contact-container {
             max-width: 700px;
@@ -228,23 +253,39 @@
     <h1>Kontakt</h1>
 </div>
 
+<!-- INFO BOX -->
+<div class="info-box">
+    <strong>Wichtig:</strong> Das Kontaktformular unterstützt keine Datei-Uploads.
+    <br><br>
+    Bitte sende Skizzen, Vorlagen, Fotos oder 3D-Dateien (z. B. STL, OBJ, STEP) direkt per E-Mail an:
+    <br>
+    <a href="mailto:info@al3dprint.de" class="info-mail">info@al3dprint.de</a>
+    <br><br>
+    Alternativ kannst du Bilder und Dateien auch direkt über WhatsApp senden:
+    <br>
+    <a href="https://wa.me/4915123558515?text=Hallo%20AL%203D%20Print,%20ich%20habe%20eine%20Anfrage%20zu%20einem%203D-Druck." 
+       class="info-whatsapp" target="_blank">WhatsApp öffnen</a>
+</div>
+
+<!-- FORMULAR -->
 <div class="contact-container">
     <h2>Schreib mir deine Anfrage</h2>
 
-    <form action="#" method="post">
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" placeholder="Dein Name">
+    <form action="send.php" method="post">
+        <label for="name">Name *</label>
+        <input type="text" id="name" name="name" required placeholder="Dein Name">
 
-        <label for="email">E-Mail</label>
-        <input type="email" id="email" name="email" placeholder="deine@mail.de">
+        <label for="email">E-Mail *</label>
+        <input type="email" id="email" name="email" required placeholder="deine@mail.de">
 
-        <label for="message">Nachricht</label>
-        <textarea id="message" name="message" placeholder="Wie kann ich dir helfen?"></textarea>
+        <label for="message">Nachricht *</label>
+        <textarea id="message" name="message" required placeholder="Wie kann ich dir helfen?"></textarea>
 
         <button type="submit">Nachricht senden</button>
     </form>
 </div>
 
+<!-- WHATSAPP BOX -->
 <div class="whatsapp-box">
     <div class="whatsapp-title">Direkt über WhatsApp anfragen</div>
     <div class="whatsapp-text">
