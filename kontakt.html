@@ -139,32 +139,36 @@
             cursor: pointer;
         }
 
-        /* WhatsApp Floating Button */
-        .whatsapp-floating {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            z-index: 9999;
+        /* Breiter WhatsApp Button */
+        .whatsapp-wide-box {
+            max-width: 700px;
+            margin: 2rem auto;
+            text-align: center;
         }
 
-        .whatsapp-floating-btn {
-            width: 65px;
-            height: 65px;
+        .whatsapp-wide-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            padding: 1rem 2rem;
             background: #25D366;
             color: #000;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 2rem;
+            font-family: var(--font-hero);
+            font-size: 1.2rem;
+            border-radius: 12px;
             text-decoration: none;
-            box-shadow: 0 0 18px rgba(37,211,102,0.6);
+            box-shadow: 0 0 18px rgba(37,211,102,0.5);
             transition: 0.25s ease;
         }
 
-        .whatsapp-floating-btn:hover {
-            transform: scale(1.12);
-            box-shadow: 0 0 25px rgba(37,211,102,0.9);
+        .whatsapp-wide-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(37,211,102,0.8);
+        }
+
+        .whatsapp-icon {
+            font-size: 1.6rem;
         }
 
         /* POPUP */
@@ -255,10 +259,13 @@
     </form>
 </div>
 
-<!-- Floating WhatsApp Button -->
-<div class="whatsapp-floating">
+<!-- Breiter WhatsApp Button -->
+<div class="whatsapp-wide-box">
     <a href="https://wa.me/4915123558515?text=Hallo%20AL%203D%20Print,%20ich%20habe%20eine%20Anfrage."
-       target="_blank" class="whatsapp-floating-btn">💬</a>
+       target="_blank" class="whatsapp-wide-btn">
+        <span class="whatsapp-icon">💬</span>
+        <span>Über WhatsApp schreiben</span>
+    </a>
 </div>
 
 <!-- POPUP -->
