@@ -18,10 +18,9 @@
             align-items: center;
             height: 100vh;
             text-align: center;
-            overflow: hidden;
         }
 
-        /* Floating Back Button */
+        /* Back Button */
         .back-btn {
             position: fixed;
             top: 1rem;
@@ -43,7 +42,6 @@
 
         .back-btn:hover {
             background: #222;
-            box-shadow: 0 0 18px rgba(255,255,255,0.3);
             transform: scale(1.08);
         }
 
@@ -53,7 +51,6 @@
             border-radius: 12px;
             box-shadow: 0 0 25px rgba(255,255,255,0.08);
             max-width: 600px;
-            animation: fadeIn 1.2s ease-out forwards;
         }
 
         h1 {
@@ -84,20 +81,14 @@
 
         a.main-btn:hover {
             background: #333;
-            box-shadow: 0 0 18px rgba(255,255,255,0.2);
             transform: scale(1.05);
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to   { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 
 <body>
 
-<!-- Floating Back Button -->
+<!-- Back Button -->
 <a href="kontakt.html" class="back-btn">←</a>
 
 <div class="box">
