@@ -45,23 +45,23 @@
             text-align: center;
         }
 
-        /* --- 3-Bild-Slider --- */
+        /* --- Zentraler Bild-Slider --- */
         .start-slider {
             display: flex;
             justify-content: center;
-            gap: 1rem;
             margin-top: 2rem;
         }
 
         .start-slider img {
-            width: 30%;
+            width: 60%;
+            max-width: 400px;
             border-radius: 10px;
             border: 2px solid #ccc;
             transition: 0.3s;
         }
 
         .start-slider img:hover {
-            transform: scale(1.05);
+            transform: scale(1.03);
             border-color: #333;
         }
 
@@ -120,11 +120,11 @@
     <h1>Willkommen bei AL 3D Print</h1>
     <p>Professionelle 3D‑Drucklösungen aus Bayern – präzise, zuverlässig und individuell.</p>
 
-    <!-- 3-Bild-Slider -->
+    <!-- Zentraler Bild-Slider -->
     <div class="start-slider">
-        <a href="galerie-lightboxen.html"><img src="bilder/ganesha.jpg"></a>
-        <a href="galerie-persoenliche-figuren.html"><img src="bilder/elephant.jpg"></a>
-        <a href="galerie-lightboxen.html"><img src="bilder/GaneshaLightbox.jpg"></a>
+        <a href="galerie.html">
+            <img id="sliderImage" src="bilder/ganesha.jpg" alt="3D Druck Beispiel">
+        </a>
     </div>
 </main>
 
@@ -140,25 +140,18 @@
 <!-- Slider Script -->
 <script>
 const sliderImages = [
-    ["bilder/ganesha.jpg", "galerie-lightboxen.html"],
-    ["bilder/elephant.jpg", "galerie-persoenliche-figuren.html"],
-    ["bilder/GaneshaLightbox.jpg", "galerie-lightboxen.html"]
+    "bilder/ganesha.jpg",
+    "bilder/elephant.jpg",
+    "bilder/GaneshaLightbox.jpg"
 ];
 
 let index = 0;
+const img = document.getElementById("sliderImage");
 
 setInterval(() => {
     index = (index + 1) % sliderImages.length;
-
-    const imgs = document.querySelectorAll(".start-slider img");
-    const links = document.querySelectorAll(".start-slider a");
-
-    for (let i = 0; i < imgs.length; i++) {
-        const imgIndex = (index + i) % sliderImages.length;
-        imgs[i].src = sliderImages[imgIndex][0];
-        links[i].href = sliderImages[imgIndex][1];
-    }
-}, 4000);
+    img.src = sliderImages[index];
+}, 1000);
 </script>
 
 </body>
