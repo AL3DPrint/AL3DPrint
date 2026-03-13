@@ -45,6 +45,26 @@
             text-align: center;
         }
 
+        /* --- 3-Bild-Slider --- */
+        .start-slider {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .start-slider img {
+            width: 30%;
+            border-radius: 10px;
+            border: 2px solid #ccc;
+            transition: 0.3s;
+        }
+
+        .start-slider img:hover {
+            transform: scale(1.05);
+            border-color: #333;
+        }
+
         footer {
             background: #222;
             color: white;
@@ -79,77 +99,67 @@
             0% { transform: translateX(0); }
             100% { transform: translateX(-100%); }
         }
-
-        /* Galerie-Vorschau */
-        .gallery-preview {
-            margin-top: 2rem;
-        }
-
-        .gallery-preview img {
-            width: 250px;
-            height: auto;
-            margin: 0.5rem;
-            border-radius: 8px;
-            border: 2px solid #ccc;
-        }
-
-        .gallery-button {
-            display: inline-block;
-            margin-top: 1rem;
-            padding: 0.8rem 1.5rem;
-            background: #333;
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 6px;
-        }
-
-        .gallery-button:hover {
-            background: #555;
-        }
     </style>
 </head>
 
 <body>
 
-    <header>
-        <img src="logo.png" alt="AL 3D Print Logo">
-    </header>
+<header>
+    <img src="logo.png" alt="AL 3D Print Logo">
+</header>
 
-    <nav>
-        <a href="index.html">Startseite</a>
-        <a href="galerie.html">Galerie</a>
-        <a href="ueber-al3dprint.html">Über AL 3D Print</a>
-        <a href="kontakt.html">Kontakt</a>
-        <a href="impressum-datenschutz.html">Impressum & Datenschutz</a>
-    </nav>
+<nav>
+    <a href="index.html">Startseite</a>
+    <a href="galerie.html">Galerie</a>
+    <a href="ueber-al3dprint.html">Über AL 3D Print</a>
+    <a href="kontakt.html">Kontakt</a>
+    <a href="impressum-datenschutz.html">Impressum & Datenschutz</a>
+</nav>
 
-    <main>
-        <h1>Willkommen bei AL 3D Print</h1>
-        <p>Professionelle 3D‑Drucklösungen aus Bayern – präzise, zuverlässig und individuell.</p>
+<main>
+    <h1>Willkommen bei AL 3D Print</h1>
+    <p>Professionelle 3D‑Drucklösungen aus Bayern – präzise, zuverlässig und individuell.</p>
 
-        <!-- Galerie Vorschau -->
-        <div class="gallery-preview">
-            <h2>Galerie – Vorschau</h2>
-
-            <!-- Beispielbilder – bitte durch deine echten ersetzen -->
-            <img src="bilder/bild1.jpg" alt="Vorschau 1">
-            <img src="bilder/bild2.jpg" alt="Vorschau 2">
-            <img src="bilder/bild3.jpg" alt="Vorschau 3">
-
-            <br>
-            <a class="gallery-button" href="galerie.html">Zur kompletten Galerie</a>
-        </div>
-    </main>
-
-    <footer>
-        © 2026 AL 3D Print – Alle Rechte vorbehalten
-    </footer>
-
-    <!-- Laufschrift -->
-    <div class="ticker">
-        <span>🚧 Diese Website befindet sich aktuell im Aufbau – Inhalte werden laufend ergänzt 🚧</span>
+    <!-- 3-Bild-Slider -->
+    <div class="start-slider">
+        <a href="galerie-lightboxen.html"><img src="bilder/ganesha.jpg"></a>
+        <a href="galerie-persoenliche-figuren.html"><img src="bilder/elephant.jpg"></a>
+        <a href="galerie-lightboxen.html"><img src="bilder/GaneshaLightbox.jpg"></a>
     </div>
+</main>
+
+<footer>
+    © 2026 AL 3D Print – Alle Rechte vorbehalten
+</footer>
+
+<!-- Laufschrift -->
+<div class="ticker">
+    <span>🚧 Diese Website befindet sich aktuell im Aufbau – Inhalte werden laufend ergänzt 🚧</span>
+</div>
+
+<!-- Slider Script -->
+<script>
+const sliderImages = [
+    ["bilder/ganesha.jpg", "galerie-lightboxen.html"],
+    ["bilder/elephant.jpg", "galerie-persoenliche-figuren.html"],
+    ["bilder/GaneshaLightbox.jpg", "galerie-lightboxen.html"]
+];
+
+let index = 0;
+
+setInterval(() => {
+    index = (index + 1) % sliderImages.length;
+
+    const imgs = document.querySelectorAll(".start-slider img");
+    const links = document.querySelectorAll(".start-slider a");
+
+    for (let i = 0; i < imgs.length; i++) {
+        const imgIndex = (index + i) % sliderImages.length;
+        imgs[i].src = sliderImages[imgIndex][0];
+        links[i].href = sliderImages[imgIndex][1];
+    }
+}, 4000);
+</script>
 
 </body>
 </html>
