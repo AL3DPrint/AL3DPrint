@@ -138,18 +138,8 @@
     <span>🚧 Diese Website befindet sich aktuell im Aufbau – Inhalte werden laufend ergänzt 🚧</span>
 </div>
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    const images = document.querySelectorAll(".slideshow img");
-    let index = 0;
-
-    setInterval(() => {
-        images[index].classList.remove("active");
-        index = (index + 1) % images.length;
-        images[index].classList.add("active");
-    }, 2000);
-});
-</script>
+<!-- Externe Slideshow-Datei -->
+<script src="slideshow.js?v=1"></script>
 
 </body>
 </html>
