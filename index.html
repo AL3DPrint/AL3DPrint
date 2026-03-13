@@ -29,7 +29,7 @@
             flex-direction: column;
         }
 
-        /* Logo */
+        /* Logo + Rotation */
         header {
             background: #111;
             padding: 0.5rem;
@@ -41,6 +41,12 @@
             max-width: 120px;
             height: auto;
             filter: drop-shadow(0 0 6px rgba(255,255,255,0.2));
+            animation: rotateLogo 12s linear infinite;
+        }
+
+        @keyframes rotateLogo {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         /* Hamburger Menü */
@@ -157,7 +163,7 @@
         /* Slogan */
         .hero-content {
             position: absolute;
-            top: 8%;
+            top: 14%;
             width: 100%;
             text-align: center;
             color: white;
@@ -166,10 +172,10 @@
 
         .hero-content h1 {
             font-family: var(--font-hero);
-            font-size: 2.2rem;
+            font-size: 2.6rem;
             margin: 0;
             padding: 0 1rem;
-            text-shadow: 0 0 15px rgba(0,0,0,0.8);
+            text-shadow: 0 0 18px rgba(0,0,0,0.9), 0 0 8px rgba(255,255,255,0.2);
             font-weight: 600;
             letter-spacing: 1px;
             opacity: 0;
@@ -191,7 +197,7 @@
         /* Mobile */
         @media (max-width: 768px) {
             .hero-content h1 {
-                font-size: 1.6rem;
+                font-size: 1.9rem;
                 padding: 0 0.5rem;
                 line-height: 1.3;
             }
