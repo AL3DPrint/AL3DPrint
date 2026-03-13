@@ -25,7 +25,7 @@
             height: auto;
         }
 
-        /* Navigation */
+        /* Navigation – Desktop */
         nav {
             background: #333;
             padding: 0.7rem;
@@ -44,21 +44,61 @@
             text-decoration: underline;
         }
 
+        /* Hamburger Menü */
+        .hamburger {
+            display: none;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        #menu-toggle {
+            display: none;
+        }
+
+        /* Mobile Navigation */
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            nav a {
+                display: block;
+                margin: 0.8rem 0;
+                font-size: 1.3rem;
+            }
+
+            .hamburger {
+                display: block;
+                background: #333;
+                text-align: center;
+            }
+
+            #menu-toggle:checked + nav {
+                display: flex;
+            }
+        }
+
         /* Hauptbereich */
         main {
             padding: 1.5rem;
             text-align: center;
         }
 
-        /* Das Bild perfekt responsiv */
+        /* Perfekt responsives Bild */
         .startbild {
-            max-width: 650px;     /* perfekte Desktop-Größe */
-            width: 90%;           /* passt sich Mobilgeräten an */
+            max-width: 90%;
+            max-height: 70vh;
             height: auto;
+            width: auto;
             border-radius: 10px;
             border: 2px solid #ccc;
-            margin: 1.5rem auto;
+            object-fit: contain;
             display: block;
+            margin: 1.5rem auto;
         }
 
         /* Footer */
@@ -105,6 +145,10 @@
     <img src="logo.png" alt="AL 3D Print Logo">
 </header>
 
+<!-- Hamburger Button -->
+<label for="menu-toggle" class="hamburger">☰ Menü</label>
+<input type="checkbox" id="menu-toggle">
+
 <nav>
     <a href="index.html">Startseite</a>
     <a href="galerie.html">Galerie</a>
@@ -117,7 +161,6 @@
     <h1>Willkommen bei AL 3D Print</h1>
     <p>Professionelle 3D‑Drucklösungen aus Bayern – präzise, zuverlässig und individuell.</p>
 
-    <!-- Perfekt skaliertes Bild -->
     <img src="bilder/mannmitwolf.jpg" alt="Mann mit Wolf" class="startbild">
 </main>
 
