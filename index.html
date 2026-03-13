@@ -124,9 +124,9 @@
     <p>Professionelle 3D‑Drucklösungen aus Bayern – präzise, zuverlässig und individuell.</p>
 
     <div class="slideshow">
-        <img src="bilder/Ganesha.jpg" class="active" alt="Ganesha">
-        <img src="bilder/elephant.jpg" alt="Elefant">
-        <img src="bilder/ganeshalightbox.jpg" alt="Ganesha Lightbox">
+        <img src="bilder/Ganesha.jpg" class="active" alt="">
+        <img src="bilder/elephant.jpg" alt="">
+        <img src="bilder/ganeshalightbox.jpg" alt="">
     </div>
 </main>
 
@@ -139,14 +139,16 @@
 </div>
 
 <script>
-const images = document.querySelectorAll(".slideshow img");
-let index = 0;
+window.addEventListener("load", () => {
+    const images = document.querySelectorAll(".slideshow img");
+    let index = 0;
 
-setInterval(() => {
-    images[index].classList.remove("active");
-    index = (index + 1) % images.length;
-    images[index].classList.add("active");
-}, 2000);
+    setInterval(() => {
+        images[index].classList.remove("active");
+        index = (index + 1) % images.length;
+        images[index].classList.add("active");
+    }, 2000);
+});
 </script>
 
 </body>
