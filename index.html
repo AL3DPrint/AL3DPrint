@@ -3,42 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AL 3D Print – Startseite</title>
-
-    <link rel="stylesheet" href="styles.css?v=1">
+    <title>AL 3D Print</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header>
-    <img src="logo.png" alt="AL 3D Print Logo">
+    <div class="logo">AL 3D Print</div>
+
+    <!-- Hamburger Button -->
+    <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="nav-menu">
+        <ul>
+            <li><a href="index.html">Startseite</a></li>
+            <li><a href="galerie.html">Galerie</a></li>
+            <li><a href="ueber.html">Über AL 3D Print</a></li>
+            <li><a href="impressum.html">Impressum & Datenschutz</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+    </nav>
 </header>
 
-<nav>
-    <a href="index.html">Startseite</a>
-    <a href="galerie.html">Galerie</a>
-    <a href="ueber-al3dprint.html">Über AL 3D Print</a>
-    <a href="kontakt.html">Kontakt</a>
-    <a href="impressum-datenschutz.html">Impressum & Datenschutz</a>
-</nav>
 
-<main>
+<section class="hero">
     <h1>Willkommen bei AL 3D Print</h1>
-    <p>Professionelle 3D‑Drucklösungen aus Bayern – präzise, zuverlässig und individuell.</p>
+    <p>Professionelle 3D-Drucklösungen aus Bayern – präzise, zuverlässig und individuell.</p>
+    <img src="bilder/deinbild.jpg" alt="3D Druck Beispiel">
+</section>
 
-    <!-- Nur EIN Bild anzeigen -->
-    <div style="text-align:center; margin-top:2rem;">
-        <img src="bilder/mannmitwolf.jpg" alt="Mann mit Wolf" style="max-width:90%; border-radius:10px;">
-    </div>
-</main>
 
 <footer>
-    © 2026 AL 3D Print – Alle Rechte vorbehalten
+    © 2024 AL 3D Print – Alle Rechte vorbehalten.
 </footer>
 
-<div class="ticker">
-    <span>🚧 Diese Website befindet sich aktuell im Aufbau – Inhalte werden laufend ergänzt 🚧</span>
-</div>
+
+<!-- Mobile Menü Script -->
+<script>
+function toggleMenu() {
+    document.getElementById("nav-menu").classList.toggle("open");
+}
+</script>
 
 </body>
 </html>
