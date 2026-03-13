@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AL 3D Print – Startseite</title>
+
     <style>
         body {
             margin: 0;
@@ -52,33 +53,64 @@
             margin-top: 2rem;
         }
 
-        /* --- Overlay für "Seite im Aufbau" --- */
-        .overlay {
+        /* --- Laufschrift unten --- */
+        .ticker {
             position: fixed;
-            top: 0;
+            bottom: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.75);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #ffffff;
-            font-size: 2.2rem;
+            background: #222;
+            color: #fff;
+            padding: 0.5rem 0;
+            font-size: 1rem;
             font-weight: bold;
-            text-align: center;
-            padding: 2rem;
+            overflow: hidden;
+            white-space: nowrap;
             z-index: 9999;
+        }
+
+        .ticker span {
+            display: inline-block;
+            padding-left: 100%;
+            animation: ticker 12s linear infinite;
+        }
+
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Galerie-Vorschau */
+        .gallery-preview {
+            margin-top: 2rem;
+        }
+
+        .gallery-preview img {
+            width: 250px;
+            height: auto;
+            margin: 0.5rem;
+            border-radius: 8px;
+            border: 2px solid #ccc;
+        }
+
+        .gallery-button {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.8rem 1.5rem;
+            background: #333;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 6px;
+        }
+
+        .gallery-button:hover {
+            background: #555;
         }
     </style>
 </head>
 
 <body>
-
-    <!-- GROßER HINWEIS -->
-    <div class="overlay">
-        🚧 Diese Website befindet sich aktuell im Aufbau 🚧
-    </div>
 
     <header>
         <img src="logo.png" alt="AL 3D Print Logo">
@@ -94,12 +126,29 @@
     <main>
         <h1>Willkommen bei AL 3D Print</h1>
         <p>Professionelle 3D‑Drucklösungen aus Bayern – präzise, zuverlässig und individuell.</p>
-        <p>Die Inhalte dieser Seite werden aktuell überarbeitet.</p>
+
+        <!-- Galerie Vorschau -->
+        <div class="gallery-preview">
+            <h2>Galerie – Vorschau</h2>
+
+            <!-- Beispielbilder – bitte durch deine echten ersetzen -->
+            <img src="bilder/bild1.jpg" alt="Vorschau 1">
+            <img src="bilder/bild2.jpg" alt="Vorschau 2">
+            <img src="bilder/bild3.jpg" alt="Vorschau 3">
+
+            <br>
+            <a class="gallery-button" href="galerie.html">Zur kompletten Galerie</a>
+        </div>
     </main>
 
     <footer>
         © 2026 AL 3D Print – Alle Rechte vorbehalten
     </footer>
+
+    <!-- Laufschrift -->
+    <div class="ticker">
+        <span>🚧 Diese Website befindet sich aktuell im Aufbau – Inhalte werden laufend ergänzt 🚧</span>
+    </div>
 
 </body>
 </html>
