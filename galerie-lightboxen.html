@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Light Boxen – Galerie</title>
+<style>
+body { font-family: Arial; background:#f5f5f5; margin:0; }
+h1 { text-align:center; padding:1rem; }
+.gallery { display:flex; flex-wrap:wrap; justify-content:center; gap:1rem; }
+.gallery-item img { width:250px; border-radius:10px; border:2px solid #ccc; transition:0.2s; }
+.gallery-item img:hover { transform:scale(1.05); border-color:#333; }
+</style>
+</head>
+
+<body>
+
+<h1>Light Boxen</h1>
+
+<div class="gallery">
+
+    <div class="gallery-item">
+        <a href="bilder/GaneshaLightbox.jpg" target="_blank">
+            <img src="bilder/GaneshaLightbox.jpg" alt="Ganesha Lightbox">
+        </a>
+    </div>
+
+    <div class="gallery-item">
+        <a href="bilder/ganesha.jpg" target="_blank">
+            <img src="bilder/ganesha.jpg" alt="Ganesha Figur">
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>
