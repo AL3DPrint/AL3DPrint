@@ -45,19 +45,44 @@
             text-align: center;
         }
 
-        /* --- Slideshow --- */
+        /* Slideshow-Container */
         .slideshow {
-            display: flex;
-            justify-content: center;
-            margin-top: 2rem;
+            position: relative;
+            width: 60%;
+            max-width: 400px;
+            margin: 2rem auto 0 auto;
+            border-radius: 10px;
+            border: 2px solid #ccc;
+            overflow: hidden;
         }
 
         .slideshow img {
-            width: 60%;
-            max-width: 400px;
-            border-radius: 10px;
-            border: 2px solid #ccc;
-            transition: 0.3s;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            opacity: 0;
+            animation: fadeSlide 9s infinite;
+        }
+
+        .slideshow img:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .slideshow img:nth-child(2) {
+            animation-delay: 3s;
+        }
+
+        .slideshow img:nth-child(3) {
+            animation-delay: 6s;
+        }
+
+        @keyframes fadeSlide {
+            0%   { opacity: 0; }
+            5%   { opacity: 1; }
+            30%  { opacity: 1; }
+            35%  { opacity: 0; }
+            100% { opacity: 0; }
         }
 
         footer {
@@ -68,7 +93,6 @@
             margin-top: 2rem;
         }
 
-        /* --- Laufschrift --- */
         .ticker {
             position: fixed;
             bottom: 0;
@@ -115,9 +139,11 @@
     <h1>Willkommen bei AL 3D Print</h1>
     <p>Professionelle 3D‑Drucklösungen aus Bayern – präzise, zuverlässig und individuell.</p>
 
-    <!-- Slideshow -->
+    <!-- CSS-Slideshow -->
     <div class="slideshow">
-        <img id="slideshowImage" src="bilder/ganesha.jpg" alt="">
+        <img src="bilder/ganesha.jpg" alt="Ganesha">
+        <img src="bilder/elephant.jpg" alt="Elefant">
+        <img src="bilder/GaneshaLightbox.jpg" alt="Ganesha Lightbox">
     </div>
 </main>
 
@@ -125,30 +151,9 @@
     © 2026 AL 3D Print – Alle Rechte vorbehalten
 </footer>
 
-<!-- Laufschrift -->
 <div class="ticker">
     <span>🚧 Diese Website befindet sich aktuell im Aufbau – Inhalte werden laufend ergänzt 🚧</span>
 </div>
-
-<!-- Zufällige Slideshow -->
-<script>
-const slideshowImages = [
-    "bilder/ganesha.jpg",
-    "bilder/elephant.jpg",
-    "bilder/GaneshaLightbox.jpg"
-    "bilder/mannmitwolf.jpg"
-];
-
-// später einfach erweitern:
-// slideshowImages.push("bilder/neuesbild.jpg");
-
-const img = document.getElementById("slideshowImage");
-
-setInterval(() => {
-    const randomIndex = Math.floor(Math.random() * slideshowImages.length);
-    img.src = slideshowImages[randomIndex];
-}, 1000);
-</script>
 
 </body>
 </html>
