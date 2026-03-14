@@ -1,430 +1,67 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gästebuch – AL 3D Print</title>
+const SHEET_NAME = 'Tabellenblatt1';
 
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <style>
-        :root {
-            --font-main: 'Exo 2', sans-serif;
-            --font-hero: 'Orbitron', sans-serif;
-
-            --color-bg: #000;
-            --color-panel: #111;
-            --color-text: #fff;
-            --color-accent: #4da6ff;
-            --color-star-active: #ffd700;
-            --color-star-inactive: #555;
-        }
-
-        body {
-            margin: 0;
-            background: var(--color-bg);
-            color: var(--color-text);
-            font-family: var(--font-main);
-        }
-
-        .back-btn {
-            position: fixed;
-            top: 1rem;
-            left: 1rem;
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: #111;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.6rem;
-            color: white;
-            text-decoration: none;
-            z-index: 999;
-            box-shadow: 0 0 12px rgba(255,255,255,0.1);
-            transition: 0.25s ease;
-        }
-
-        .back-btn:hover {
-            background: #222;
-            transform: scale(1.08);
-        }
-
-        .hero {
-            height: 28vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: radial-gradient(circle at center, rgba(255,255,255,0.05), rgba(0,0,0,0.95));
-            text-align: center;
-            padding: 0 1rem;
-        }
-
-        .hero h1 {
-            font-family: var(--font-hero);
-            font-size: 2.6rem;
-            opacity: 0;
-            animation: fadeUp 1s ease-out forwards;
-        }
-
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-
-        .section {
-            max-width: 900px;
-            margin: 2.5rem auto;
-            background: #111;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 0 18px rgba(255,255,255,0.08);
-        }
-
-        .section h2 {
-            font-family: var(--font-hero);
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: var(--color-accent);
-        }
-
-        .section p {
-            line-height: 1.7;
-            color: #ccc;
-            font-size: 1.05rem;
-        }
-
-        label {
-            display: block;
-            margin-top: 1rem;
-        }
-
-        input, textarea {
-            width: 100%;
-            padding: 0.8rem;
-            margin-top: 0.4rem;
-            border: none;
-            border-radius: 8px;
-            background: #1a1a1a;
-            color: white;
-        }
-
-        textarea {
-            height: 140px;
-        }
-
-        button {
-            margin-top: 1.5rem;
-            width: 100%;
-            padding: 1rem;
-            background: #222;
-            border: none;
-            border-radius: 10px;
-            color: white;
-            font-family: var(--font-hero);
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: 0.25s ease;
-        }
-
-        button:hover {
-            background: #333;
-            transform: scale(1.02);
-        }
-
-        .stars-select {
-            display: flex;
-            gap: 0.4rem;
-            margin-top: 0.5rem;
-        }
-
-        .star-option {
-            font-size: 1.6rem;
-            cursor: pointer;
-            color: var(--color-star-inactive);
-            transition: 0.2s ease;
-        }
-
-        .star-option.active {
-            color: var(--color-star-active);
-            transform: scale(1.05);
-        }
-
-        .entries {
-            margin-top: 1.5rem;
-        }
-
-        .entry {
-            background: #151515;
-            border-radius: 10px;
-            padding: 1.2rem 1.4rem;
-            margin-bottom: 1rem;
-            box-shadow: 0 0 12px rgba(255,255,255,0.05);
-        }
-
-        .entry-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.4rem;
-        }
-
-        .entry-name {
-            font-weight: 600;
-        }
-
-        .entry-stars {
-            color: var(--color-star-active);
-            font-size: 1.1rem;
-        }
-
-        .entry-date {
-            font-size: 0.85rem;
-            color: #888;
-            margin-bottom: 0.4rem;
-        }
-
-        .entry-message {
-            font-size: 0.98rem;
-            color: #ddd;
-            white-space: pre-line;
-        }
-
-        .info-text {
-            font-size: 0.9rem;
-            color: #888;
-            margin-top: 0.6rem;
-        }
-
-        .popup-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.85);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-        }
-
-        .popup-box {
-            background: #111;
-            padding: 2rem;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 0 25px rgba(255,255,255,0.1);
-            max-width: 380px;
-            animation: fadeUp 0.5s ease-out forwards;
-        }
-
-        .popup-check {
-            font-size: 3rem;
-            color: #4da6ff;
-            margin-bottom: 1rem;
-        }
-
-        .popup-btn {
-            margin-top: 1.5rem;
-            padding: 0.8rem 1.6rem;
-            background: #222;
-            border-radius: 10px;
-            color: white;
-            font-family: var(--font-hero);
-            text-decoration: none;
-            display: inline-block;
-            cursor: pointer;
-            transition: 0.25s ease;
-        }
-
-        .popup-btn:hover {
-            background: #333;
-            transform: scale(1.05);
-        }
-    </style>
-</head>
-
-<body>
-
-<a href="index.html" class="back-btn">←</a>
-
-<div class="hero">
-    <h1>Gästebuch</h1>
-</div>
-
-<div class="section">
-    <h2>Deine Meinung zu AL 3D Print</h2>
-    <p>
-        Hinterlasse hier dein Feedback zu Zusammenarbeit, Qualität und Ergebnissen.
-        Dein Eintrag hilft anderen, sich ein Bild von AL 3D Print zu machen.
-    </p>
-
-    <form id="guestbookForm">
-        <label for="name">Name *</label>
-        <input type="text" id="name" name="name" required>
-
-        <label for="message">Nachricht *</label>
-        <textarea id="message" name="message" required></textarea>
-
-        <label>Sternebewertung *</label>
-        <div class="stars-select" id="starsSelect">
-            <span class="star-option" data-value="1">★</span>
-            <span class="star-option" data-value="2">★</span>
-            <span class="star-option" data-value="3">★</span>
-            <span class="star-option" data-value="4">★</span>
-            <span class="star-option" data-value="5">★</span>
-        </div>
-        <input type="hidden" id="stars" name="stars" required>
-
-        <button type="submit">Eintrag absenden</button>
-        <div class="info-text">
-            Mit dem Absenden erklärst du dich damit einverstanden, dass dein Name,
-            deine Nachricht und deine Bewertung öffentlich im Gästebuch angezeigt werden.
-        </div>
-    </form>
-</div>
-
-<div class="section">
-    <h2>Einträge</h2>
-    <div id="entries" class="entries">
-        <p>Einträge werden geladen…</p>
-    </div>
-</div>
-
-<div class="popup-overlay" id="popup">
-    <div class="popup-box">
-        <div class="popup-check">✔</div>
-        <h2>Danke für deinen Eintrag!</h2>
-        <p>Dein Feedback wurde gespeichert und erscheint in Kürze im Gästebuch.</p>
-        <div class="popup-btn" id="popupClose">OK</div>
-    </div>
-</div>
-
-<script>
-const API_URL = 'https://script.google.com/macros/s/AKfycbw6qOcqKaBy3dnspTlpdyReP_9QTRwmoDg7E4vJ5TR8di6gDb2rsaVJYTWQkOPHuuc_pw/exec';
-
-const starsSelect = document.getElementById('starsSelect');
-const starsInput = document.getElementById('stars');
-const starOptions = document.querySelectorAll('.star-option');
-
-starOptions.forEach(star => {
-    star.addEventListener('click', () => {
-        const value = star.getAttribute('data-value');
-        starsInput.value = value;
-
-        starOptions.forEach(s => s.classList.remove('active'));
-        starOptions.forEach(s => {
-            if (parseInt(s.getAttribute('data-value')) <= parseInt(value)) {
-                s.classList.add('active');
-            }
-        });
-    });
-});
-
-async function loadEntries() {
-    const entriesContainer = document.getElementById('entries');
-    entriesContainer.innerHTML = '<p>Einträge werden geladen…</p>';
-
-    try {
-        const res = await fetch(API_URL);
-        const data = await res.json();
-
-        if (!data || data.length === 0) {
-            entriesContainer.innerHTML = '<p>Noch keine Einträge vorhanden.</p>';
-            return;
-        }
-
-        entriesContainer.innerHTML = '';
-
-        data.forEach(entry => {
-            const div = document.createElement('div');
-            div.className = 'entry';
-
-            const header = document.createElement('div');
-            header.className = 'entry-header';
-
-            const nameEl = document.createElement('div');
-            nameEl.className = 'entry-name';
-            nameEl.textContent = entry.name || 'Anonym';
-
-            const starsEl = document.createElement('div');
-            starsEl.className = 'entry-stars';
-            const starsCount = parseInt(entry.stars, 10) || 0;
-            starsEl.textContent = '★'.repeat(starsCount);
-
-            header.appendChild(nameEl);
-            header.appendChild(starsEl);
-
-            const dateEl = document.createElement('div');
-            dateEl.className = 'entry-date';
-            if (entry.timestamp) {
-                const d = new Date(entry.timestamp);
-                dateEl.textContent = d.toLocaleDateString('de-DE') + ' ' + d.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' });
-            }
-
-            const msgEl = document.createElement('div');
-            msgEl.className = 'entry-message';
-            msgEl.textContent = entry.message || '';
-
-            div.appendChild(header);
-            div.appendChild(dateEl);
-            div.appendChild(msgEl);
-
-            entriesContainer.appendChild(div);
-        });
-
-    } catch (err) {
-        entriesContainer.innerHTML = '<p>Fehler beim Laden der Einträge.</p>';
-        console.error(err);
+function doGet(e) {
+  try {
+    const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(SHEET_NAME);
+    if (!sheet) {
+      return ContentService
+        .createTextOutput(JSON.stringify({ success: false, error: 'Sheet not found: ' + SHEET_NAME }))
+        .setMimeType(ContentService.MimeType.JSON);
     }
+
+    const data = sheet.getDataRange().getValues();
+    const entries = [];
+
+    for (let i = 1; i < data.length; i++) {
+      entries.push({
+        timestamp: data[i][0],
+        name: data[i][1],
+        message: data[i][2],
+        stars: data[i][3]
+      });
+    }
+
+    return ContentService
+      .createTextOutput(JSON.stringify(entries))
+      .setMimeType(ContentService.MimeType.JSON);
+
+  } catch (err) {
+    return ContentService
+      .createTextOutput(JSON.stringify({ success: false, error: err.toString() }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
 }
 
-document.getElementById('guestbookForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-
-    if (!starsInput.value) {
-        alert('Bitte eine Sternebewertung auswählen.');
-        return;
+function doPost(e) {
+  try {
+    const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(SHEET_NAME);
+    if (!sheet) {
+      return ContentService
+        .createTextOutput(JSON.stringify({ success: false, error: 'Sheet not found: ' + SHEET_NAME }))
+        .setMimeType(ContentService.MimeType.JSON);
     }
 
-    const payload = {
-        name: document.getElementById('name').value,
-        message: document.getElementById('message').value,
-        stars: starsInput.value
-    };
+    const data = JSON.parse(e.postData.contents);
 
-    try {
-        const res = await fetch(API_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
-        });
+    const name = (data.name || '').toString().trim();
+    const message = (data.message || '').toString().trim();
+    const stars = parseInt(data.stars, 10) || 0;
 
-        const result = await res.json();
-
-        if (result.success) {
-            document.getElementById('popup').style.display = 'flex';
-            this.reset();
-            starsInput.value = '';
-            starOptions.forEach(s => s.classList.remove('active'));
-            loadEntries();
-        } else {
-            alert('Fehler beim Speichern des Eintrags.');
-        }
-    } catch (err) {
-        console.error(err);
-        alert('Es ist ein Fehler aufgetreten.');
+    if (!name || !message || stars < 1 || stars > 5) {
+      return ContentService
+        .createTextOutput(JSON.stringify({ success: false, error: 'Invalid data', received: data }))
+        .setMimeType(ContentService.MimeType.JSON);
     }
-});
 
-document.getElementById('popupClose').addEventListener('click', function() {
-    document.getElementById('popup').style.display = 'none';
-});
+    sheet.appendRow([new Date(), name, message, stars]);
 
-loadEntries();
-</script>
+    return ContentService
+      .createTextOutput(JSON.stringify({ success: true }))
+      .setMimeType(ContentService.MimeType.JSON);
 
-</body>
-</html>
+  } catch (err) {
+    return ContentService
+      .createTextOutput(JSON.stringify({ success: false, error: err.toString() }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}
