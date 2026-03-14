@@ -3,11 +3,18 @@ const repoName = "al3dprint-gaestebuch";
 const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/issues`;
 
 async function loadGuestbook() {
+    console.log("Lade Kundenmeinungen...");
+
     const response = await fetch(apiUrl);
     const issues = await response.json();
 
+    console.log("API Antwort:", issues);
+
     const container = document.getElementById("guestbook-entries");
-    if (!container) return;
+    if (!container) {
+        console.error("Container #guestbook-entries nicht gefunden!");
+        return;
+    }
 
     container.innerHTML = "";
 
