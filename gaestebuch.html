@@ -19,7 +19,7 @@
             margin-bottom: 20px;
         }
 
-        /* Zurück-Button wie bei kontakt.html */
+        /* Zurück-Button */
         .back-link {
             display: inline-flex;
             align-items: center;
@@ -145,7 +145,6 @@
             const message = document.getElementById("message").value;
             const stars = document.getElementById("stars").value;
 
-            // GitHub Issue API
             const issueData = {
                 title: `Gästebucheintrag von ${name}`,
                 body: `**Name:** ${name}\n**Sterne:** ${stars}\n\n**Nachricht:**\n${message}`
@@ -160,14 +159,11 @@
                 body: JSON.stringify(issueData)
             });
 
-            // Bestätigung anzeigen
             const box = document.getElementById("success-message");
             box.style.display = "block";
 
-            // Nach oben scrollen
             window.scrollTo({ top: 0, behavior: "smooth" });
 
-            // Formular leeren
             document.getElementById("guestbookForm").reset();
         });
     </script>
