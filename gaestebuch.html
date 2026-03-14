@@ -5,168 +5,233 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gästebuch – AL 3D Print</title>
 
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
+
+        :root {
+            --font-main: 'Exo 2', sans-serif;
+            --font-hero: 'Orbitron', sans-serif;
+        }
+
         body {
-            background-color: #0f0f0f;
-            color: #ffffff;
-            font-family: Arial, sans-serif;
             margin: 0;
-            padding: 20px;
+            font-family: var(--font-main);
+            background: #000;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
-        h1 {
-            margin-top: 10px;
-            margin-bottom: 20px;
+        /* Header */
+        header {
+            background: #111;
+            padding: 0.5rem 0;
+            text-align: center;
         }
 
-        /* Zurück-Button */
-        .back-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            color: #ff7a00;
+        header img {
+            max-width: 110px;
+            height: auto;
+            filter: drop-shadow(0 0 6px rgba(255,255,255,0.2));
+            animation: rotateLogo 12s linear infinite;
+        }
+
+        @keyframes rotateLogo {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Navigation */
+        .hamburger {
+            display: none;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            padding: 0.5rem;
+            background: #222;
+            text-align: center;
+        }
+
+        #menu-toggle {
+            display: none;
+        }
+
+        nav {
+            background: #222;
+            padding: 0.5rem;
+            text-align: center;
+        }
+
+        nav a {
+            font-family: var(--font-main);
+            color: #ddd;
+            margin: 0 1.2rem;
             text-decoration: none;
-            font-size: 18px;
             font-weight: 600;
-            margin-bottom: 25px;
-            transition: color 0.2s ease;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            transition: 0.25s ease;
         }
 
-        .back-link:hover {
-            color: #ffa64d;
+        nav a:hover {
+            color: white;
+            text-shadow: 0 0 8px rgba(255,255,255,0.6);
         }
 
-        .back-link .arrow {
-            font-size: 20px;
-            line-height: 1;
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+                flex-direction: column;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            #menu-toggle:checked + nav {
+                display: flex;
+            }
+
+            nav a {
+                margin: 0.7rem 0;
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Page Container */
+        .page-container {
+            flex: 1;
+            padding: 40px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .page-container h1 {
+            font-family: var(--font-hero);
+            font-size: 2.4rem;
+            text-align: center;
+            margin-bottom: 40px;
+            text-shadow: 0 0 18px rgba(0,0,0,0.9), 0 0 8px rgba(255,255,255,0.2);
         }
 
         /* Formular */
-        label {
+        #guestbook-form {
+            margin-top: 20px;
+            padding: 20px;
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 6px;
+        }
+
+        #guestbook-form label {
             display: block;
             margin-top: 15px;
             margin-bottom: 5px;
-            font-size: 16px;
+            font-size: 0.9rem;
+            opacity: 0.8;
         }
 
-        input, textarea, select {
-            width: 100%;
-            padding: 10px;
-            background: #1b1b1b;
-            border: 1px solid #333;
-            color: #fff;
-            font-size: 16px;
-            border-radius: 4px;
-        }
-
-        textarea {
-            height: 120px;
-            resize: none;
-        }
-
-        button {
-            margin-top: 20px;
+        #guestbook-form input,
+        #guestbook-form textarea,
+        #guestbook-form select {
             width: 100%;
             padding: 12px;
-            background-color: #ff7a00;
+            border: 1px solid #333;
+            background: #111;
+            color: #fff;
+            border-radius: 4px;
+        }
+
+        #guestbook-form button {
+            margin-top: 20px;
+            padding: 12px 20px;
+            background: #ff4d00;
             border: none;
             color: #fff;
-            font-size: 18px;
-            font-weight: bold;
             cursor: pointer;
             border-radius: 4px;
-            transition: background 0.2s ease;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        button:hover {
-            background-color: #ffa64d;
+        #guestbook-form button:hover {
+            background: #ff6a2a;
         }
 
-        /* Animierte Bestätigung */
-        .success-message {
-            margin-top: 20px;
-            padding: 15px 20px;
-            background: #1b1b1b;
-            border-left: 4px solid #ff7a00;
-            color: #ffffff;
-            font-size: 16px;
-            opacity: 0;
-            transform: translateY(10px);
-            animation: fadeSlideIn 0.5s forwards;
+        #gb-info {
+            margin-top: 10px;
+            font-size: 0.8rem;
+            opacity: 0.6;
         }
 
-        @keyframes fadeSlideIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .back {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #ff4d00;
+            font-weight: bold;
+            text-decoration: none;
         }
+
     </style>
 </head>
 
 <body>
 
-    <a href="/" class="back-link">
-        <span class="arrow">←</span> Zurück
-    </a>
+<header>
+    <img src="logo.png" alt="AL 3D Print Logo">
+</header>
+
+<label for="menu-toggle" class="hamburger">☰ Menü</label>
+<input type="checkbox" id="menu-toggle">
+
+<nav>
+    <a href="index.html">Startseite</a>
+    <a href="galerie.html">Galerie</a>
+    <a href="ueber-al3dprint.html">Über AL 3D Print</a>
+    <a href="gaestebuch.html">Gästebuch</a>
+    <a href="kundenmeinungen.html">Kundenmeinungen</a>
+    <a href="kontakt.html">Kontakt</a>
+    <a href="impressum-datenschutz.html">Impressum & Datenschutz</a>
+</nav>
+
+<div class="page-container">
+
+    <a class="back" href="index.html">← Zurück</a>
 
     <h1>Gästebuch</h1>
 
-    <h2>Neuen Eintrag verfassen</h2>
+    <form id="guestbook-form">
+        <h3>Neuen Eintrag verfassen</h3>
 
-    <form id="guestbookForm">
-        <label for="name">Name</label>
-        <input type="text" id="name" required>
+        <label for="gb-name">Name</label>
+        <input type="text" id="gb-name" required>
 
-        <label for="message">Nachricht</label>
-        <textarea id="message" required></textarea>
+        <label for="gb-message">Nachricht</label>
+        <textarea id="gb-message" required></textarea>
 
-        <label for="stars">Sterne</label>
-        <select id="stars">
-            <option>★★★★★</option>
-            <option>★★★★☆</option>
-            <option>★★★☆☆</option>
-            <option>★★☆☆☆</option>
-            <option>★☆☆☆☆</option>
+        <label for="gb-stars">Sterne</label>
+        <select id="gb-stars">
+            <option value="5">★★★★★</option>
+            <option value="4">★★★★☆</option>
+            <option value="3">★★★☆☆</option>
+            <option value="2">★★☆☆☆</option>
+            <option value="1">★☆☆☆☆</option>
         </select>
 
-        <button type="submit">ABSENDEN</button>
+        <button type="button" onclick="submitGuestbookEntry()">
+            Absenden
+        </button>
+
+        <p id="gb-info">Dein Eintrag wird nach Prüfung veröffentlicht.</p>
     </form>
 
-    <div id="success-message" style="display:none;" class="success-message">
-        Danke! Dein Eintrag wurde erfolgreich gesendet.
-    </div>
+</div>
 
-    <script>
-        document.getElementById("guestbookForm").addEventListener("submit", async function(e) {
-            e.preventDefault();
-
-            const name = document.getElementById("name").value;
-            const message = document.getElementById("message").value;
-            const stars = document.getElementById("stars").value;
-
-            const issueData = {
-                title: `Gästebucheintrag von ${name}`,
-                body: `**Name:** ${name}\n**Sterne:** ${stars}\n\n**Nachricht:**\n${message}`
-            };
-
-            await fetch("https://api.github.com/repos/DEINUSER/DEINREPO/issues", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": "token DEINTOKEN"
-                },
-                body: JSON.stringify(issueData)
-            });
-
-            const box = document.getElementById("success-message");
-            box.style.display = "block";
-
-            window.scrollTo({ top: 0, behavior: "smooth" });
-
-            document.getElementById("guestbookForm").reset();
-        });
-    </script>
+<script src="guestbook.js"></script>
 
 </body>
 </html>
