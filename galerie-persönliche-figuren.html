@@ -20,6 +20,40 @@ h1 {
     text-shadow:0 0 10px rgba(255,77,0,0.5);
 }
 
+/* --- ZURÜCK BUTTONS --- */
+.back-buttons {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    z-index: 999;
+}
+
+.back-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+    color: white;
+    text-decoration: none;
+    box-shadow: 0 0 12px rgba(255,255,255,0.1);
+    transition: 0.25s ease;
+}
+
+.back-btn:hover {
+    background: #222;
+    box-shadow: 0 0 18px rgba(255,255,255,0.3);
+    transform: scale(1.08);
+}
+
+/* --- GALERIE --- */
+
 .gallery { 
     display:flex; 
     flex-wrap:wrap; 
@@ -62,6 +96,12 @@ h1 {
 </head>
 
 <body>
+
+<!-- ZURÜCK BUTTONS -->
+<div class="back-buttons">
+    <a href="galerie.html" class="back-btn">←</a>
+    <a href="index.html" class="back-btn">⌂</a>
+</div>
 
 <h1>Persönliche Figuren</h1>
 
