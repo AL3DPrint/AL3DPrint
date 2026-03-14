@@ -26,11 +26,11 @@
         /* Header */
         header {
             text-align: center;
-            padding: 20px 0;
+            padding: 20px 0 10px 0;
         }
 
         header img {
-            width: 110px;
+            width: 140px;
             filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
             animation: rotateLogo 12s linear infinite;
         }
@@ -38,6 +38,16 @@
         @keyframes rotateLogo {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
+        }
+
+        /* Slogan */
+        .slogan {
+            text-align: center;
+            font-family: var(--font-hero);
+            font-size: 1rem;
+            margin-top: 5px;
+            color: #ff4d00;
+            text-shadow: 0 0 8px rgba(255,77,0,0.4);
         }
 
         /* Navigation */
@@ -60,19 +70,48 @@
             text-shadow: 0 0 8px rgba(255,255,255,0.6);
         }
 
-        /* Startseiten-Bild */
-        .hero-image {
-            width: 100%;
-            max-width: 900px;
-            display: block;
-            margin: 20px auto 10px auto;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(255,255,255,0.15);
+        /* Bildreihe */
+        .image-row {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px auto;
+            max-width: 900px; /* Gesamtbreite */
         }
 
-        /* Hologramm Counter (kleiner & dezent) */
+        .image-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            overflow: hidden;
+            padding: 5px;
+            transform: perspective(800px) rotateX(25deg);
+            transition: 0.4s ease;
+            box-shadow: 0 0 15px rgba(255,77,0,0.2);
+        }
+
+        .image-card:hover {
+            transform: perspective(800px) rotateX(-10deg) scale(1.05);
+            box-shadow: 0 0 25px rgba(255,77,0,0.4);
+        }
+
+        .image-card img {
+            width: 100%;
+            display: block;
+            border-radius: 8px;
+        }
+
+        /* Größen */
+        .small {
+            width: 28%;
+        }
+
+        .large {
+            width: 40%;
+        }
+
+        /* Hologramm Counter */
         #holo-counter {
-            margin: 15px auto 0 auto;
+            margin: 10px auto 0 auto;
             width: 180px;
             padding: 12px;
             text-align: center;
@@ -152,6 +191,8 @@
     <img src="logo.png" alt="AL 3D Print Logo">
 </header>
 
+<p class="slogan">From Sketch to Solid: Your Idea in 3D</p>
+
 <nav>
     <a href="index.html">Startseite</a>
     <a href="galerie.html">Galerie</a>
@@ -160,8 +201,20 @@
     <a href="impressum-datenschutz.html">Impressum & Datenschutz</a>
 </nav>
 
-<!-- STARTSEITEN-BILD -->
-<img src="bilder/Ganesha.jpg" alt="Startseitenbild" class="hero-image">
+<!-- DREI BILDER -->
+<div class="image-row">
+    <div class="image-card small">
+        <img src="Bilder/Ganesha.jpg" alt="Ganesha">
+    </div>
+
+    <div class="image-card large">
+        <img src="Bilder/mannmitwolf.jpg" alt="Wolf">
+    </div>
+
+    <div class="image-card small">
+        <img src="Bilder/elephant.jpg" alt="Elephant">
+    </div>
+</div>
 
 <!-- HOLOGRAMM COUNTER -->
 <div id="holo-counter">
