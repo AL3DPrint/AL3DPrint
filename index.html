@@ -19,25 +19,25 @@
             margin: 0;
             padding: 0;
             height: 100%;
-            overflow: hidden; /* Kein Scrollen */
+            overflow: hidden;
             background: #000;
             color: #fff;
             font-family: var(--font-main);
         }
 
-        /* Wrapper für zentrierten Inhalt */
+        /* Wrapper */
         .main-wrapper {
-            height: calc(100% - 40px); /* Platz für Laufschrift */
+            height: calc(100% - 40px);
             display: flex;
             flex-direction: column;
-            justify-content: space-between; /* Alles sichtbar */
+            justify-content: space-between;
             align-items: center;
             padding-top: 10px;
             padding-bottom: 10px;
             box-sizing: border-box;
         }
 
-        /* Header */
+        /* Logo */
         header img {
             width: 140px;
             filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
@@ -58,12 +58,15 @@
             text-shadow: 0 0 12px rgba(255,77,0,0.6);
         }
 
-        /* Navigation Desktop */
+        /* Navigation */
         nav {
             text-align: center;
             background: #111;
             padding: 10px 0;
             width: 100%;
+            position: relative;
+            box-shadow: 0 0 12px rgba(255,77,0,0.25);
+            border-bottom: 1px solid rgba(255,77,0,0.3);
         }
 
         nav a {
@@ -71,14 +74,42 @@
             margin: 0 15px;
             text-decoration: none;
             font-weight: 600;
-            transition: 0.25s ease;
         }
 
         nav a:hover {
             color: #fff;
         }
 
-        /* BURGER BUTTON */
+        /* Counter in Menüleiste */
+        #menu-counter {
+            position: absolute;
+            right: 15px;
+            top: 10px;
+            color: #ff4d00;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Pulsierendes Auge */
+        @keyframes pulseEye {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.15); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.8; }
+        }
+
+        #menu-counter span:first-child {
+            animation: pulseEye 2.2s ease-in-out infinite;
+        }
+
+        /* Glühende Zahl */
+        #visitor-counter {
+            text-shadow: 0 0 6px rgba(255,77,0,0.7);
+        }
+
+        /* Burger */
         .burger {
             width: 35px;
             margin: 10px auto;
@@ -93,7 +124,7 @@
             border-radius: 2px;
         }
 
-        /* MOBILES MENÜ */
+        /* Mobile Menü */
         .mobile-menu {
             display: none;
             flex-direction: column;
@@ -109,11 +140,6 @@
             font-weight: 600;
         }
 
-        .mobile-menu a:hover {
-            color: #fff;
-        }
-
-        /* RESPONSIVE */
         @media (max-width: 768px) {
             nav { display: none; }
             .burger { display: block; }
@@ -125,43 +151,6 @@
             max-width: 420px;
             border-radius: 12px;
             box-shadow: 0 0 20px rgba(255,77,0,0.25);
-        }
-
-        /* Counter */
-        #holo-counter {
-            width: 180px;
-            padding: 12px;
-            text-align: center;
-            font-family: 'Orbitron', sans-serif;
-            color: var(--accent);
-            border: 1px solid rgba(255, 77, 0, 0.4);
-            border-radius: 10px;
-            background: rgba(0, 0, 0, 0.35);
-            backdrop-filter: blur(6px);
-            box-shadow: 
-                0 0 14px rgba(255, 77, 0, 0.25),
-                inset 0 0 14px rgba(255, 77, 0, 0.15);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .holo-icon { font-size: 1.4rem; }
-        .holo-label { font-size: 0.8rem; opacity: 0.7; }
-        .holo-number { font-size: 1.6rem; font-weight: 700; }
-
-        .holo-scan {
-            position: absolute;
-            top: -100%;
-            left: 0;
-            width: 100%;
-            height: 40%;
-            background: linear-gradient(to bottom, rgba(255,77,0,0), rgba(255,77,0,0.15), rgba(255,77,0,0));
-            animation: scan 3s linear infinite;
-        }
-
-        @keyframes scan {
-            0% { top: -40%; }
-            100% { top: 140%; }
         }
 
         /* Content */
@@ -218,14 +207,18 @@
     <a href="ueber-al3dprint.html">Über AL 3D Print</a>
     <a href="kontakt.html">Kontakt</a>
     <a href="impressum-datenschutz.html">Impressum & Datenschutz</a>
+
+    <!-- Counter in Menüleiste -->
+    <div id="menu-counter">
+        <span>👁️</span>
+        <span id="visitor-counter">0</span>
+    </div>
 </nav>
 
-<!-- BURGER BUTTON -->
 <div class="burger" onclick="toggleMenu()">
     <div></div><div></div><div></div>
 </div>
 
-<!-- MOBILES MENÜ -->
 <div id="mobile-menu" class="mobile-menu">
     <a href="index.html">Startseite</a>
     <a href="galerie.html">Galerie</a>
@@ -234,16 +227,7 @@
     <a href="impressum-datenschutz.html">Impressum & Datenschutz</a>
 </div>
 
-<!-- EINZELNES BILD -->
 <img src="bilder/mannmitwolf.jpg" alt="Wolf" class="hero-image">
-
-<!-- COUNTER -->
-<div id="holo-counter">
-    <div class="holo-icon">👁️</div>
-    <div class="holo-label">Besucher</div>
-    <div class="holo-number" id="visitor-counter">0</div>
-    <div class="holo-scan"></div>
-</div>
 
 <div class="content">
     <h1>Willkommen bei AL 3D Print</h1>
@@ -252,12 +236,10 @@
 
 </div>
 
-<!-- LAUFSCHRIFT -->
 <div class="ticker">
     <div class="ticker-text">⚠ WEBSITE IM AUFBAU ⚠ WEBSITE IM AUFBAU ⚠ WEBSITE IM AUFBAU ⚠</div>
 </div>
 
-<!-- JAVASCRIPT -->
 <script>
 async function updateVisitorCounter() {
     const url = "https://api.countapi.xyz/hit/al3dprint/visits";
@@ -265,7 +247,22 @@ async function updateVisitorCounter() {
     try {
         const response = await fetch(url);
         const data = await response.json();
-        document.getElementById("visitor-counter").textContent = data.value;
+
+        const target = data.value;
+        const counterElement = document.getElementById("visitor-counter");
+
+        let current = 0;
+        const step = Math.ceil(target / 20);
+
+        const interval = setInterval(() => {
+            current += step;
+            if (current >= target) {
+                current = target;
+                clearInterval(interval);
+            }
+            counterElement.textContent = current;
+        }, 40);
+
     } catch (err) {
         document.getElementById("visitor-counter").textContent = "—";
     }
