@@ -291,14 +291,17 @@
 <!-- JAVASCRIPT -->
 <script>
 async function updateVisitorCounter() {
-    const url = "https://api.counterapi.dev/v1/al3dprint/visits/hit";
+    const url = "https://api.countapi.xyz/hit/al3dprint.de/visits";
 
     try {
         const response = await fetch(url);
         const data = await response.json();
-        document.getElementById("visitor-counter").textContent = data.count;
+
+        document.getElementById("visitor-counter").textContent = data.value;
+
     } catch (err) {
         console.error("Counter Fehler:", err);
+        document.getElementById("visitor-counter").textContent = "—";
     }
 }
 
