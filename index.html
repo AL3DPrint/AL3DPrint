@@ -30,15 +30,16 @@
             height: calc(100% - 40px); /* Platz für Laufschrift */
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
+            justify-content: space-between; /* Alles sichtbar */
             align-items: center;
-            overflow: hidden;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            box-sizing: border-box;
         }
 
         /* Header */
         header img {
             width: 140px;
-            margin-top: 10px;
             filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
             animation: rotateLogo 12s linear infinite;
         }
@@ -52,7 +53,7 @@
         .slogan {
             font-family: var(--font-hero);
             font-size: 1.3rem;
-            margin-top: 10px;
+            margin-top: 5px;
             color: #ff4d00;
             text-shadow: 0 0 12px rgba(255,77,0,0.6);
         }
@@ -75,7 +76,6 @@
 
         nav a:hover {
             color: #fff;
-            text-shadow: 0 0 8px rgba(255,255,255,0.6);
         }
 
         /* BURGER BUTTON */
@@ -122,15 +122,13 @@
         /* Bild */
         .hero-image {
             width: 100%;
-            max-width: 450px;
+            max-width: 420px;
             border-radius: 12px;
-            margin-top: 20px;
             box-shadow: 0 0 20px rgba(255,77,0,0.25);
         }
 
         /* Counter */
         #holo-counter {
-            margin-top: 10px;
             width: 180px;
             padding: 12px;
             text-align: center;
@@ -169,7 +167,6 @@
         /* Content */
         .content {
             text-align: center;
-            margin-top: 10px;
         }
 
         .content h1 {
