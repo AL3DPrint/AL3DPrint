@@ -5,8 +5,201 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gästebuch – AL 3D Print</title>
 
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css"> <!-- deine bestehende CSS -->
+
+    <style>
+
+        :root {
+            --font-main: 'Exo 2', sans-serif;
+            --font-hero: 'Orbitron', sans-serif;
+
+            --header-height: auto;
+            --menu-height: 50px;
+            --ticker-height: 32px;
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--font-main);
+            background: #000;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        header {
+            background: #111;
+            padding: 0.5rem 0;
+            text-align: center;
+        }
+
+        header img {
+            max-width: 110px;
+            height: auto;
+            filter: drop-shadow(0 0 6px rgba(255,255,255,0.2));
+            animation: rotateLogo 12s linear infinite;
+        }
+
+        @keyframes rotateLogo {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Hamburger Menü */
+        .hamburger {
+            display: none;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            padding: 0.5rem;
+            background: #222;
+            text-align: center;
+        }
+
+        #menu-toggle {
+            display: none;
+        }
+
+        nav {
+            background: #222;
+            padding: 0.5rem;
+            text-align: center;
+        }
+
+        nav a {
+            font-family: var(--font-main);
+            color: #ddd;
+            margin: 0 1.2rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            transition: 0.25s ease;
+        }
+
+        nav a:hover {
+            color: white;
+            text-shadow: 0 0 8px rgba(255,255,255,0.6);
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+                flex-direction: column;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            #menu-toggle:checked + nav {
+                display: flex;
+            }
+
+            nav a {
+                margin: 0.7rem 0;
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Gästebuch Container */
+        .page-container {
+            flex: 1;
+            padding: 40px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .page-container h1 {
+            font-family: var(--font-hero);
+            font-size: 2.4rem;
+            text-align: center;
+            margin-bottom: 40px;
+            text-shadow: 0 0 18px rgba(0,0,0,0.9), 0 0 8px rgba(255,255,255,0.2);
+        }
+
+        /* Gästebuch Einträge */
+        #guestbook-entries .entry {
+            border: 1px solid #333;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+            background: #111;
+        }
+
+        .entry .name {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .entry .stars {
+            color: #ffcc00;
+            margin: 5px 0;
+        }
+
+        .entry .date {
+            font-size: 0.8rem;
+            opacity: 0.6;
+            margin-bottom: 10px;
+        }
+
+        .entry .message {
+            line-height: 1.5;
+        }
+
+        /* Formular */
+        #guestbook-form {
+            margin-top: 40px;
+            border-top: 1px solid #333;
+            padding-top: 30px;
+        }
+
+        #guestbook-form label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        #guestbook-form input,
+        #guestbook-form textarea,
+        #guestbook-form select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #333;
+            background: #111;
+            color: #fff;
+            border-radius: 4px;
+        }
+
+        #guestbook-form button {
+            margin-top: 20px;
+            padding: 12px 20px;
+            background: #ff4d00;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        #guestbook-form button:hover {
+            background: #ff6a2a;
+        }
+
+        #gb-info {
+            margin-top: 10px;
+            font-size: 0.8rem;
+            opacity: 0.6;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -27,12 +220,11 @@
     <a href="impressum-datenschutz.html">Impressum & Datenschutz</a>
 </nav>
 
-<section id="guestbook">
-    <h2>Gästebuch</h2>
+<div class="page-container">
 
-    <div id="guestbook-entries">
-        <!-- Einträge werden automatisch geladen -->
-    </div>
+    <h1>Gästebuch</h1>
+
+    <div id="guestbook-entries"></div>
 
     <form id="guestbook-form">
         <h3>Neuen Eintrag verfassen</h3>
@@ -58,7 +250,8 @@
 
         <p id="gb-info">Dein Eintrag wird nach Prüfung veröffentlicht.</p>
     </form>
-</section>
+
+</div>
 
 <script src="guestbook.js"></script>
 
