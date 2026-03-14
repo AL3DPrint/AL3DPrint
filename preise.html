@@ -1,1 +1,302 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Preisliste – AL 3D Print</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --font-main: 'Exo 2', sans-serif;
+            --font-hero: 'Orbitron', sans-serif;
+
+            --color-bg: #000;
+            --color-panel: #111;
+            --color-panel-hover: #1a1a1a;
+            --color-text: #fff;
+            --color-accent: #4da6ff;
+            --color-accent-warm: #ff4d00;
+        }
+
+        body {
+            margin: 0;
+            background: var(--color-bg);
+            color: var(--color-text);
+            font-family: var(--font-main);
+            overflow-x: hidden;
+        }
+
+        /* Back Button */
+        .back-btn {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #111;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.4rem;
+            color: white;
+            text-decoration: none;
+            z-index: 999;
+            box-shadow: 0 0 12px rgba(255,255,255,0.1);
+            transition: 0.25s ease;
+        }
+
+        .back-btn:hover {
+            background: #222;
+            box-shadow: 0 0 18px rgba(255,255,255,0.3);
+            transform: scale(1.08);
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            height: 26vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle at center, rgba(255,255,255,0.05), rgba(0,0,0,0.95)),
+                        linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,1));
+            overflow: hidden;
+        }
+
+        .hero h1 {
+            font-family: var(--font-hero);
+            font-size: 2.4rem;
+            text-shadow: 0 0 18px rgba(0,0,0,0.9);
+            opacity: 0;
+            animation: fadeUp 1.2s ease-out forwards;
+            color: var(--color-accent-warm);
+        }
+
+        @keyframes fadeUp {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Content */
+        .content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 3rem 1.5rem;
+        }
+
+        .section {
+            background: var(--color-panel);
+            border-radius: 14px;
+            padding: 1.5rem 1.6rem;
+            margin-bottom: 1.4rem;
+            box-shadow: 0 0 14px rgba(255,255,255,0.05);
+            border: 1px solid #222;
+        }
+
+        .section-title {
+            font-family: var(--font-hero);
+            font-size: 1.3rem;
+            letter-spacing: 1px;
+            margin-bottom: 0.8rem;
+            color: var(--color-accent);
+        }
+
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 0.6rem;
+            font-size: 0.92rem;
+        }
+
+        .price-table th,
+        .price-table td {
+            padding: 0.45rem 0.4rem;
+            text-align: left;
+        }
+
+        .price-table th {
+            font-family: var(--font-hero);
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            color: var(--color-accent);
+            border-bottom: 1px solid #333;
+        }
+
+        .price-table tr:nth-child(even) td {
+            background: rgba(255,255,255,0.02);
+        }
+
+        .price-table td:last-child {
+            text-align: right;
+            white-space: nowrap;
+        }
+
+        .hint {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-top: 0.4rem;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Zurück zur Startseite -->
+<a href="index.html" class="back-btn" title="Zurück zur Startseite">←</a>
+
+<!-- Hero -->
+<div class="hero">
+    <h1>Preisliste</h1>
+</div>
+
+<!-- Inhalt -->
+<div class="content">
+
+    <!-- Materialien -->
+    <div class="section">
+        <div class="section-title">Materialien – PLA &amp; PETG</div>
+
+        <table class="price-table">
+            <tr>
+                <th>Material</th>
+                <th>Beschreibung</th>
+                <th>Preis</th>
+            </tr>
+            <tr>
+                <td>PLA</td>
+                <td>Standardmaterial für Figuren, Deko &amp; Bauteile</td>
+                <td>0,10–0,14 € / g</td>
+            </tr>
+            <tr>
+                <td>PETG</td>
+                <td>Robust, temperaturbeständig, ideal für Technik</td>
+                <td>0,14–0,18 € / g</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Druckpreise -->
+    <div class="section">
+        <div class="section-title">Allgemeine Druckpreise</div>
+
+        <table class="price-table">
+            <tr>
+                <th>Größe</th>
+                <th>Beispiele</th>
+                <th>Preis</th>
+            </tr>
+            <tr>
+                <td>Klein</td>
+                <td>Clips, kleine Halter</td>
+                <td>5–10 €</td>
+            </tr>
+            <tr>
+                <td>Mittel</td>
+                <td>Figuren, Bauteile</td>
+                <td>10–20 €</td>
+            </tr>
+            <tr>
+                <td>Groß</td>
+                <td>Deko, technische Teile</td>
+                <td>20–40 €</td>
+            </tr>
+            <tr>
+                <td>Sehr groß</td>
+                <td>komplexe Modelle</td>
+                <td>40–70 €</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Mengenrabatt -->
+    <div class="section">
+        <div class="section-title">Mengenrabatt</div>
+
+        <table class="price-table">
+            <tr>
+                <th>Menge</th>
+                <th>Beschreibung</th>
+                <th>Rabatt</th>
+            </tr>
+            <tr>
+                <td>ab 3 Stück</td>
+                <td>kleine Serien</td>
+                <td>–10 %</td>
+            </tr>
+            <tr>
+                <td>ab 5 Stück</td>
+                <td>mittlere Serien</td>
+                <td>–15 %</td>
+            </tr>
+            <tr>
+                <td>ab 10 Stück</td>
+                <td>größere Serien</td>
+                <td>–20 %</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- CAD -->
+    <div class="section">
+        <div class="section-title">CAD‑Aufbereitung</div>
+
+        <table class="price-table">
+            <tr>
+                <th>Leistung</th>
+                <th>Beschreibung</th>
+                <th>Preis</th>
+            </tr>
+            <tr>
+                <td>Kleine Korrekturen</td>
+                <td>Löcher schließen, Ausrichtung</td>
+                <td>5–15 €</td>
+            </tr>
+            <tr>
+                <td>Mittlere Anpassungen</td>
+                <td>Maßänderungen, Passungen</td>
+                <td>15–30 €</td>
+            </tr>
+            <tr>
+                <td>Komplexe Reparaturen</td>
+                <td>umfangreiche Änderungen</td>
+                <td>30–50 €</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Konstruktion -->
+    <div class="section">
+        <div class="section-title">Konstruktion nach Wunsch</div>
+
+        <table class="price-table">
+            <tr>
+                <th>Umfang</th>
+                <th>Beispiele</th>
+                <th>Preis</th>
+            </tr>
+            <tr>
+                <td>Kleine Teile</td>
+                <td>Clips, Halter, Adapter</td>
+                <td>20–40 €</td>
+            </tr>
+            <tr>
+                <td>Mittelgroße Teile</td>
+                <td>Funktionsbauteile</td>
+                <td>40–80 €</td>
+            </tr>
+            <tr>
+                <td>Komplexe Konstruktionen</td>
+                <td>mehrteilige Systeme</td>
+                <td>80–150 €</td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>
