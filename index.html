@@ -50,7 +50,7 @@
             text-shadow: 0 0 8px rgba(255,77,0,0.4);
         }
 
-        /* Navigation */
+        /* Navigation Desktop */
         nav {
             text-align: center;
             background: #111;
@@ -76,7 +76,7 @@
             justify-content: center;
             gap: 10px;
             margin: 20px auto;
-            max-width: 900px; /* Gesamtbreite */
+            max-width: 900px;
         }
 
         .image-card {
@@ -100,7 +100,6 @@
             border-radius: 8px;
         }
 
-        /* Größen */
         .small {
             width: 28%;
         }
@@ -109,7 +108,7 @@
             width: 40%;
         }
 
-        /* Hologramm Counter */
+        /* Counter */
         #holo-counter {
             margin: 10px auto 0 auto;
             width: 180px;
@@ -208,7 +207,7 @@
     </div>
 
     <div class="image-card large">
-        <img src="bilder/mannmitwolf.jpg" alt="Büste nach Foto">
+        <img src="bilder/mannmitwolf.jpg" alt="Wolf">
     </div>
 
     <div class="image-card small">
@@ -232,33 +231,12 @@
 <!-- JAVASCRIPT -->
 <script>
 async function updateVisitorCounter() {
-    const url = "https://api.countapi.xyz/hit/al3dprint.de/visits";
+    const url = "https://api.counterapi.dev/v1/al3dprint/visits/hit";
 
     try {
         const response = await fetch(url);
         const data = await response.json();
-
-        const target = data.value;
-        const display = document.getElementById("visitor-counter");
-
-        let current = 0;
-
-        const animate = () => {
-            current += Math.ceil((target - current) * 0.1);
-            display.textContent = current;
-
-            display.style.textShadow = `
-                0 0 ${6 + (current % 6)}px rgba(255, 77, 0, 0.9),
-                0 0 ${12 + (current % 12)}px rgba(255, 77, 0, 0.5)
-            `;
-
-            if (current < target) {
-                requestAnimationFrame(animate);
-            }
-        };
-
-        animate();
-
+        document.getElementById("visitor-counter").textContent = data.count;
     } catch (err) {
         console.error("Counter Fehler:", err);
     }
