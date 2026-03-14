@@ -93,7 +93,6 @@
             gap: 5px;
         }
 
-        /* Pulsierendes Auge */
         @keyframes pulseEye {
             0% { transform: scale(1); opacity: 0.8; }
             50% { transform: scale(1.15); opacity: 1; }
@@ -104,7 +103,6 @@
             animation: pulseEye 2.2s ease-in-out infinite;
         }
 
-        /* Glühende Zahl */
         #visitor-counter {
             text-shadow: 0 0 6px rgba(255,77,0,0.7);
         }
@@ -188,6 +186,33 @@
             0% { transform: translateX(100%); }
             100% { transform: translateX(-100%); }
         }
+
+        /* ⭐ MOBILE OPTIMIERUNG */
+        @media (max-width: 600px) {
+
+            header img {
+                width: 110px;
+                margin-top: 5px;
+            }
+
+            .slogan {
+                font-size: 1rem;
+                line-height: 1.4;
+                margin-top: 8px;
+                margin-bottom: 14px;
+                text-align: center;
+                display: block;
+                padding: 0 10px;
+            }
+
+            .main-wrapper {
+                padding-top: 5px;
+            }
+
+            .hero-image {
+                margin-top: 5px;
+            }
+        }
     </style>
 </head>
 
@@ -199,7 +224,8 @@
     <img src="logo.png" alt="AL 3D Print Logo">
 </header>
 
-<p class="slogan">From Sketch to Solid: Your Idea in 3D</p>
+<!-- ⭐ Zweizeilig & zentriert -->
+<p class="slogan">From Sketch to Solid:<br>Your Idea in 3D</p>
 
 <nav>
     <a href="index.html">Startseite</a>
@@ -210,7 +236,6 @@
     <a href="preise.html">Preise</a>
     <a href="agb.html">AGB</a>
 
-    <!-- Counter in Menüleiste -->
     <div id="menu-counter">
         <span>👁️</span>
         <span id="visitor-counter">0</span>
