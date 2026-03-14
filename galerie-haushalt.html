@@ -1,1 +1,131 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Technische Bauteile– Galerie</title>
 
+<style>
+body { 
+    font-family: 'Exo 2', sans-serif; 
+    background:#111; 
+    margin:0; 
+    color:#fff;
+}
+
+h1 { 
+    text-align:center; 
+    padding:1.5rem; 
+    font-family:'Orbitron', sans-serif;
+    color:#ff4d00;
+    text-shadow:0 0 10px rgba(255,77,0,0.5);
+}
+
+/* --- ZURÜCK BUTTONS --- */
+.back-buttons {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    z-index: 999;
+}
+
+.back-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+    color: white;
+    text-decoration: none;
+    box-shadow: 0 0 12px rgba(255,255,255,0.1);
+    transition: 0.25s ease;
+}
+
+.back-btn:hover {
+    background: #222;
+    box-shadow: 0 0 18px rgba(255,255,255,0.3);
+    transform: scale(1.08);
+}
+
+/* --- GALERIE --- */
+
+.gallery { 
+    display:flex; 
+    flex-wrap:wrap; 
+    justify-content:center; 
+    gap:2rem; 
+    padding-bottom:3rem;
+}
+
+.gallery-item { 
+    width:260px; 
+    text-align:center;
+}
+
+.gallery-item img { 
+    width:100%; 
+    border-radius:12px; 
+    border:2px solid #333; 
+    transition:0.25s; 
+    box-shadow:0 0 15px rgba(255,77,0,0.2);
+}
+
+.gallery-item img:hover { 
+    transform:scale(1.05); 
+    border-color:#ff4d00; 
+    box-shadow:0 0 20px rgba(255,77,0,0.4);
+}
+
+.title {
+    margin-top:0.5rem;
+    font-weight:600;
+    font-size:1.1rem;
+}
+
+.desc {
+    font-size:0.9rem;
+    opacity:0.8;
+    margin-top:0.2rem;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ZURÜCK BUTTONS -->
+<div class="back-buttons">
+    <a href="galerie.html" class="back-btn">←</a>
+    <a href="index.html" class="back-btn">⌂</a>
+</div>
+
+<h1>Technische Bauteile</h1>
+
+<div class="gallery">
+
+    <!-- Ganesha Lightbox-->
+    <div class="gallery-item">
+        <a href="bilder/haushalt/1.jpg" target="_blank">
+            <img src="bilder/haushalt/1.jpg" alt="Ganesha Figur">
+        </a>
+        <div class="title">Infos folgen</div>
+        <div class="desc">Infos folgen</div>
+    </div>
+
+   
+
+
+
+
+
+
+
+
+</div>
+
+</body>
+</html>
