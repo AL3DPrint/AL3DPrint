@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kundenmeinungen – AL 3D Print</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+
+        :root {
+            --font-main: 'Exo 2', sans-serif;
+            --font-hero: 'Orbitron', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--font-main);
+            background: #000;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        header {
+            background: #111;
+            padding: 0.5rem 0;
+            text-align: center;
+        }
+
+        header img {
+            max-width: 110px;
+            height: auto;
+            filter: drop-shadow(0 0 6px rgba(255,255,255,0.2));
+            animation: rotateLogo 12s linear infinite;
+        }
+
+        @keyframes rotateLogo {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Navigation */
+        .hamburger {
+            display: none;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            padding: 0.5rem;
+            background: #222;
+            text-align: center;
+        }
+
+        #menu-toggle {
+            display: none;
+        }
+
+        nav {
+            background: #222;
+            padding: 0.5rem;
+            text-align: center;
+        }
+
+        nav a {
+            font-family: var(--font-main);
+            color: #ddd;
+            margin: 0 1.2rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            transition: 0.25s ease;
+        }
+
+        nav a:hover {
+            color: white;
+            text-shadow: 0 0 8px rgba(255,255,255,0.6);
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+                flex-direction: column;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            #menu-toggle:checked + nav {
+                display: flex;
+            }
+
+            nav a {
+                margin: 0.7rem 0;
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Page Container */
+        .page-container {
+            flex: 1;
+            padding: 40px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .page-container h1 {
+            font-family: var(--font-hero);
+            font-size: 2.4rem;
+            text-align: center;
+            margin-bottom: 40px;
+            text-shadow: 0 0 18px rgba(0,0,0,0.9), 0 0 8px rgba(255,255,255,0.2);
+        }
+
+        /* Einträge */
+        .entry {
+            border: 1px solid #333;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+            background: #111;
+        }
+
+        .entry .name {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .entry .stars {
+            color: #ffcc00;
+            margin: 5px 0;
+        }
+
+        .entry .date {
+            font-size: 0.8rem;
+            opacity: 0.6;
+            margin-bottom: 10px;
+        }
+
+        .entry .message {
+            line-height: 1.5;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<header>
+    <img src="logo.png" alt="AL 3D Print Logo">
+</header>
+
+<label for="menu-toggle" class="hamburger">☰ Menü</label>
+<input type="checkbox" id="menu-toggle">
+
+<nav>
+    <a href="index.html">Startseite</a>
+    <a href="galerie.html">Galerie</a>
+    <a href="ueber-al3dprint.html">Über AL 3D Print</a>
+    <a href="gaestebuch.html">Gästebuch</a>
+    <a href="kundenmeinungen.html">Kundenmeinungen</a>
+    <a href="kontakt.html">Kontakt</a>
+    <a href="impressum-datenschutz.html">Impressum & Datenschutz</a>
+</nav>
+
+<div class="page-container">
+
+    <h1>Kundenmeinungen</h1>
+
+    <div id="guestbook-entries">
+        <!-- Einträge werden automatisch geladen -->
+    </div>
+
+</div>
+
+<script src="guestbook.js"></script>
+
+</body>
+</html>
