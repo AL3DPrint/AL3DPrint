@@ -5,127 +5,262 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AL 3D Print – Startseite</title>
 
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
+
         :root {
             --font-main: 'Exo 2', sans-serif;
             --font-hero: 'Orbitron', sans-serif;
 
-            --color-bg: #000;
-            --color-panel: #111;
-            --color-text: #fff;
-            --color-accent: #4da6ff;
+            --header-height: auto; /* Header passt sich Logo an */
+            --menu-height: 50px;
+            --ticker-height: 32px;
         }
 
         body {
             margin: 0;
-            background: var(--color-bg);
-            color: var(--color-text);
             font-family: var(--font-main);
-        }
-
-        /* Navigation */
-        nav {
-            background: #0d0d0d;
-            padding: 1rem 0;
-            box-shadow: 0 0 15px rgba(255,255,255,0.05);
-        }
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+            background: #000;
+            color: #fff;
+            height: 100vh;
+            overflow: hidden;
             display: flex;
-            justify-content: center;
-            gap: 2rem;
+            flex-direction: column;
+        }
+
+        /* Logo + Rotation */
+        header {
+            background: #111;
+            padding: 0.5rem 0;
+            text-align: center;
+            flex: 0 0 auto;
+        }
+
+        header img {
+            max-width: 110px;
+            height: auto;
+            filter: drop-shadow(0 0 6px rgba(255,255,255,0.2));
+            animation: rotateLogo 12s linear infinite;
+        }
+
+        @keyframes rotateLogo {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Hamburger Menü */
+        .hamburger {
+            display: none;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            padding: 0.5rem;
+            background: #222;
+            text-align: center;
+        }
+
+        #menu-toggle {
+            display: none;
+        }
+
+        nav {
+            background: #222;
+            padding: 0.5rem;
+            text-align: center;
+            flex: 0 0 auto;
         }
 
         nav a {
-            color: white;
+            font-family: var(--font-main);
+            color: #ddd;
+            margin: 0 1.2rem;
             text-decoration: none;
-            font-family: var(--font-hero);
+            font-weight: 600;
             font-size: 1rem;
+            letter-spacing: 0.5px;
             transition: 0.25s ease;
         }
 
         nav a:hover {
-            color: var(--color-accent);
+            color: white;
+            text-shadow: 0 0 8px rgba(255,255,255,0.6);
         }
 
-        /* Hero */
+        /* MOBILE FIX: Menü komplett ausblenden */
+        @media (max-width: 768px) {
+
+            nav {
+                display: none;
+                flex-direction: column;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            #menu-toggle:checked + nav {
+                display: flex;
+            }
+
+            nav a {
+                margin: 0.7rem 0;
+                font-size: 1.2rem;
+            }
+        }
+
+        /* HERO-BEREICH */
         .hero {
-            height: 45vh;
+            position: relative;
+            height: calc(100vh - 120px - var(--menu-height) - var(--ticker-height));
+            width: 100%;
+            background: radial-gradient(circle at center, rgba(255,255,255,0.05), rgba(0,0,0,0.95)),
+                        linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,1));
             display: flex;
             justify-content: center;
             align-items: center;
-            text-align: center;
-            background: radial-gradient(circle at center, rgba(255,255,255,0.05), rgba(0,0,0,0.95));
-            padding: 0 1rem;
+            overflow: hidden;
         }
 
-        .hero h1 {
-            font-family: var(--font-hero);
-            font-size: 3rem;
+        /* Spotlight */
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: -20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120%;
+            height: 120%;
+            background: radial-gradient(circle, rgba(255,255,255,0.18) 0%, rgba(0,0,0,0) 70%);
+            pointer-events: none;
+        }
+
+        /* Vignette */
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle, rgba(0,0,0,0) 40%, rgba(0,0,0,0.8) 100%);
+            pointer-events: none;
+        }
+
+        /* Bild */
+        .hero-image {
+            max-height: 55vh;
+            width: auto;
+            object-fit: contain;
+            z-index: 2;
+            filter: drop-shadow(0 0 20px rgba(0,0,0,0.8));
             opacity: 0;
-            animation: fadeUp 1s ease-out forwards;
+            animation: fadeInImage 1.6s ease-out forwards;
+            animation-delay: 0.4s;
+        }
+
+        @keyframes fadeInImage {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Slogan */
+        .hero-content {
+            position: absolute;
+            top: 4%;
+            width: 100%;
+            text-align: center;
+            color: white;
+            z-index: 3;
+        }
+
+        .hero-content h1 {
+            font-family: var(--font-hero);
+            font-size: 2.4rem;
+            margin: 0;
+            padding: 0 1rem;
+            text-shadow: 0 0 18px rgba(0,0,0,0.9), 0 0 8px rgba(255,255,255,0.2);
+            font-weight: 600;
+            letter-spacing: 1px;
+            opacity: 0;
+            animation: fadeUp 1.2s ease-out forwards;
         }
 
         @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to   { opacity: 1; transform: translateY(0); }
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
 
-        /* Content */
-        .section {
-            max-width: 900px;
-            margin: 3rem auto;
+        /* Mobile */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 1.8rem;
+                padding: 0 0.5rem;
+                line-height: 1.3;
+            }
+
+            .hero-image {
+                max-height: 42vh;
+            }
+        }
+
+        /* Laufband */
+        .ticker {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
             background: #111;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 0 18px rgba(255,255,255,0.08);
-            text-align: center;
+            color: #fff;
+            height: var(--ticker-height);
+            line-height: var(--ticker-height);
+            font-size: 0.9rem;
+            font-weight: bold;
+            overflow: hidden;
+            white-space: nowrap;
+            z-index: 9999;
         }
 
-        .section h2 {
-            font-family: var(--font-hero);
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: var(--color-accent);
+        .ticker span {
+            display: inline-block;
+            padding-left: 100%;
+            animation: ticker 12s linear infinite;
         }
 
-        .section p {
-            line-height: 1.7;
-            color: #ccc;
-            font-size: 1.1rem;
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
         }
+
     </style>
 </head>
 
 <body>
 
+<header>
+    <img src="logo.png" alt="AL 3D Print Logo">
+</header>
+
+<label for="menu-toggle" class="hamburger">☰ Menü</label>
+<input type="checkbox" id="menu-toggle">
+
 <nav>
-    <ul>
-        <li><a href="index.html">Startseite</a></li>
-        <li><a href="galerie.html">Galerie</a></li>
-        <li><a href="ueber-al3dprint.html">Über AL 3D Print</a></li>
-        <li><a href="gaestebuch.html">Gästebuch</a></li>
-        <li><a href="kontakt.html">Kontakt</a></li>
-        <li><a href="impressum-datenschutz.html">Impressum & Datenschutz</a></li>
-    </ul>
+    <a href="index.html">Startseite</a>
+    <a href="galerie.html">Galerie</a>
+    <a href="ueber-al3dprint.html">Über AL 3D Print</a>
+    <a href="gaestebuch.html">Gästebuch</a> <!-- NEU -->
+    <a href="kontakt.html">Kontakt</a>
+    <a href="impressum-datenschutz.html">Impressum & Datenschutz</a>
 </nav>
 
 <div class="hero">
-    <h1>Willkommen bei AL 3D Print</h1>
+    <div class="hero-content">
+        <h1>From Sketch to Solid: Your Idea in 3D</h1>
+    </div>
+
+    <img src="bilder/mannmitwolf.jpg" alt="Mann mit Wolf" class="hero-image">
 </div>
 
-<div class="section">
-    <h2>Präzision. Kreativität. Zukunft.</h2>
-    <p>
-        AL 3D Print steht für hochwertige 3D‑Drucklösungen aus Bayern.  
-        Von funktionalen Bauteilen bis zu individuellen Figuren –  
-        hier entsteht Qualität, die man sieht und fühlt.
-    </p>
+<div class="ticker">
+    <span>🚧 Diese Website befindet sich aktuell im Aufbau – Inhalte werden laufend ergänzt 🚧</span>
 </div>
 
 </body>
