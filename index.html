@@ -15,22 +15,30 @@
             --accent: #ff4d00;
         }
 
-        body {
+        html, body {
             margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden; /* Kein Scrollen */
             background: #000;
             color: #fff;
             font-family: var(--font-main);
-            overflow-x: hidden;
+        }
+
+        /* Wrapper für zentrierten Inhalt */
+        .main-wrapper {
+            height: calc(100% - 40px); /* Platz für Laufschrift */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            overflow: hidden;
         }
 
         /* Header */
-        header {
-            text-align: center;
-            padding: 20px 0 10px 0;
-        }
-
         header img {
             width: 140px;
+            margin-top: 10px;
             filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
             animation: rotateLogo 12s linear infinite;
         }
@@ -42,12 +50,11 @@
 
         /* Slogan */
         .slogan {
-            text-align: center;
             font-family: var(--font-hero);
-            font-size: 1rem;
-            margin-top: 5px;
+            font-size: 1.3rem;
+            margin-top: 10px;
             color: #ff4d00;
-            text-shadow: 0 0 8px rgba(255,77,0,0.4);
+            text-shadow: 0 0 12px rgba(255,77,0,0.6);
         }
 
         /* Navigation Desktop */
@@ -55,6 +62,7 @@
             text-align: center;
             background: #111;
             padding: 10px 0;
+            width: 100%;
         }
 
         nav a {
@@ -83,7 +91,6 @@
             background: #ff4d00;
             margin: 6px 0;
             border-radius: 2px;
-            transition: 0.3s;
         }
 
         /* MOBILES MENÜ */
@@ -92,47 +99,38 @@
             flex-direction: column;
             background: #111;
             text-align: center;
-            padding: 10px 0;
+            width: 100%;
         }
 
         .mobile-menu a {
             color: #ddd;
             padding: 10px 0;
             text-decoration: none;
-            font-family: var(--font-main);
             font-weight: 600;
         }
 
         .mobile-menu a:hover {
             color: #fff;
-            text-shadow: 0 0 8px rgba(255,255,255,0.6);
         }
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
-
-            nav {
-                display: none;
-            }
-
-            .burger {
-                display: block;
-            }
+            nav { display: none; }
+            .burger { display: block; }
         }
 
         /* Bild */
         .hero-image {
-            display: block;
-            margin: 20px auto;
             width: 100%;
             max-width: 450px;
             border-radius: 12px;
+            margin-top: 20px;
             box-shadow: 0 0 20px rgba(255,77,0,0.25);
         }
 
         /* Counter */
         #holo-counter {
-            margin: 10px auto 0 auto;
+            margin-top: 10px;
             width: 180px;
             padding: 12px;
             text-align: center;
@@ -149,27 +147,9 @@
             overflow: hidden;
         }
 
-        .holo-icon {
-            font-size: 1.4rem;
-            margin-bottom: 4px;
-            opacity: 0.9;
-            text-shadow: 0 0 10px rgba(255, 77, 0, 0.6);
-        }
-
-        .holo-label {
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            opacity: 0.7;
-            margin-bottom: 4px;
-        }
-
-        .holo-number {
-            font-size: 1.6rem;
-            font-weight: 700;
-            text-shadow: 
-                0 0 10px rgba(255, 77, 0, 0.8),
-                0 0 20px rgba(255, 77, 0, 0.4);
-        }
+        .holo-icon { font-size: 1.4rem; }
+        .holo-label { font-size: 0.8rem; opacity: 0.7; }
+        .holo-number { font-size: 1.6rem; font-weight: 700; }
 
         .holo-scan {
             position: absolute;
@@ -177,12 +157,7 @@
             left: 0;
             width: 100%;
             height: 40%;
-            background: linear-gradient(
-                to bottom,
-                rgba(255, 77, 0, 0.0),
-                rgba(255, 77, 0, 0.15),
-                rgba(255, 77, 0, 0.0)
-            );
+            background: linear-gradient(to bottom, rgba(255,77,0,0), rgba(255,77,0,0.15), rgba(255,77,0,0));
             animation: scan 3s linear infinite;
         }
 
@@ -194,28 +169,23 @@
         /* Content */
         .content {
             text-align: center;
-            padding: 20px 20px 60px 20px;
+            margin-top: 10px;
         }
 
         .content h1 {
             font-family: var(--font-hero);
-            font-size: 2.2rem;
-            text-shadow: 0 0 12px rgba(255,255,255,0.2);
-            margin-top: 10px;
+            font-size: 2rem;
         }
 
-        /* Futuristische Laufschrift */
+        /* Laufschrift */
         .ticker {
             position: fixed;
             bottom: 0;
-            left: 0;
             width: 100%;
             background: rgba(0,0,0,0.7);
             padding: 8px 0;
             overflow: hidden;
-            z-index: 9999;
             border-top: 1px solid rgba(255,77,0,0.4);
-            box-shadow: 0 -0 15px rgba(255,77,0,0.3);
         }
 
         .ticker-text {
@@ -237,6 +207,8 @@
 
 <body>
 
+<div class="main-wrapper">
+
 <header>
     <img src="logo.png" alt="AL 3D Print Logo">
 </header>
@@ -253,9 +225,7 @@
 
 <!-- BURGER BUTTON -->
 <div class="burger" onclick="toggleMenu()">
-    <div></div>
-    <div></div>
-    <div></div>
+    <div></div><div></div><div></div>
 </div>
 
 <!-- MOBILES MENÜ -->
@@ -270,7 +240,7 @@
 <!-- EINZELNES BILD -->
 <img src="bilder/mannmitwolf.jpg" alt="Wolf" class="hero-image">
 
-<!-- HOLOGRAMM COUNTER -->
+<!-- COUNTER -->
 <div id="holo-counter">
     <div class="holo-icon">👁️</div>
     <div class="holo-label">Besucher</div>
@@ -283,7 +253,9 @@
     <p>Premium 3D‑Druck, Design und technische Präzision.</p>
 </div>
 
-<!-- FUTURISTISCHE LAUFSCHRIFT -->
+</div>
+
+<!-- LAUFSCHRIFT -->
 <div class="ticker">
     <div class="ticker-text">⚠ WEBSITE IM AUFBAU ⚠ WEBSITE IM AUFBAU ⚠ WEBSITE IM AUFBAU ⚠</div>
 </div>
@@ -291,16 +263,13 @@
 <!-- JAVASCRIPT -->
 <script>
 async function updateVisitorCounter() {
-    const url = "https://api.countapi.xyz/hit/al3dprint.de/visits";
+    const url = "https://api.countapi.xyz/hit/al3dprint/visits";
 
     try {
         const response = await fetch(url);
         const data = await response.json();
-
         document.getElementById("visitor-counter").textContent = data.value;
-
     } catch (err) {
-        console.error("Counter Fehler:", err);
         document.getElementById("visitor-counter").textContent = "—";
     }
 }
