@@ -25,7 +25,6 @@
             font-family: var(--font-main);
         }
 
-        /* Wrapper */
         .main-wrapper {
             height: calc(100% - 40px);
             display: flex;
@@ -37,7 +36,6 @@
             box-sizing: border-box;
         }
 
-        /* Logo */
         header img {
             width: 140px;
             filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
@@ -49,17 +47,21 @@
             to { transform: rotate(360deg); }
         }
 
-        /* Slogan */
+        /* Slogan – Desktop: einzeilig */
         .slogan {
             font-family: var(--font-hero);
             font-size: 1.3rem;
             margin-top: 5px;
             color: #ff4d00;
             text-shadow: 0 0 12px rgba(255,77,0,0.6);
-            white-space: nowrap; /* Desktop: EINZEILIG */
+            text-align: center;
+            white-space: nowrap;
         }
 
-        /* Navigation */
+        .slogan span {
+            display: inline;
+        }
+
         nav {
             text-align: center;
             background: #111;
@@ -81,7 +83,6 @@
             color: #fff;
         }
 
-        /* Counter in Menüleiste */
         #menu-counter {
             position: absolute;
             right: 15px;
@@ -108,7 +109,6 @@
             text-shadow: 0 0 6px rgba(255,77,0,0.7);
         }
 
-        /* Burger */
         .burger {
             width: 35px;
             margin: 10px auto;
@@ -123,7 +123,6 @@
             border-radius: 2px;
         }
 
-        /* Mobile Menü */
         .mobile-menu {
             display: none;
             flex-direction: column;
@@ -144,7 +143,6 @@
             .burger { display: block; }
         }
 
-        /* Bild */
         .hero-image {
             width: 100%;
             max-width: 420px;
@@ -152,7 +150,6 @@
             box-shadow: 0 0 20px rgba(255,77,0,0.25);
         }
 
-        /* Content */
         .content {
             text-align: center;
         }
@@ -162,7 +159,6 @@
             font-size: 2rem;
         }
 
-        /* Laufschrift */
         .ticker {
             position: fixed;
             bottom: 0;
@@ -201,10 +197,12 @@
                 line-height: 1.4;
                 margin-top: 8px;
                 margin-bottom: 14px;
-                text-align: center;
-                display: block;
                 padding: 0 10px;
-                white-space: normal; /* Mobil: ZWEIZEILIG */
+                white-space: normal; /* Umbruch erlaubt */
+            }
+
+            .slogan span {
+                display: block;      /* Mobil: ZWEIZEILIG */
             }
 
             .main-wrapper {
@@ -226,8 +224,11 @@
     <img src="logo.png" alt="AL 3D Print Logo">
 </header>
 
-<!-- ⭐ Desktop einzeilig, mobil zweizeilig -->
-<p class="slogan">From Sketch to Solid: Your Idea in 3D</p>
+<!-- Slogan: Desktop einzeilig, mobil zweizeilig -->
+<p class="slogan">
+    <span>From Sketch to Solid:</span>
+    <span>Your Idea in 3D</span>
+</p>
 
 <nav>
     <a href="index.html">Startseite</a>
