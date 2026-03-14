@@ -9,39 +9,28 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
-
         :root {
             --font-main: 'Exo 2', sans-serif;
             --font-hero: 'Orbitron', sans-serif;
-
-            --header-height: auto; /* Header passt sich Logo an */
-            --menu-height: 50px;
-            --ticker-height: 32px;
+            --accent: #ff4d00;
         }
 
         body {
             margin: 0;
-            font-family: var(--font-main);
             background: #000;
             color: #fff;
-            height: 100vh;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
+            font-family: var(--font-main);
         }
 
-        /* Logo + Rotation */
+        /* Header */
         header {
-            background: #111;
-            padding: 0.5rem 0;
             text-align: center;
-            flex: 0 0 auto;
+            padding: 20px 0;
         }
 
         header img {
-            max-width: 110px;
-            height: auto;
-            filter: drop-shadow(0 0 6px rgba(255,255,255,0.2));
+            width: 140px;
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
             animation: rotateLogo 12s linear infinite;
         }
 
@@ -50,186 +39,98 @@
             to { transform: rotate(360deg); }
         }
 
-        /* Hamburger Menü */
-        .hamburger {
-            display: none;
-            font-size: 2rem;
-            color: white;
-            cursor: pointer;
-            padding: 0.5rem;
-            background: #222;
-            text-align: center;
-        }
-
-        #menu-toggle {
-            display: none;
-        }
-
+        /* Navigation */
         nav {
-            background: #222;
-            padding: 0.5rem;
             text-align: center;
-            flex: 0 0 auto;
+            background: #111;
+            padding: 10px 0;
         }
 
         nav a {
-            font-family: var(--font-main);
             color: #ddd;
-            margin: 0 1.2rem;
+            margin: 0 15px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1rem;
-            letter-spacing: 0.5px;
             transition: 0.25s ease;
         }
 
         nav a:hover {
-            color: white;
+            color: #fff;
             text-shadow: 0 0 8px rgba(255,255,255,0.6);
         }
 
-        /* MOBILE FIX: Menü komplett ausblenden */
-        @media (max-width: 768px) {
-
-            nav {
-                display: none;
-                flex-direction: column;
-            }
-
-            .hamburger {
-                display: block;
-            }
-
-            #menu-toggle:checked + nav {
-                display: flex;
-            }
-
-            nav a {
-                margin: 0.7rem 0;
-                font-size: 1.2rem;
-            }
-        }
-
-        /* HERO-BEREICH */
-        .hero {
+        /* Hologramm Counter */
+        #holo-counter {
+            margin: 40px auto;
+            width: 260px;
+            padding: 20px;
+            text-align: center;
+            font-family: 'Orbitron', sans-serif;
+            color: var(--accent);
+            border: 1px solid rgba(255, 77, 0, 0.4);
+            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.35);
+            backdrop-filter: blur(6px);
+            box-shadow: 
+                0 0 20px rgba(255, 77, 0, 0.25),
+                inset 0 0 20px rgba(255, 77, 0, 0.15);
             position: relative;
-            height: calc(100vh - 120px - var(--menu-height) - var(--ticker-height));
-            width: 100%;
-            background: radial-gradient(circle at center, rgba(255,255,255,0.05), rgba(0,0,0,0.95)),
-                        linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,1));
-            display: flex;
-            justify-content: center;
-            align-items: center;
             overflow: hidden;
         }
 
-        /* Spotlight */
-        .hero::before {
-            content: "";
-            position: absolute;
-            top: -20%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120%;
-            height: 120%;
-            background: radial-gradient(circle, rgba(255,255,255,0.18) 0%, rgba(0,0,0,0) 70%);
-            pointer-events: none;
+        .holo-icon {
+            font-size: 2rem;
+            margin-bottom: 8px;
+            opacity: 0.9;
+            text-shadow: 0 0 12px rgba(255, 77, 0, 0.6);
         }
 
-        /* Vignette */
-        .hero::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle, rgba(0,0,0,0) 40%, rgba(0,0,0,0.8) 100%);
-            pointer-events: none;
+        .holo-label {
+            font-size: 1rem;
+            letter-spacing: 2px;
+            opacity: 0.7;
+            margin-bottom: 6px;
         }
 
-        /* Bild */
-        .hero-image {
-            max-height: 55vh;
-            width: auto;
-            object-fit: contain;
-            z-index: 2;
-            filter: drop-shadow(0 0 20px rgba(0,0,0,0.8));
-            opacity: 0;
-            animation: fadeInImage 1.6s ease-out forwards;
-            animation-delay: 0.4s;
-        }
-
-        @keyframes fadeInImage {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-
-        /* Slogan */
-        .hero-content {
-            position: absolute;
-            top: 4%;
-            width: 100%;
-            text-align: center;
-            color: white;
-            z-index: 3;
-        }
-
-        .hero-content h1 {
-            font-family: var(--font-hero);
+        .holo-number {
             font-size: 2.4rem;
-            margin: 0;
-            padding: 0 1rem;
-            text-shadow: 0 0 18px rgba(0,0,0,0.9), 0 0 8px rgba(255,255,255,0.2);
-            font-weight: 600;
-            letter-spacing: 1px;
-            opacity: 0;
-            animation: fadeUp 1.2s ease-out forwards;
+            font-weight: 700;
+            text-shadow: 
+                0 0 12px rgba(255, 77, 0, 0.8),
+                0 0 24px rgba(255, 77, 0, 0.4);
         }
 
-        @keyframes fadeUp {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Mobile */
-        @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 1.8rem;
-                padding: 0 0.5rem;
-                line-height: 1.3;
-            }
-
-            .hero-image {
-                max-height: 42vh;
-            }
-        }
-
-        /* Laufband */
-        .ticker {
-            position: fixed;
-            bottom: 0;
+        .holo-scan {
+            position: absolute;
+            top: -100%;
             left: 0;
             width: 100%;
-            background: #111;
-            color: #fff;
-            height: var(--ticker-height);
-            line-height: var(--ticker-height);
-            font-size: 0.9rem;
-            font-weight: bold;
-            overflow: hidden;
-            white-space: nowrap;
-            z-index: 9999;
+            height: 40%;
+            background: linear-gradient(
+                to bottom,
+                rgba(255, 77, 0, 0.0),
+                rgba(255, 77, 0, 0.15),
+                rgba(255, 77, 0, 0.0)
+            );
+            animation: scan 3s linear infinite;
         }
 
-        .ticker span {
-            display: inline-block;
-            padding-left: 100%;
-            animation: ticker 12s linear infinite;
+        @keyframes scan {
+            0% { top: -40%; }
+            100% { top: 140%; }
         }
 
-        @keyframes ticker {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); }
+        /* Content */
+        .content {
+            text-align: center;
+            padding: 40px 20px;
         }
 
+        .content h1 {
+            font-family: var(--font-hero);
+            font-size: 2.4rem;
+            text-shadow: 0 0 12px rgba(255,255,255,0.2);
+        }
     </style>
 </head>
 
@@ -239,30 +140,64 @@
     <img src="logo.png" alt="AL 3D Print Logo">
 </header>
 
-<label for="menu-toggle" class="hamburger">☰ Menü</label>
-<input type="checkbox" id="menu-toggle">
-
 <nav>
     <a href="index.html">Startseite</a>
     <a href="galerie.html">Galerie</a>
     <a href="ueber-al3dprint.html">Über AL 3D Print</a>
     <a href="kontakt.html">Kontakt</a>
     <a href="impressum-datenschutz.html">Impressum & Datenschutz</a>
-   
-
 </nav>
 
-<div class="hero">
-    <div class="hero-content">
-        <h1>From Sketch to Solid: Your Idea in 3D</h1>
-    </div>
-
-    <img src="bilder/mannmitwolf.jpg" alt="Mann mit Wolf" class="hero-image">
+<!-- HOLOGRAMM COUNTER -->
+<div id="holo-counter">
+    <div class="holo-icon">👁️</div>
+    <div class="holo-label">Besucher</div>
+    <div class="holo-number" id="visitor-counter">0</div>
+    <div class="holo-scan"></div>
 </div>
 
-<div class="ticker">
-    <span>🚧 Diese Website befindet sich aktuell im Aufbau – Inhalte werden laufend ergänzt 🚧</span>
+<div class="content">
+    <h1>Willkommen bei AL 3D Print</h1>
+    <p>Premium 3D‑Druck, Design und technische Präzision.</p>
 </div>
+
+<!-- JAVASCRIPT -->
+<script>
+async function updateVisitorCounter() {
+    const url = "https://api.countapi.xyz/hit/al3dprint.de/visits";
+
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+
+        const target = data.value;
+        const display = document.getElementById("visitor-counter");
+
+        let current = 0;
+
+        const animate = () => {
+            current += Math.ceil((target - current) * 0.1);
+            display.textContent = current;
+
+            display.style.textShadow = `
+                0 0 ${8 + (current % 8)}px rgba(255, 77, 0, 0.9),
+                0 0 ${16 + (current % 16)}px rgba(255, 77, 0, 0.5)
+            `;
+
+            if (current < target) {
+                requestAnimationFrame(animate);
+            }
+        };
+
+        animate();
+
+    } catch (err) {
+        console.error("Counter Fehler:", err);
+    }
+}
+
+updateVisitorCounter();
+</script>
 
 </body>
 </html>
