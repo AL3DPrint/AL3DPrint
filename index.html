@@ -230,101 +230,6 @@
             100% { transform: translateX(-100%); }
         }
 
-
-        /* --------------------------------------------- */
-        /* GÄSTEBUCH – CSS ERWEITERUNG */
-        /* --------------------------------------------- */
-
-        #guestbook {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            color: #fff;
-        }
-
-        #guestbook h2 {
-            font-size: 2rem;
-            margin-bottom: 30px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        #guestbook-entries .entry {
-            border: 1px solid #333;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 6px;
-            background: #111;
-        }
-
-        .entry .name {
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
-
-        .entry .stars {
-            color: #ffcc00;
-            margin: 5px 0;
-        }
-
-        .entry .date {
-            font-size: 0.8rem;
-            opacity: 0.6;
-            margin-bottom: 10px;
-        }
-
-        .entry .message {
-            line-height: 1.5;
-        }
-
-        #guestbook-form {
-            margin-top: 40px;
-            border-top: 1px solid #333;
-            padding-top: 30px;
-        }
-
-        #guestbook-form label {
-            display: block;
-            margin-top: 15px;
-            margin-bottom: 5px;
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-
-        #guestbook-form input,
-        #guestbook-form textarea,
-        #guestbook-form select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #333;
-            background: #111;
-            color: #fff;
-            border-radius: 4px;
-        }
-
-        #guestbook-form button {
-            margin-top: 20px;
-            padding: 12px 20px;
-            background: #ff4d00;
-            border: none;
-            color: #fff;
-            cursor: pointer;
-            border-radius: 4px;
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        #guestbook-form button:hover {
-            background: #ff6a2a;
-        }
-
-        #gb-info {
-            margin-top: 10px;
-            font-size: 0.8rem;
-            opacity: 0.6;
-        }
-
     </style>
 </head>
 
@@ -341,7 +246,7 @@
     <a href="index.html">Startseite</a>
     <a href="galerie.html">Galerie</a>
     <a href="ueber-al3dprint.html">Über AL 3D Print</a>
-    <a href="gaestebuch.html">Gästebuch</a>
+    <a href="gaestebuch.html">Gästebuch</a> <!-- NEU -->
     <a href="kontakt.html">Kontakt</a>
     <a href="impressum-datenschutz.html">Impressum & Datenschutz</a>
 </nav>
@@ -354,54 +259,9 @@
     <img src="bilder/mannmitwolf.jpg" alt="Mann mit Wolf" class="hero-image">
 </div>
 
-
-<!-- ------------------------------------------------------------ -->
-<!-- GÄSTEBUCH START -->
-<!-- ------------------------------------------------------------ -->
-
-<section id="guestbook">
-    <h2>Gästebuch</h2>
-
-    <div id="guestbook-entries">
-        <!-- Einträge werden automatisch per JS geladen -->
-    </div>
-
-    <form id="guestbook-form">
-        <h3>Neuen Eintrag verfassen</h3>
-
-        <label for="gb-name">Name</label>
-        <input type="text" id="gb-name" required>
-
-        <label for="gb-message">Nachricht</label>
-        <textarea id="gb-message" required></textarea>
-
-        <label for="gb-stars">Sterne</label>
-        <select id="gb-stars">
-            <option value="5">★★★★★</option>
-            <option value="4">★★★★☆</option>
-            <option value="3">★★★☆☆</option>
-            <option value="2">★★☆☆☆</option>
-            <option value="1">★☆☆☆☆</option>
-        </select>
-
-        <button type="button" onclick="alert('Dein Eintrag wird geprüft und manuell veröffentlicht.')">
-            Absenden
-        </button>
-
-        <p id="gb-info">Dein Eintrag wird nach Prüfung veröffentlicht.</p>
-    </form>
-</section>
-
-<!-- ------------------------------------------------------------ -->
-<!-- GÄSTEBUCH ENDE -->
-<!-- ------------------------------------------------------------ -->
-
-
 <div class="ticker">
     <span>🚧 Diese Website befindet sich aktuell im Aufbau – Inhalte werden laufend ergänzt 🚧</span>
 </div>
-
-<script src="guestbook.js"></script>
 
 </body>
 </html>
