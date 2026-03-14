@@ -1,1 +1,234 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>AGB – AL 3D Print</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --font-main: 'Exo 2', sans-serif;
+            --font-hero: 'Orbitron', sans-serif;
+
+            --color-bg: #000;
+            --color-panel: #111;
+            --color-text: #fff;
+            --color-accent: #4da6ff;
+            --color-accent-warm: #ff4d00;
+        }
+
+        body {
+            margin: 0;
+            background: var(--color-bg);
+            color: var(--color-text);
+            font-family: var(--font-main);
+            overflow-x: hidden;
+        }
+
+        /* Back Button */
+        .back-btn {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #111;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.4rem;
+            color: white;
+            text-decoration: none;
+            z-index: 999;
+            box-shadow: 0 0 12px rgba(255,255,255,0.1);
+            transition: 0.25s ease;
+        }
+
+        .back-btn:hover {
+            background: #222;
+            box-shadow: 0 0 18px rgba(255,255,255,0.3);
+            transform: scale(1.08);
+        }
+
+        /* Hero */
+        .hero {
+            height: 22vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle at center, rgba(255,255,255,0.05), rgba(0,0,0,0.95));
+        }
+
+        .hero h1 {
+            font-family: var(--font-hero);
+            font-size: 2.2rem;
+            color: var(--color-accent-warm);
+            text-shadow: 0 0 18px rgba(0,0,0,0.9);
+        }
+
+        /* Content */
+        .content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 3rem 1rem;
+        }
+
+        .section {
+            background: var(--color-panel);
+            border-radius: 14px;
+            padding: 1.4rem 1.2rem;
+            margin-bottom: 1.4rem;
+            border: 1px solid #222;
+            box-shadow: 0 0 14px rgba(255,255,255,0.05);
+        }
+
+        .section-title {
+            font-family: var(--font-hero);
+            font-size: 1.25rem;
+            margin-bottom: 0.8rem;
+            color: var(--color-accent);
+        }
+
+        p {
+            line-height: 1.55;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Zurück zur Startseite -->
+<a href="index.html" class="back-btn" title="Zurück zur Startseite">←</a>
+
+<!-- Hero -->
+<div class="hero">
+    <h1>AGB</h1>
+</div>
+
+<!-- Inhalt -->
+<div class="content">
+
+    <div class="section">
+        <div class="section-title">1. Geltungsbereich</div>
+        <p>
+            Diese Allgemeinen Geschäftsbedingungen gelten für alle Angebote, Aufträge und Dienstleistungen von 
+            <strong>AL 3D Print</strong>, Inhaber Andre L., Mindelstetten. Abweichende Bedingungen des Kunden gelten nur, 
+            wenn sie schriftlich bestätigt wurden.
+        </p>
+    </div>
+
+    <div class="section">
+        <div class="section-title">2. Leistungen</div>
+        <p>
+            AL 3D Print fertigt individuelle 3D‑Drucke, CAD‑Modelle, Lithophane, Figuren, Büsten, Lightboxen 
+            (einfarbig oder RGB, 5 V USB‑C) sowie Konstruktionen nach Kundenwunsch. 
+            Alle Produkte werden individuell hergestellt.
+        </p>
+    </div>
+
+    <div class="section">
+        <div class="section-title">3. Materialeigenschaften & technische Hinweise</div>
+        <p>
+            3D‑Druck im FDM‑Verfahren weist produktionsbedingt sichtbare Schichtlinien (Layer), leichte 
+            Oberflächenstrukturen, Supportreste und Maßtoleranzen von ca. ±0,3–0,5 mm auf. Diese Merkmale sind 
+            technisch bedingt und stellen keinen Mangel dar.
+            <br><br>
+            PLA ist nicht hitzebeständig und kann sich ab ca. 50–60 °C verformen. Für technische Bauteile oder 
+            Außenanwendungen sind PETG, ASA oder vergleichbare Materialien erforderlich.
+        </p>
+    </div>
+
+    <div class="section">
+        <div class="section-title">4. Nutzung im Außenbereich</div>
+        <p>
+            Produkte aus PLA sind nicht für den Außenbereich geeignet. Für den Einsatz im Freien müssen geeignete 
+            Materialien wie PETG oder ASA verwendet werden. Eine Haftung für Schäden durch falsche Materialwahl 
+            besteht nicht.
+        </p>
+    </div>
+
+    <div class="section">
+        <div class="section-title">5. Individuelle Anfertigungen / Widerruf</div>
+        <p>
+            Alle Produkte werden individuell nach Kundenvorgaben gefertigt. Daher besteht gemäß 
+            § 312g Abs. 2 Nr. 1 BGB kein Widerrufsrecht. Eine Rückgabe oder Erstattung ist ausgeschlossen, sobald 
+            der Druck begonnen wurde oder Material bestellt wurde.
+        </p>
+    </div>
+
+    <div class="section">
+        <div class="section-title">6. Preise & Zahlung</div>
+        <p>
+            Alle Preise sind Endpreise gemäß § 19 UStG (Kleinunternehmerregelung). Es wird keine Umsatzsteuer 
+            berechnet oder ausgewiesen. Zahlung per Barzahlung, Überweisung oder PayPal (falls angeboten). 
+            Bei größeren Aufträgen kann eine Anzahlung verlangt werden.
+        </p>
+    </div>
+
+    <div class="section">
+        <div class="section-title">7. Kundendaten & Dateien</div>
+        <p>
+            Der Kunde ist verantwortlich für die Rechte an bereitgestellten Dateien sowie für deren technische 
+            Eignung. AL 3D Print übernimmt keine Haftung für fehlerhafte Kundendateien oder urheberrechtlich 
+            geschützte Inhalte, die ohne Berechtigung eingereicht werden.
+        </p>
+    </div>
+
+    <div class="section">
+        <div class="section-title">8. Toleranzen & Passungen</div>
+        <p>
+            Maßtoleranzen von ±0,3–0,5 mm sind technisch bedingt. Passungen können Nacharbeit erfordern. 
+            Diese Abweichungen stellen keinen Mangel dar.
+        </p>
+    </div>
+
+    <div class="section">
+        <div class="section-title">9. Beleuchtung (LED‑Module/Stripes, 5 V USB‑C)</div>
+        <p>
+            Beleuchtete Produkte dürfen ausschließlich mit 5 V USB‑C betrieben werden. Keine Nutzung mit 
+            Netzteilen über 5 V. LED‑Module/Stripes können warm werden. Optionaler Schalter möglich. 
+            Kein Touch‑Sensor. Keine Haftung bei unsachgemäßer Nutzung.
+        </p>
+    </div>
+
+    <div class="section">
+        <div class="section-title">10. Lieferzeiten</div>
+        <p>
+            Alle Produkte werden individuell gefertigt. Lieferzeiten sind unverbindlich und können variieren. 
+            Verzögerungen berechtigen nicht zum Rücktritt.
+        </p>
+    </div>
+
+    <div class="section">
+        <div class="section-title">11. Haftung</div>
+        <p>
+            AL 3D Print haftet nur für Schäden, die durch grobe Fahrlässigkeit oder Vorsatz entstehen. 
+            Keine Haftung für Schäden durch unsachgemäße Nutzung, Überhitzung von PLA, falsche Materialwahl, 
+            elektrische Schäden oder Nutzung im Außenbereich mit ungeeignetem Material.
+        </p>
+    </div>
+
+    <div class="section">
+        <div class="section-title">12. Eigentumsvorbehalt</div>
+        <p>
+            Bis zur vollständigen Zahlung bleibt die Ware Eigentum von AL 3D Print.
+        </p>
+    </div>
+
+    <div class="section">
+        <div class="section-title">13. Gerichtsstand</div>
+        <p>
+            Es gilt deutsches Recht. Gerichtsstand ist Eichstätt, sofern der Kunde Kaufmann ist oder keinen 
+            allgemeinen Gerichtsstand in Deutschland hat.
+        </p>
+    </div>
+
+</div>
+
+</body>
+</html>
