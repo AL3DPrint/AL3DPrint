@@ -46,10 +46,13 @@
             box-sizing: border-box;
         }
 
+        /* ⭐ Verstärktes Logo */
         header img {
-            width: 140px;
-            filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
-            animation: rotateLogo 12s linear infinite;
+            width: 190px;
+            filter: 
+                drop-shadow(0 0 18px rgba(255,255,255,0.55))
+                drop-shadow(0 0 28px rgba(255,77,0,0.45));
+            animation: rotateLogo 18s linear infinite;
         }
 
         @keyframes rotateLogo {
@@ -57,12 +60,16 @@
             to { transform: rotate(360deg); }
         }
 
+        /* ⭐ Verstärkter Slogan */
         .slogan {
             font-family: var(--font-hero);
-            font-size: 1.3rem;
-            margin-top: 5px;
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-top: 10px;
             color: #ff4d00;
-            text-shadow: 0 0 12px rgba(255,77,0,0.6);
+            text-shadow:
+                0 0 14px rgba(255,77,0,0.9),
+                0 0 28px rgba(255,77,0,0.6);
             text-align: center;
             white-space: nowrap;
         }
@@ -152,9 +159,10 @@
             .burger { display: block; }
         }
 
+        /* ⭐ Wolf verkleinert */
         .hero-image {
             width: 100%;
-            max-width: 420px;
+            max-width: 320px;
             border-radius: 12px;
             box-shadow: 0 0 20px rgba(255,77,0,0.25);
         }
@@ -196,16 +204,11 @@
         @media (max-width: 600px) {
 
             header img {
-                width: 110px;
-                margin-top: 5px;
+                width: 130px;
             }
 
             .slogan {
-                font-size: 1rem;
-                line-height: 1.4;
-                margin-top: 8px;
-                margin-bottom: 14px;
-                padding: 0 10px;
+                font-size: 1.2rem;
                 white-space: normal;
             }
 
@@ -213,12 +216,8 @@
                 display: block;
             }
 
-            .main-wrapper {
-                padding-top: 5px;
-            }
-
             .hero-image {
-                margin-top: 5px;
+                max-width: 230px;
             }
         }
     </style>
