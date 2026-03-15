@@ -19,14 +19,24 @@
             margin: 0;
             padding: 0;
             height: 100%;
-            overflow: hidden;
-            background: #000;
+            background: url('hintergrund.jpg') no-repeat center center fixed;
+            background-size: cover;
             color: #fff;
             font-family: var(--font-main);
         }
 
+        /* 🔥 Dunkler Overlay für Lesbarkeit */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.55);
+            pointer-events: none;
+            z-index: -1;
+        }
+
         .main-wrapper {
-            height: calc(100% - 40px);
+            min-height: calc(100% - 40px);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -47,7 +57,6 @@
             to { transform: rotate(360deg); }
         }
 
-        /* Slogan – Desktop: einzeilig */
         .slogan {
             font-family: var(--font-hero);
             font-size: 1.3rem;
@@ -64,7 +73,7 @@
 
         nav {
             text-align: center;
-            background: #111;
+            background: rgba(0,0,0,0.75);
             padding: 10px 0;
             width: 100%;
             position: relative;
@@ -126,7 +135,7 @@
         .mobile-menu {
             display: none;
             flex-direction: column;
-            background: #111;
+            background: rgba(0,0,0,0.85);
             text-align: center;
             width: 100%;
         }
@@ -184,7 +193,6 @@
             100% { transform: translateX(-100%); }
         }
 
-        /* ⭐ MOBILE OPTIMIERUNG */
         @media (max-width: 600px) {
 
             header img {
@@ -198,11 +206,11 @@
                 margin-top: 8px;
                 margin-bottom: 14px;
                 padding: 0 10px;
-                white-space: normal; /* Umbruch erlaubt */
+                white-space: normal;
             }
 
             .slogan span {
-                display: block;      /* Mobil: ZWEIZEILIG */
+                display: block;
             }
 
             .main-wrapper {
@@ -224,7 +232,6 @@
     <img src="logo.png" alt="AL 3D Print Logo">
 </header>
 
-<!-- Slogan: Desktop einzeilig, mobil zweizeilig -->
 <p class="slogan">
     <span>From Sketch to Solid:</span>
     <span>Your Idea in 3D</span>
