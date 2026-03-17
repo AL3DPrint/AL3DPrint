@@ -25,7 +25,6 @@
             font-family: var(--font-main);
         }
 
-        /* 🔥 Dunkler Overlay für Lesbarkeit */
         body::before {
             content: "";
             position: fixed;
@@ -46,7 +45,6 @@
             box-sizing: border-box;
         }
 
-        /* ⭐ MAXIMAL verstärktes Logo */
         header img {
             width: 230px;
             filter:
@@ -61,7 +59,6 @@
             to { transform: rotate(360deg); }
         }
 
-        /* ⭐ Slogan EXTREM verstärkt */
         .slogan {
             font-family: var(--font-hero);
             font-size: 2.2rem;
@@ -75,10 +72,6 @@
             text-align: center;
             white-space: nowrap;
             letter-spacing: 0.04em;
-        }
-
-        .slogan span {
-            display: inline;
         }
 
         nav {
@@ -112,16 +105,6 @@
             display: flex;
             align-items: center;
             gap: 5px;
-        }
-
-        @keyframes pulseEye {
-            0% { transform: scale(1); opacity: 0.8; }
-            50% { transform: scale(1.2); opacity: 1; }
-            100% { transform: scale(1); opacity: 0.8; }
-        }
-
-        #menu-counter span:first-child {
-            animation: pulseEye 2.2s ease-in-out infinite;
         }
 
         #visitor-counter {
@@ -162,7 +145,6 @@
             .burger { display: block; }
         }
 
-        /* ⭐ Wolf-Video */
         .hero-image {
             width: 100%;
             max-width: 300px;
@@ -202,29 +184,6 @@
         @keyframes tickerMove {
             0% { transform: translateX(100%); }
             100% { transform: translateX(-100%); }
-        }
-
-        @media (max-width: 600px) {
-
-            header img {
-                width: 150px;
-            }
-
-            .slogan {
-                font-size: 1.5rem;
-                white-space: normal;
-                text-shadow:
-                    0 0 18px rgba(255,77,0,1),
-                    0 0 35px rgba(255,77,0,0.85);
-            }
-
-            .slogan span {
-                display: block;
-            }
-
-            .hero-image {
-                max-width: 220px;
-            }
         }
     </style>
 </head>
@@ -271,7 +230,6 @@
     <a href="agb.html">AGB</a>
 </div>
 
-<!-- ⭐ VIDEO statt Bild -->
 <video class="hero-image" autoplay loop muted playsinline>
     <source src="bilder/wolf.mp4" type="video/mp4">
     Dein Browser unterstützt kein HTML5‑Video.
@@ -288,35 +246,25 @@
     <div class="ticker-text">⧉ High‑Tech Manufacturing in Miniatur – Powered by AL 3D Print ⧉</div>
 </div>
 
+<!-- ⭐ NEUER VISITOR COUNTER (Worker + GitHub) -->
 <script>
-async function updateVisitorCounter() {
-    const url = "https://api.countapi.xyz/hit/al3dprint.de/website";
+const workerUrl = "https://restless-boat-0ac4.andre-lohka.workers.dev";
+const counterJsonUrl = "https://raw.githubusercontent.com/AL3DPrint/al3dprint-counter/main/counter.json";
 
-    try {
-        const response = await fetch(url);
-        const data = await response.json();
+// Worker triggern (Counter +1)
+fetch(workerUrl, { method: "POST" })
+    .catch(err => console.error("Worker error:", err));
 
-        const target = data.value;
-        const counterElement = document.getElementById("visitor-counter");
-
-        let current = 0;
-        const step = Math.ceil(target / 20);
-
-        const interval = setInterval(() => {
-            current += step;
-            if (current >= target) {
-                current = target;
-                clearInterval(interval);
-            }
-            counterElement.textContent = current;
-        }, 40);
-
-    } catch (err) {
+// Counter laden
+fetch(counterJsonUrl)
+    .then(res => res.json())
+    .then(data => {
+        const count = data.visits;
+        document.getElementById("visitor-counter").textContent = count;
+    })
+    .catch(err => {
         document.getElementById("visitor-counter").textContent = "—";
-    }
-}
-
-updateVisitorCounter();
+    });
 
 function toggleMenu() {
     const menu = document.getElementById("mobile-menu");
