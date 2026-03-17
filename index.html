@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AL 3D Print – Startseite</title>
 
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
@@ -96,19 +95,31 @@
         }
 
         #menu-counter {
-            position: absolute;
-            right: 15px;
-            top: 10px;
-            color: #ff4d00;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 5px;
+            display: none;
         }
 
-        #visitor-counter {
-            text-shadow: 0 0 6px rgba(255,77,0,0.7);
+        #video-counter {
+            margin-top: 15px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            color: #ff4d00;
+            text-shadow: 0 0 8px rgba(255,77,0,0.8);
+            display: none;
+        }
+
+        #mobile-counter {
+            padding: 10px 0;
+            font-family: 'Orbitron', sans-serif;
+            color: #ff4d00;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            #mobile-counter { display: block; }
+        }
+
+        @media (min-width: 769px) {
+            #video-counter { display: block; }
         }
 
         .burger {
@@ -209,11 +220,6 @@
     <a href="impressum-datenschutz.html">Impressum & Datenschutz</a>
     <a href="preise.html">Preise</a>
     <a href="agb.html">AGB</a>
-
-    <div id="menu-counter">
-        <span>👁️</span>
-        <span id="visitor-counter">0</span>
-    </div>
 </nav>
 
 <div class="burger" onclick="toggleMenu()">
@@ -228,12 +234,20 @@
     <a href="impressum-datenschutz.html">Impressum & Datenschutz</a>
     <a href="preise.html">Preise</a>
     <a href="agb.html">AGB</a>
+
+    <div id="mobile-counter">
+        👁️ Besucher: <span id="visitor-counter-mobile">0</span>
+    </div>
 </div>
 
 <video class="hero-image" autoplay loop muted playsinline>
     <source src="bilder/wolf.mp4" type="video/mp4">
     Dein Browser unterstützt kein HTML5‑Video.
 </video>
+
+<div id="video-counter">
+    👁️ Besucher: <span id="visitor-counter-video">0</span>
+</div>
 
 <div class="content">
     <h1>Willkommen bei AL 3D Print</h1>
@@ -246,24 +260,23 @@
     <div class="ticker-text">⧉ High‑Tech Manufacturing in Miniatur – Powered by AL 3D Print ⧉</div>
 </div>
 
-<!-- ⭐ NEUER VISITOR COUNTER (Worker + GitHub) -->
 <script>
 const workerUrl = "https://restless-boat-0ac4.andre-lohka.workers.dev";
 const counterJsonUrl = "https://raw.githubusercontent.com/AL3DPrint/al3dprint-counter/main/counter.json";
 
-// Worker triggern (Counter +1)
 fetch(workerUrl, { method: "POST" })
     .catch(err => console.error("Worker error:", err));
 
-// Counter laden
 fetch(counterJsonUrl)
     .then(res => res.json())
     .then(data => {
         const count = data.visits;
-        document.getElementById("visitor-counter").textContent = count;
+        document.getElementById("visitor-counter-video").textContent = count;
+        document.getElementById("visitor-counter-mobile").textContent = count;
     })
     .catch(err => {
-        document.getElementById("visitor-counter").textContent = "—";
+        document.getElementById("visitor-counter-video").textContent = "—";
+        document.getElementById("visitor-counter-mobile").textContent = "—";
     });
 
 function toggleMenu() {
