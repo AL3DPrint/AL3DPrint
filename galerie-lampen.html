@@ -2,8 +2,8 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-    <!-- Mobile Aktivierung + Buttons für alle Galerien -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lampen – Galerie</title>
 
 <style>
 
@@ -46,7 +46,11 @@
         bottom: 1.2rem;
         left: 1.2rem;
         top: auto;
+
         flex-direction: column;
+        display: inline-flex;   /* verhindert das Hochziehen */
+        height: auto;
+
         gap: 0.6rem;
         background: rgba(20,20,20,0.75);
         padding: 0.6rem 0.7rem;
@@ -64,18 +68,10 @@
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(255,77,0,0.25);
     }
-
-    .back-btn:hover {
-        transform: scale(1.06);
-        box-shadow: 0 0 14px rgba(255,77,0,0.35);
-    }
 }
 
-</style>
+/* --- SEITENSTIL --- */
 
-<title>Lampen– Galerie</title>
-
-<style>
 body { 
     font-family: 'Exo 2', sans-serif; 
     background:#111; 
@@ -89,38 +85,6 @@ h1 {
     font-family:'Orbitron', sans-serif;
     color:#ff4d00;
     text-shadow:0 0 10px rgba(255,77,0,0.5);
-}
-
-/* --- ZURÜCK BUTTONS --- */
-.back-buttons {
-    position: fixed;
-    top: 1rem;
-    left: 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-    z-index: 999;
-}
-
-.back-btn {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: #111;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.4rem;
-    color: white;
-    text-decoration: none;
-    box-shadow: 0 0 12px rgba(255,255,255,0.1);
-    transition: 0.25s ease;
-}
-
-.back-btn:hover {
-    background: #222;
-    box-shadow: 0 0 18px rgba(255,255,255,0.3);
-    transform: scale(1.08);
 }
 
 /* --- GALERIE --- */
@@ -163,6 +127,7 @@ h1 {
     opacity:0.8;
     margin-top:0.2rem;
 }
+
 </style>
 </head>
 
@@ -178,61 +143,53 @@ h1 {
 
 <div class="gallery">
 
-    <!-- Lampe Eurasier -->
     <div class="gallery-item">
         <a href="bilder/lampen/1.jpg" target="_blank">
-            <img src="bilder/lampen/1.jpg" alt="Mann mit Wolf Figur">
+            <img src="bilder/lampen/1.jpg" alt="Eurasier Lampe">
         </a>
         <div class="title">Eurasier Lampe</div>
-        <div class="desc">Vorlage Foto, ca.26cm, beleuchtet, 65,00 Eur.</div>
+        <div class="desc">Vorlage Foto, ca. 26cm, beleuchtet, 65,00 Eur.</div>
     </div>
 
-    <!-- Lampe Eurasier -->
     <div class="gallery-item">
         <a href="bilder/lampen/2.jpg" target="_blank">
-            <img src="bilder/lampen/2.jpg" alt="Mann mit Wolf Figur">
+            <img src="bilder/lampen/2.jpg" alt="Eurasier Lampe">
         </a>
         <div class="title">Eurasier Lampe</div>
-        <div class="desc">Vorlage Foto, ca.26cm, beleuchtet, 65,00 Eur.</div>
+        <div class="desc">Vorlage Foto, ca. 26cm, beleuchtet, 65,00 Eur.</div>
     </div>
 
-    <!-- Lampe Eurasier -->
     <div class="gallery-item">
         <a href="bilder/lampen/3.jpg" target="_blank">
-            <img src="bilder/lampen/3.jpg" alt="Mann mit Wolf Figur">
+            <img src="bilder/lampen/3.jpg" alt="Eurasier Lampe">
         </a>
         <div class="title">Eurasier Lampe</div>
-        <div class="desc">Vorlage Foto, ca.26cm, beleuchtet, 65,00 Eur.</div>
+        <div class="desc">Vorlage Foto, ca. 26cm, beleuchtet, 65,00 Eur.</div>
     </div>
 
-    <!-- Lampe Eurasier -->
     <div class="gallery-item">
         <a href="bilder/lampen/4.jpg" target="_blank">
-            <img src="bilder/lampen/4.jpg" alt="Mann mit Wolf Figur">
+            <img src="bilder/lampen/4.jpg" alt="Eurasier Lampe">
         </a>
         <div class="title">Eurasier Lampe</div>
-        <div class="desc">Vorlage Foto, ca.26cm, beleuchtet, 65,00 Eur.</div>
+        <div class="desc">Vorlage Foto, ca. 26cm, beleuchtet, 65,00 Eur.</div>
     </div>
 
-    <!-- Lampe Eurasier -->
     <div class="gallery-item">
         <a href="bilder/lampen/5.jpg" target="_blank">
-            <img src="bilder/lampen/5.jpg" alt="Mann mit Wolf Figur">
+            <img src="bilder/lampen/5.jpg" alt="Eurasier Lampe">
         </a>
         <div class="title">Eurasier Lampe</div>
-        <div class="desc">Vorlage Foto, ca.26cm, beleuchtet, 65,00 Eur.</div>
+        <div class="desc">Vorlage Foto, ca. 26cm, beleuchtet, 65,00 Eur.</div>
     </div>
 
-    <!-- Lampe Eurasier -->
     <div class="gallery-item">
         <a href="bilder/lampen/6.jpg" target="_blank">
-            <img src="bilder/lampen/6.jpg" alt="Mann mit Wolf Figur">
+            <img src="bilder/lampen/6.jpg" alt="Eurasier Lampe">
         </a>
         <div class="title">Eurasier Lampe</div>
-        <div class="desc">Vorlage Foto, ca.26cm, beleuchtet, 65,00 Eur.</div>
+        <div class="desc">Vorlage Foto, ca. 26cm, beleuchtet, 65,00 Eur.</div>
     </div>
-
-   
 
 </div>
 
