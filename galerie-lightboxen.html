@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 
-<!-- WICHTIG: Ohne dieses Tag funktioniert KEINE Mobile-Ansicht -->
+<!-- Wichtig für Mobile -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Lightbox – Galerie</title>
@@ -30,7 +30,6 @@ h1 {
     top: 1rem;
     left: 1rem;
     display: flex;
-    flex-direction: column;
     gap: 0.6rem;
     z-index: 999;
 }
@@ -104,9 +103,9 @@ h1 {
         position: fixed;
         bottom: 1.2rem;
         left: 1.2rem;
-        top: auto !important;
-        flex-direction: row !important;
-        gap: 1rem;
+        top: auto;
+        flex-direction: column; /* <- WICHTIG: wieder untereinander */
+        gap: 0.8rem;
         background: rgba(20,20,20,0.75);
         padding: 0.8rem 1rem;
         border-radius: 14px;
