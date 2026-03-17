@@ -2,31 +2,17 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<title>Technische Bauteile– Galerie</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Technische Bauteile – Galerie</title>
 
 <style>
-body { 
-    font-family: 'Exo 2', sans-serif; 
-    background:#111; 
-    margin:0; 
-    color:#fff;
-}
 
-h1 { 
-    text-align:center; 
-    padding:1.5rem; 
-    font-family:'Orbitron', sans-serif;
-    color:#ff4d00;
-    text-shadow:0 0 10px rgba(255,77,0,0.5);
-}
-
-/* --- ZURÜCK BUTTONS --- */
+/* --- ZURÜCK BUTTONS (DESKTOP) --- */
 .back-buttons {
     position: fixed;
     top: 1rem;
     left: 1rem;
     display: flex;
-    flex-direction: column;
     gap: 0.6rem;
     z-index: 999;
 }
@@ -50,6 +36,55 @@ h1 {
     background: #222;
     box-shadow: 0 0 18px rgba(255,255,255,0.3);
     transform: scale(1.08);
+}
+
+/* --- MOBILE HUD PANEL --- */
+@media (max-width: 600px) {
+
+    .back-buttons {
+        position: fixed;
+        bottom: 1.2rem;
+        left: 1.2rem;
+        top: auto;
+
+        flex-direction: column;
+        display: inline-flex;
+        height: auto;
+
+        gap: 0.6rem;
+        background: rgba(20,20,20,0.75);
+        padding: 0.6rem 0.7rem;
+        border-radius: 12px;
+        backdrop-filter: blur(6px);
+        box-shadow: 0 0 14px rgba(255,77,0,0.22);
+        z-index: 999;
+    }
+
+    .back-btn {
+        width: 44px;
+        height: 44px;
+        font-size: 1.4rem;
+        background: #111;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(255,77,0,0.25);
+    }
+}
+
+/* --- SEITENSTIL --- */
+
+body { 
+    font-family: 'Exo 2', sans-serif; 
+    background:#111; 
+    margin:0; 
+    color:#fff;
+}
+
+h1 { 
+    text-align:center; 
+    padding:1.5rem; 
+    font-family:'Orbitron', sans-serif;
+    color:#ff4d00;
+    text-shadow:0 0 10px rgba(255,77,0,0.5);
 }
 
 /* --- GALERIE --- */
@@ -92,6 +127,7 @@ h1 {
     opacity:0.8;
     margin-top:0.2rem;
 }
+
 </style>
 </head>
 
@@ -107,11 +143,9 @@ h1 {
 
 <div class="gallery">
 
-    <!-- Bild-->
-
     <div class="gallery-item">
         <a href="bilder/haushalt/17.jpg" target="_blank">
-            <img src="bilder/haushalt/17.jpg" alt="Ganesha Figur">
+            <img src="bilder/haushalt/17.jpg" alt="">
         </a>
         <div class="title">Schmuckorganizer</div>
         <div class="desc"></div>
@@ -119,15 +153,15 @@ h1 {
 
     <div class="gallery-item">
         <a href="bilder/haushalt/18.jpg" target="_blank">
-            <img src="bilder/haushalt/18.jpg" alt="Ganesha Figur">
+            <img src="bilder/haushalt/18.jpg" alt="">
         </a>
         <div class="title">Untersetzer</div>
-        <div class="desc">One Piece Style </div>
+        <div class="desc">One Piece Style</div>
     </div>
 
     <div class="gallery-item">
         <a href="bilder/haushalt/19.jpg" target="_blank">
-            <img src="bilder/haushalt/19.jpg" alt="Ganesha Figur">
+            <img src="bilder/haushalt/19.jpg" alt="">
         </a>
         <div class="title">Stiftehalter</div>
         <div class="desc"></div>
@@ -135,7 +169,7 @@ h1 {
 
     <div class="gallery-item">
         <a href="bilder/haushalt/20.jpg" target="_blank">
-            <img src="bilder/haushalt/20.jpg" alt="Ganesha Figur">
+            <img src="bilder/haushalt/20.jpg" alt="">
         </a>
         <div class="title"></div>
         <div class="desc"></div>
@@ -143,7 +177,7 @@ h1 {
 
     <div class="gallery-item">
         <a href="bilder/haushalt/21.jpg" target="_blank">
-            <img src="bilder/haushalt/21.jpg" alt="Ganesha Figur">
+            <img src="bilder/haushalt/21.jpg" alt="">
         </a>
         <div class="title">Kleiderhaken</div>
         <div class="desc">für Standard Kunststofftüren</div>
@@ -151,178 +185,139 @@ h1 {
 
     <div class="gallery-item">
         <a href="bilder/haushalt/22.jpg" target="_blank">
-            <img src="bilder/haushalt/22.jpg" alt="Ganesha Figur">
+            <img src="bilder/haushalt/22.jpg" alt="">
         </a>
         <div class="title"></div>
         <div class="desc"></div>
     </div>
-    
+
     <div class="gallery-item">
         <a href="bilder/haushalt/1.jpg" target="_blank">
-            <img src="bilder/haushalt/1.jpg" alt="Ganesha Figur">
+            <img src="bilder/haushalt/1.jpg" alt="">
         </a>
         <div class="title"></div>
         <div class="desc"></div>
     </div>
 
-     <!-- Bild-->
     <div class="gallery-item">
         <a href="bilder/haushalt/2.jpg" target="_blank">
-            <img src="bilder/haushalt/2.jpg" alt="Ganesha Figur">
+            <img src="bilder/haushalt/2.jpg" alt="">
         </a>
         <div class="title"></div>
         <div class="desc"></div>
     </div>
 
-     <!-- Bild-->
     <div class="gallery-item">
         <a href="bilder/haushalt/3.jpg" target="_blank">
-            <img src="bilder/haushalt/3.jpg" alt="Ganesha Figur">
+            <img src="bilder/haushalt/3.jpg" alt="">
         </a>
         <div class="title"></div>
         <div class="desc"></div>
     </div>
 
-     <!-- Bild-->
     <div class="gallery-item">
         <a href="bilder/haushalt/4.jpg" target="_blank">
-            <img src="bilder/haushalt/4.jpg" alt="Ganesha Figur">
+            <img src="bilder/haushalt/4.jpg" alt="">
         </a>
         <div class="title"></div>
-        <div class="desc">/div>
+        <div class="desc"></div>
     </div>
 
-     <!-- Bild-->
     <div class="gallery-item">
         <a href="bilder/haushalt/5.jpg" target="_blank">
-            <img src="bilder/haushalt/5.jpg" alt="Ganesha Figur">
+            <img src="bilder/haushalt/5.jpg" alt="">
         </a>
         <div class="title"></div>
         <div class="desc"></div>
     </div>
 
-     <!-- Bild-->
     <div class="gallery-item">
         <a href="bilder/haushalt/6.jpg" target="_blank">
-            <img src="bilder/haushalt/6.jpg" alt="Ganesha Figur">
+            <img src="bilder/haushalt/6.jpg" alt="">
         </a>
         <div class="title"></div>
         <div class="desc"></div>
     </div>
 
-     <!-- Bild-->
     <div class="gallery-item">
         <a href="bilder/haushalt/7.jpg" target="_blank">
-            <img src="bilder/haushalt/7.jpg" alt="Ganesha Figur">
+            <img src="bilder/haushalt/7.jpg" alt="">
         </a>
         <div class="title"></div>
         <div class="desc"></div>
     </div>
 
-     <!-- Bild-->
     <div class="gallery-item">
         <a href="bilder/haushalt/8.jpg" target="_blank">
-            <img src="bilder/haushalt/8.jpg" alt="Ganesha Figur">
+            <img src="bilder/haushalt/8.jpg" alt="">
         </a>
         <div class="title"></div>
         <div class="desc"></div>
     </div>
 
-     <!-- Bild-->
     <div class="gallery-item">
         <a href="bilder/haushalt/9.jpg" target="_blank">
-            <img src="bilder/haushalt/9.jpg" alt="Ganesha Figur">
+            <img src="bilder/haushalt/9.jpg" alt="">
         </a>
         <div class="title"></div>
         <div class="desc"></div>
     </div>
 
-     <!-- Bild-->
     <div class="gallery-item">
         <a href="bilder/haushalt/10.jpg" target="_blank">
-            <img src="bilder/haushalt/10.jpg" alt="Ganesha Figur">
+            <img src="bilder/haushalt/10.jpg" alt="">
         </a>
         <div class="title"></div>
         <div class="desc"></div>
     </div>
 
-     <!-- Bild-->
     <div class="gallery-item">
         <a href="bilder/haushalt/11.jpg" target="_blank">
-            <img src="bilder/haushalt/11.jpg" alt="Ganesha Figur">
+            <img src="bilder/haushalt/11.jpg" alt="">
         </a>
         <div class="title"></div>
         <div class="desc"></div>
     </div>
 
-     <!-- Bild-->
     <div class="gallery-item">
         <a href="bilder/haushalt/12.jpg" target="_blank">
-            <img src="bilder/haushalt/12.jpg" alt="Ganesha Figur">
+            <img src="bilder/haushalt/12.jpg" alt="">
         </a>
         <div class="title"></div>
         <div class="desc"></div>
     </div>
 
-     <!-- Bild-->
     <div class="gallery-item">
         <a href="bilder/haushalt/13.jpg" target="_blank">
-            <img src="bilder/haushalt/13.jpg" alt="Ganesha Figur">
+            <img src="bilder/haushalt/13.jpg" alt="">
         </a>
         <div class="title"></div>
         <div class="desc"></div>
     </div>
 
-     <!-- Bild-->
     <div class="gallery-item">
         <a href="bilder/haushalt/14.jpg" target="_blank">
-            <img src="bilder/haushalt/14.jpg" alt="Ganesha Figur">
+            <img src="bilder/haushalt/14.jpg" alt="">
         </a>
         <div class="title"></div>
         <div class="desc"></div>
     </div>
 
-     <!-- Bild-->
     <div class="gallery-item">
         <a href="bilder/haushalt/15.jpg" target="_blank">
-            <img src="bilder/haushalt/15.jpg" alt="Ganesha Figur">
+            <img src="bilder/haushalt/15.jpg" alt="">
         </a>
         <div class="title"></div>
         <div class="desc"></div>
     </div>
 
-     <!-- Bild-->
     <div class="gallery-item">
         <a href="bilder/haushalt/16.jpg" target="_blank">
-            <img src="bilder/haushalt/16.jpg" alt="Ganesha Figur">
+            <img src="bilder/haushalt/16.jpg" alt="">
         </a>
         <div class="title"></div>
         <div class="desc"></div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   
-
-
-
-
-
-
-
 
 </div>
 
