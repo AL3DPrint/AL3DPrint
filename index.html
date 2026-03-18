@@ -4,15 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- SEO + Social Media Preview -->
     <title>AL 3D Print – From Sketch to Solid: Your Idea in 3D</title>
     <meta name="description" content="Premium 3D-Druck, CAD-Modellierung, Prototyping und individuelle Spezialanfertigungen aus Bayern. AL 3D Print verwandelt jede Idee in ein präzises, belastbares 3D-Modell – von Miniaturen bis zu technischen Bauteilen. From Sketch to Solid: Your Idea in 3D.">
 
+    <!-- Open Graph (Google, Facebook, LinkedIn) -->
     <meta property="og:title" content="AL 3D Print – From Sketch to Solid: Your Idea in 3D">
     <meta property="og:description" content="Professioneller 3D-Druck, CAD-Konstruktion, Prototyping und individuelle Spezialanfertigungen.">
     <meta property="og:image" content="https://al3dprint.de/bilder/wolf1.png?v=2">
     <meta property="og:url" content="https://al3dprint.de">
     <meta property="og:type" content="website">
 
+    <!-- Twitter Cards (Google nutzt diese ebenfalls) -->
     <meta name="twitter:title" content="AL 3D Print – From Sketch to Solid: Your Idea in 3D">
     <meta name="twitter:description" content="Premium 3D-Druck, CAD-Modellierung, Prototyping und Spezialanfertigungen.">
     <meta name="twitter:image" content="https://al3dprint.de/bilder/wolf1.png?v=2">
@@ -76,12 +79,13 @@
             font-size: 2.2rem;
             font-weight: 900;
             margin-top: 14px;
-            color: #4dcaff;
+            color: #ff4d00;
             text-shadow:
                 0 0 22px rgba(255,77,0,1),
                 0 0 45px rgba(255,77,0,0.9),
                 0 0 70px rgba(255,77,0,0.7);
             text-align: center;
+            white-space: nowrap;
             letter-spacing: 0.04em;
         }
 
@@ -106,12 +110,48 @@
             color: #fff;
         }
 
-        /* --- Neuer Menü-Textbutton (nur mobil sichtbar) --- */
-        .menu-text-button {
+        #menu-counter {
             display: none;
         }
 
-        /* --- Mobile Menübereich --- */
+        #video-counter {
+            margin-top: 15px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            color: #ff4d00;
+            text-shadow: 0 0 8px rgba(255,77,0,0.8);
+            display: none;
+        }
+
+        #mobile-counter {
+            padding: 10px 0;
+            font-family: 'Orbitron', sans-serif;
+            color: #ff4d00;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            #mobile-counter { display: block; }
+        }
+
+        @media (min-width: 769px) {
+            #video-counter { display: block; }
+        }
+
+        .burger {
+            width: 35px;
+            margin: 10px auto;
+            cursor: pointer;
+            display: none;
+        }
+
+        .burger div {
+            height: 4px;
+            background: #ff4d00;
+            margin: 6px 0;
+            border-radius: 2px;
+        }
+
         .mobile-menu {
             display: none;
             flex-direction: column;
@@ -127,34 +167,9 @@
             font-weight: 600;
         }
 
-        /* --- Mobile Styles --- */
         @media (max-width: 768px) {
-
-            /* Desktop-Navi ausblenden */
             nav { display: none; }
-
-            /* Burger entfernen */
-            .burger { display: none !important; }
-
-            /* Menü-Textbutton aktivieren */
-            .menu-text-button {
-                display: block;
-                padding: 10px 18px;
-                font-size: 1rem;
-                font-weight: 600;
-                color: white;
-                background: rgba(0, 0, 0, 0.55);
-                border: 1px solid rgba(255,255,255,0.4);
-                border-radius: 8px;
-                backdrop-filter: blur(6px);
-                cursor: pointer;
-                margin-top: -20px;
-            }
-
-            /* Slogan zweizeilig */
-            .slogan span {
-                display: block;
-            }
+            .burger { display: block; }
         }
 
         .hero-image {
@@ -208,13 +223,11 @@
     <img src="logo.png" alt="AL 3D Print Logo">
 </header>
 
-<!-- Slogan bleibt gleich, wird mobil automatisch zweizeilig -->
 <p class="slogan">
     <span>From Sketch to Solid:</span>
     <span>Your Idea in 3D</span>
 </p>
 
-<!-- Desktop-Navigation -->
 <nav>
     <a href="index.html">Startseite</a>
     <a href="galerie.html">Galerie</a>
@@ -225,10 +238,10 @@
     <a href="agb.html">AGB</a>
 </nav>
 
-<!-- Neuer Menü-Textbutton -->
-<button class="menu-text-button" onclick="toggleMenu()">Menü</button>
+<div class="burger" onclick="toggleMenu()">
+    <div></div><div></div><div></div>
+</div>
 
-<!-- Mobile Menü -->
 <div id="mobile-menu" class="mobile-menu">
     <a href="index.html">Startseite</a>
     <a href="galerie.html">Galerie</a>
@@ -264,6 +277,24 @@
 </div>
 
 <script>
+const workerUrl = "https://restless-boat-0ac4.andre-lohka.workers.dev";
+const counterJsonUrl = "https://raw.githubusercontent.com/AL3DPrint/al3dprint-counter/main/counter.json";
+
+fetch(workerUrl, { method: "POST" })
+    .catch(err => console.error("Worker error:", err));
+
+fetch(counterJsonUrl)
+    .then(res => res.json())
+    .then(data => {
+        const count = data.visits;
+        document.getElementById("visitor-counter-video").textContent = count;
+        document.getElementById("visitor-counter-mobile").textContent = count;
+    })
+    .catch(err => {
+        document.getElementById("visitor-counter-video").textContent = "—";
+        document.getElementById("visitor-counter-mobile").textContent = "—";
+    });
+
 function toggleMenu() {
     const menu = document.getElementById("mobile-menu");
     menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
